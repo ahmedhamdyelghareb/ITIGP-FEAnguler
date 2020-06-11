@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
   selector: 'app-man',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./man.component.css']
 })
 export class ManComponent implements OnInit {
+  products
+  public isCollapsed = true;
 
-  constructor() { }
+  constructor(private productService:ProductService) { }
 
   ngOnInit() {
-  }
+    return this.productService.getProductBycategory("man").subscribe(res=>{
+      this.products=res;
+  })
+
+}
 
 }

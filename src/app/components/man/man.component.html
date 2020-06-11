@@ -1,1 +1,25 @@
-<p>man works!</p>
+<div class="container" >
+    <div class="row"style="margin-top: 3rem;">
+        <div class="col-sm-6 col-md-4 mb-2" *ngFor="let p of products">
+            <div class="card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/1/14/Conan_Edogawa.svg/1200px-Conan_Edogawa.svg.png"
+                    class="card-img-top" alt="..." (click)="isCollapsed =!isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+
+                <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p.title }}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's
+                                content.</p>
+                            <a href="#" class="btn btn-primary">Add to card</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

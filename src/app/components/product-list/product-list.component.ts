@@ -10,9 +10,12 @@ import { Product } from 'src/app/Models/product.model';
 export class ProductListComponent implements OnInit {
 
   products
+  public isCollapsed = false;
+
   constructor(private productService:ProductService) { }
 
   ngOnInit() {
+    this.isCollapsed=true
     return this.productService.getAllProducts().subscribe(res=>{
       this.products=res;
     })

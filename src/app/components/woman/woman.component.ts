@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
   selector: 'app-woman',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WomanComponent implements OnInit {
 
-  constructor() { }
+  products
+  public isCollapsed = true;
+
+  constructor(private productService:ProductService) { }
 
   ngOnInit() {
-  }
+    return this.productService.getProductBycategory("woman").subscribe(res=>{
+      this.products=res;
+  })
+
+}
 
 }

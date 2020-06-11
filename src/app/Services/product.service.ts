@@ -12,6 +12,10 @@ export class ProductService {
 
   getAllProducts(){
    return this.http.get('http://localhost:5000/api/home')
-    
+  }
+
+  getProductBycategory(category){
+    return this.http.get(`http://localhost:5000/api/home/category/${category}`)
+
   }
 }

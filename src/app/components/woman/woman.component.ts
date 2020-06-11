@@ -16,6 +16,12 @@ export class WomanComponent implements OnInit {
   ngOnInit() {
     return this.productService.getProductBycategory("woman").subscribe(res=>{
       this.products=res;
+
+      this.products=this.products.map(function (el) {
+        var o = Object.assign({}, el);
+        o.isCollapsed = true;
+        return o;
+      })
   })
 
 }

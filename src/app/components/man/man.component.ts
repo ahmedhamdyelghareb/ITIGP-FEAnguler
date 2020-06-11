@@ -15,6 +15,12 @@ export class ManComponent implements OnInit {
   ngOnInit() {
     return this.productService.getProductBycategory("man").subscribe(res=>{
       this.products=res;
+      
+      this.products=this.products.map(function (el) {
+        var o = Object.assign({}, el);
+        o.isCollapsed = true;
+        return o;
+      })
   })
 
 }

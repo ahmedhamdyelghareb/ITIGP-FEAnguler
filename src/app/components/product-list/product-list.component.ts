@@ -9,16 +9,24 @@ import { Product } from 'src/app/Models/product.model';
 })
 export class ProductListComponent implements OnInit {
 
-  products
-  public isCollapsed = true;
+  products;
+  isCollapsed: boolean;
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    return this.productService.getAllProducts().subscribe(res=>{
-      this.products=res;
-    })
-    
-  }
+    return this.productService.getAllProducts().subscribe(res => {
+      this.products = res;
+      console.log(this.products)
+      
+      this.products=this.products.map(function (el) {
+        var o = Object.assign({}, el);
+        o.isCollapsed = true;
+        return o;
+      })
+      console.log(this.products)
+    }
+    )
 
+  }
 }

@@ -1,13 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 import {RouterModule} from '@angular/router'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,7 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { ProductService } from './Services/product.service';
 import { ProductListComponent } from './components/product-list/product-list.component';
-
+import { ProductFormComponent } from './components/store/product-form/product-form.component';
+import {ProductsComponent} from './components/store/products/products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,16 +26,23 @@ import { ProductListComponent } from './components/product-list/product-list.com
     ManComponent,
     SliderComponent,
     FooterComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductFormComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CustomFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path:'',component :HomeComponent},
       {path:'woman',component :WomanComponent},
-      {path:'man',component :ManComponent}
+      {path:'man',component :ManComponent},
+      {path:'store/products',component :ProductsComponent},
+      {path:'store/products/new',component :ProductFormComponent}
     ])
   ],
   providers: [

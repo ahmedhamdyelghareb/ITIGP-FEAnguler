@@ -3,10 +3,10 @@
         <div class="col-sm-6 col-md-4 mb-2" *ngFor="let p of products">
             <div class="card" style="width: 18rem;">
                 <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/1/14/Conan_Edogawa.svg/1200px-Conan_Edogawa.svg.png"
-                    class="card-img-top" alt="..." (click)="isCollapsed =!isCollapsed"
-                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                    class="card-img-top" alt="..." (click)="p.isCollapsed =!p.isCollapsed"
+                    [attr.aria-expanded]="!p.isCollapsed" aria-controls="collapseExample">
 
-                <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                <div id="collapseExample" [ngbCollapse]="p.isCollapsed">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{ p.title }}</h5>

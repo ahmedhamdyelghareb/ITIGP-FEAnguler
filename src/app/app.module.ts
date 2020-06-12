@@ -1,13 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 import {RouterModule} from '@angular/router'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -22,6 +19,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
 
+import { ProductFormComponent } from './components/store/product-form/product-form.component';
+import {ProductsComponent} from './components/store/products/products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,10 +34,16 @@ import { RegisterComponent } from './auth/register/register.component';
     LoginComponent,
     RegisterComponent,
 
+    ProductFormComponent,
+    ProductsComponent
+
   ],
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CustomFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path:'',component :HomeComponent},
@@ -46,6 +51,8 @@ import { RegisterComponent } from './auth/register/register.component';
       {path:'man',component :ManComponent},
       {path:'login',component :LoginComponent},
       {path:'register',component :RegisterComponent}
+      {path:'store/products',component :ProductsComponent},
+      {path:'store/products/new',component :ProductFormComponent}
     ])
   ],
   providers: [

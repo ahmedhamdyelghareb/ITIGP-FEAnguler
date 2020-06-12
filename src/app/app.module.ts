@@ -50,7 +50,7 @@ import {ProductsComponent} from './components/store/products/products.component'
       {path:'woman',component :WomanComponent},
       {path:'man',component :ManComponent},
       {path:'login',component :LoginComponent},
-      {path:'register',component :RegisterComponent}
+      {path:'register',component :RegisterComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'store/products/new',component :ProductFormComponent}
     ])

@@ -18,6 +18,9 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { ProductService } from './Services/product.service';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
     ManComponent,
     SliderComponent,
     FooterComponent,
-    ProductListComponent
+    ProductListComponent,
+    LoginComponent,
+    RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { ProductListComponent } from './components/product-list/product-list.com
     RouterModule.forRoot([
       {path:'',component :HomeComponent},
       {path:'woman',component :WomanComponent},
-      {path:'man',component :ManComponent}
+      {path:'man',component :ManComponent},
+      {path:'login',component :LoginComponent},
+      {path:'register',component :RegisterComponent}
     ])
   ],
   providers: [

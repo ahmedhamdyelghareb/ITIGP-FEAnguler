@@ -17,14 +17,14 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     return this.productService.getAllProducts().subscribe(res => {
       this.products = res;
-      console.log(this.products)
+      // console.log(this.products)
       
       this.products=this.products.map(function (el) {
         var o = Object.assign({}, el);
         o.isCollapsed = true;
         return o;
       })
-      console.log(this.products)
+      // console.log(this.products)
     }
     )
 

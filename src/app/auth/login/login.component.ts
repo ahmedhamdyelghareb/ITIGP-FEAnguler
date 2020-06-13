@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit , OnDestroy {
         else{
         }
         this.token = message.token
-        localStorage.setItem('currentUser', JSON.stringify({ token:message.token,  type:message.type ,}));
+        localStorage.setItem('currentUser', JSON.stringify({ token:message.token,  type:message.type }));
         // alert('you are logged in successfully !')
         // console.log("User is logged in");
            this.router.navigate(['/'])
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit , OnDestroy {
     )
  
   }
-  newProductForm = new FormGroup({
+  newLoginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required]),
   })

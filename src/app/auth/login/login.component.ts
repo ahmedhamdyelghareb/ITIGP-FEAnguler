@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 import { AuthService } from "../auth.service";
+import {NgbdModalContent} from "../register/register.component"
 import {
   FormGroup,
   FormBuilder,
@@ -7,12 +8,18 @@ import {
   Validators,
   NgForm
 } from "@angular/forms";
-import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
+import { ActivatedRoute, Router} from "@angular/router";
+import {
+  NgbModalConfig,
+  NgbModal,
+  NgbActiveModal
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  styleUrls: ["./login.component.css"],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
@@ -21,7 +28,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     public route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -31,35 +39,36 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
   token;
+  message;
   mySubscription: any;
   onLogin(form: NgForm) {
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService
+   return this.authService
       .login(form.value.email, form.value.password)
-      .subscribe(message => {
-       alert(message)
-        if (message.error) {
-          alert("email or password invalid!!!");
+      .subscribe(res => {
+        this.message = res.error
+        console.log(this.message)
+     //  alert(this.message)
+        if (res.token == null) {
+         this.open()
           return;
-        } else {
         }
-        this.token = message.token;
+        this.token = res.token;
         localStorage.setItem(
           "currentUser",
           JSON.stringify({
-            token: message.token,
-            Type: message.Type,
-            id: message.id
+            token: res.token,
+            Type: res.Type,
+            id: res.id
           })
         );
-        // alert('you are logged in successfully !')
-        // console.log("User is logged in");
         this.router.navigate(["/"]).then(() => {
           window.location.reload();
         });
+      
       });
   }
   get f() {
@@ -71,10 +80,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
   }
-  // newLoginForm = new FormGroup({
-  //   email: new FormControl('', Validators.required),
-  //   password: new FormControl('', [Validators.required]),
-  // })
+  open() {
+    const modalRef = this.modalService.open(NgbdModalContent);
+    modalRef.componentInstance.message = this.message;
+  }
   ngOnDestroy() {
     if (this.mySubscription) {
       this.mySubscription.unsubscribe();

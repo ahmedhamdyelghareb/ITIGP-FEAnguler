@@ -44,7 +44,7 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-        <input formControlName="phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone number" type="number" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+        <input (keypress)="numberOnly($event)" formControlName="phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone number" type="text" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
         <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
             <div *ngIf="f.phoneNumber.errors.required">Phone Number  is required</div>
             <div *ngIf="f.phoneNumber.errors.minlength">Phone Number  must be at least 11 characters</div>
@@ -89,7 +89,7 @@
     	<div class="input-group-prepend md-form md-outline input-with-post-icon datepicker" id="date-picker">
 		    <span class="input-group-text">  <i class="fas fa-calendar input-prefix"></i> </span>
         </div>
-        <input type="text" formControlName="DOB" placeholder="Birthdate" id="dateOfBirth" class="form-control"  name="dp" ngbDatepicker #dp="ngbDatepicker">
+        <input type="text" formControlName="DOB" value="" placeholder="Birthdate" id="dateOfBirth" class="form-control"  name="dp" ngbDatepicker #dp="ngbDatepicker" >
         <div class="input-group-append">
             <button  class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
           </div>

@@ -9,6 +9,9 @@ export class ProductsComponent implements OnInit {
 
   constructor() { }
 
+  filter(query:string){
+    console.log(query);
+  }
   ngOnInit() {
   }
 

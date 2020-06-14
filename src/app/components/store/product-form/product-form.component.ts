@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import{HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -7,8 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductFormComponent implements OnInit {
 
-  constructor() { }
-
+  selectedFile:File=null;
+  constructor(private http:HttpClient) {
+   }
+  onFileSelected(event){
+    this.selectedFile=<File>event.target.files[0];
+  }
+  onUpload(){
+const fd=new FormData();
+fd.append('image',this.selectedFile,this.selectedFile.name);
+this.http.post('http://localhost:3000/products/Create',fd).subscribe(res=>{
+  console.log(res);
+});
+  }
   ngOnInit() {
   }
 

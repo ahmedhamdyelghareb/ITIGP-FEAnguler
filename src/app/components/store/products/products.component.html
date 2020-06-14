@@ -1,1 +1,27 @@
-<a routerLink="/store/products/new" class="btn btn-primary">New Product</a>
+<p>
+  <a routerLink="/store/products/new" class="btn btn-primary">New Product</a>
+</p>
+<p>
+  <input
+  #query
+  (keyup)="filter(query.value)"
+  type="text" class="form-control" placeholder="Search">
+</p>
+<table class="table">
+  <thead>
+<tr>
+  <th>title</th>
+  <th>price</th>
+  <th></th>
+
+</tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>title</td>
+     <td>price</td>
+     <td><a [routerLink]="['/store/products/new']">Edit</a></td>
+   </tr>
+
+  </tbody>
+</table>

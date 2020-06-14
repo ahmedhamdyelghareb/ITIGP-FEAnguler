@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit , OnDestroy} from "@angular/core";
 import {
   FormGroup,
   FormControl,
@@ -16,7 +16,7 @@ import { MustMatch } from "../../helpers/must-match.validator";
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.css"]
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit , OnDestroy {
   registerForm: FormGroup;
   submitted = false;
   constructor(
@@ -25,24 +25,6 @@ export class RegisterComponent implements OnInit {
     public route: ActivatedRoute,
     private router: Router
   ) {}
-  id
-  onAddUser(form: NgForm) {
-      this
-      .userService
-      .addUser(
-        form.value.firstName,
-        form.value.lastName, 
-        form.value.email,
-         form.value.phoneNumber,
-         form.value.password ,
-         Number(form.value.DOB ))
-
-    this.router.navigate(['/login'])
-    form.resetForm();
-  }
-
-  
-
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
@@ -59,6 +41,41 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  id
+  onAddUser(form: NgForm) {
+   
+    // this.submitted = true;
+    // if (this.registerForm.invalid) {
+    //   return
+    // }
+    console.log("kkkkkkkk")
+       this.userService.addUser(
+        form.value.firstName,
+        form.value.lastName, 
+        form.value.email,
+         form.value.phoneNumber,
+         form.value.password ,
+         Number(form.value.DOB )
+         )
+         .subscribe(
+          (message) => {
+            console.log(message.message)
+            if(message.message == "this email is already exist")
+            alert("invalid")
+            this.router.navigate(['/']).then(() => {
+              window.location.reload();
+            });
+          
+        })
+
+     
+
+  //  this.router.navigate(['/'])
+  }
+
+  
+
+  
   get f() {
     return this.registerForm.controls;
   }
@@ -67,14 +84,15 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-
-    alert(
-      "SUCCESS!! :-)\n\n" + JSON.stringify(this.registerForm.value, null, 4)
-    );
   }
-
+  mySubscription: any;
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
+  }
+  ngOnDestroy(){
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
   }
 }

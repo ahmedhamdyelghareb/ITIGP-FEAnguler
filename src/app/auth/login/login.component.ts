@@ -62,7 +62,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           JSON.stringify({
             token: res.token,
             Type: res.Type,
-            id: res.id
+            id: res.id,
+            fName:res.fName
           })
         );
         this.router.navigate(["/"]).then(() => {

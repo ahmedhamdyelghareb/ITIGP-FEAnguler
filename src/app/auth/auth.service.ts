@@ -28,7 +28,7 @@ export class AuthService {
   login(email: string, password: string) {
     const authData: any = {email: email, password: password};
     // this.token ='t'
-   return this.http.post<{token: string , Type:string  , id:number , error:string}>("http://localhost:5000/api/user/login", authData)
+   return this.http.post<{token: string , Type:string  , id:number , error:string , fName:string}>("http://localhost:5000/api/user/login", authData)
   }
 
 }

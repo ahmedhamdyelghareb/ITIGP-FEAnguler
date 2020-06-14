@@ -10,32 +10,45 @@
 	<h4 class="card-title mt-3 text-center">Create Account</h4>
 	<p class="text-center">Get started with your free account</p>
 	
-	<form [formGroup]="newUserForm" #postForm="ngForm">
+	<form [formGroup]="registerForm" #postForm="ngForm" (ngSubmit)="onSubmit()">
          
 	<div class="form-group input-group" style="width: 100%;">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input formControlName="firstName" name="firstName" class="form-control" placeholder="first name" type="text">
+         <input formControlName="firstName" name="firstName" class="form-control" placeholder="first name" type="text" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input formControlName="lastName" name="lastName" class="form-control" placeholder="last name" type="text">
+         <input formControlName="lastName" name="lastName" class="form-control" placeholder="last name" type="text" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
     </div>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input formControlName="email" name="email" class="form-control" placeholder="Email address" type="email">
+         <input formControlName="email" name="email" class="form-control" placeholder="Email address" type="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-	
-    	<input formControlName="phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone number" type="number">
+        <input formControlName="phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone number" type="number" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.phoneNumber.errors.required">Phone Number  is required</div>
+            <div *ngIf="f.phoneNumber.errors.minlength">Phone Number  must be at least 11 characters</div>
+        </div>
     </div> <!-- form-group// -->
     	
     <!-- <div class="form-group input-group">
@@ -54,13 +67,23 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input formControlName="password" name="password" class="form-control" placeholder="Create password" type="password">
+        <input formControlName="password" name="password" class="form-control" placeholder="Create password" type="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+       
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input  formControlName="confirmPassword" name="confirmPassword" class="form-control" placeholder="Repeat password" type="password">
+        <input  formControlName="confirmPassword" name="confirmPassword" class="form-control" placeholder="Repeat password" type="password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+        </div>
+       
     </div> <!-- form-group// -->    
     <div class="form-group input-group">
     	<div class="input-group-prepend md-form md-outline input-with-post-icon datepicker" id="date-picker">
@@ -84,7 +107,10 @@
     </label>
 </div>                                  -->
     <div class="form-group">
-        <button type="submit" (click)="onAddUser(postForm)" class="btn btn-primary btn-block"> Create Account  </button>
+        <!--  -->
+        <button type="submit" (click)="onAddUser(postForm)"  class="btn btn-primary btn-block"> Create Account  </button>
+        <br/>
+        <button class="btn btn-secondary btn-block" type="reset" (click)="onReset()">Cancel</button>
     </div>  
                                                                    
 </form>

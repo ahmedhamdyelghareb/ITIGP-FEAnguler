@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-6 d-inline-block ml-5">
-            <form  [formGroup]="ShopRegForm" #ShopForm="ngForm" (ngSubmit)="onSubmit(ShopForm)" class="text-center border border-light p-5">
+            <form  [formGroup]="ShopRegForm" #ShopForm="ngForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
 
                 <p class="h4 mb-4">Sign up</p>
 
@@ -48,7 +48,7 @@
                     </label>
                 </div>
                 <!-- Sign up button -->
-                <button color="info" block="true" class="btn btn-outline-success" type="submit" [disabled]="!agree">Sign in</button>
+                <button  color="info" block="true" class="btn btn-outline-success" type="submit" [disabled]="!agree">Create</button>
             </form>
         </div>
     </div>

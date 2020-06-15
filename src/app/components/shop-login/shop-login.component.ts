@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'app-shop-login',
@@ -8,7 +10,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ShopLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private user: UsersService,
+    public route: ActivatedRoute,
+    private router: Router,) { }
 
   ngOnInit() {
   }
@@ -26,6 +30,17 @@ export class ShopLoginComponent implements OnInit {
   })
 
   onSubmit(){
-    console.log(this.ShopRegForm.value)
+    console.log(this.ShopRegForm.value.FName)
+    this.user.addShop(
+      this.ShopRegForm.value.FName,
+      this.ShopRegForm.value.LName,
+      this.ShopRegForm.value.email,
+      this.ShopRegForm.value.phone,
+      this.ShopRegForm.value.password,
+      this.ShopRegForm.value.Type,
+      this.ShopRegForm.value.shopName,
+      ).subscribe(res => {
+        console.log(res)
+      });
   }
 }

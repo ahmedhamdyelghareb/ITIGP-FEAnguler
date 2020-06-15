@@ -17,6 +17,8 @@ import { ProductService } from './Services/product.service';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { NgbdModalContent } from './auth/register/register.component';
+
 
 
 import { ProductFormComponent } from './components/store/product-form/product-form.component';
@@ -33,10 +35,14 @@ import {ProductsComponent} from './components/store/products/products.component'
     ProductListComponent,
     LoginComponent,
     RegisterComponent,
-
+    NgbdModalContent ,
     ProductFormComponent,
-    ProductsComponent
+    ProductsComponent,
 
+
+  ],
+  entryComponents: [
+    NgbdModalContent,
   ],
   imports: [
     BrowserModule,

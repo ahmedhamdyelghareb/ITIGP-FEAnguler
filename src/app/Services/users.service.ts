@@ -20,9 +20,9 @@ export class UsersService {
      // headers :new HttpHeaders().set("authorization", this.token)
     });
   }
-  addUser(fName:string,lName:string , email:string , phonenumber:number , password:string ,DOB:number  ){
+  addUser(fName:string,lName:string , email:string ,  phone:string , password:string ,DOB:string  ){
     console.log("uuuuuuuuuuuuuu")
-   const user = { fName: fName,lName:lName, email: email ,phonenumber:phonenumber , password:password , DOB:DOB};
+   const user = { fName: fName,lName:lName, email: email ,phone:phone , password:password , DOB:DOB};
    console.log(user)
    return this.myHttp.post<{message: string }>(this.baseUrl, user)
   }

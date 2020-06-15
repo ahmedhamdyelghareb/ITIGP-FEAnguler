@@ -1,4 +1,4 @@
-import { Component, OnInit , OnDestroy} from "@angular/core";
+import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 import {
   FormGroup,
   FormControl,
@@ -6,25 +6,67 @@ import {
   FormBuilder,
   NgForm
 } from "@angular/forms";
+import {
+  NgbModalConfig,
+  NgbModal,
+  NgbActiveModal
+} from "@ng-bootstrap/ng-bootstrap";
 import { UsersService } from "../../Services/users.service";
 import { ActivatedRoute, Router } from "@angular/router";
-
 import { MustMatch } from "../../helpers/must-match.validator";
 
 @Component({
+  selector: "ngbd-modal-content",
+  template: `
+    <div class="modal-header">
+      <h4 class="modal-title" style="color:red">Oooooooooops :(</h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h5>{{ message }}!</h5>
+      <!-- <p >please try another email</p> -->
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="activeModal.close('Close click')"
+      >
+        Close
+      </button>
+    </div>
+  `
+})
+export class NgbdModalContent {
+  @Input() message;
+
+  constructor(public activeModal: NgbActiveModal) {}
+}
+@Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.css"]
+  styleUrls: ["./register.component.css"],
+  providers: [NgbModalConfig, NgbModal]
 })
-export class RegisterComponent implements OnInit , OnDestroy {
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
   submitted = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UsersService,
     public route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    config: NgbModalConfig,
+    private modalService: NgbModal
+  ){}
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
@@ -41,41 +83,54 @@ export class RegisterComponent implements OnInit , OnDestroy {
       }
     );
   }
-  id
+  id;
+  message;
+  content;
   onAddUser(form: NgForm) {
-   
-    // this.submitted = true;
-    // if (this.registerForm.invalid) {
-    //   return
-    // }
-    console.log("kkkkkkkk")
-       this.userService.addUser(
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    // console.log("kkkkkkkk")
+if( form.value.DOB == null)
+form.value.DOB = null
+    return this.userService
+      .addUser(
         form.value.firstName,
-        form.value.lastName, 
+        form.value.lastName,
         form.value.email,
-         form.value.phoneNumber,
-         form.value.password ,
-         Number(form.value.DOB )
-         )
-         .subscribe(
-          (message) => {
-            console.log(message.message)
-            if(message.message == "this email is already exist")
-            alert("invalid")
-            this.router.navigate(['/']).then(() => {
-              window.location.reload();
-            });
-          
-        })
+        form.value.phoneNumber,
+        form.value.password,
+        form.value.DOB
+      )
+      .subscribe(res => {
+        // console.log(res.message)
+        this.message = res.message;
+        if (res.message == "this email is already exist") {
+          this.open();
+        } else if (res.message) {
+         // console.log(this.message);
+          this.open();
+        }else {
+          this.router.navigate(["/"]).then(() => {
+            window.location.reload();
+          });
+        }
+      });
 
-     
-
-  //  this.router.navigate(['/'])
+    //  this.router.navigate(['/'])
   }
 
-  
+  // for make the phone input allow only number
+  numberOnly(event): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
 
-  
   get f() {
     return this.registerForm.controls;
   }
@@ -90,7 +145,15 @@ export class RegisterComponent implements OnInit , OnDestroy {
     this.submitted = false;
     this.registerForm.reset();
   }
-  ngOnDestroy(){
+
+  //for make pop up window in errors
+
+  open() {
+    const modalRef = this.modalService.open(NgbdModalContent);
+    modalRef.componentInstance.message = this.message;
+  }
+
+  ngOnDestroy() {
     if (this.mySubscription) {
       this.mySubscription.unsubscribe();
     }

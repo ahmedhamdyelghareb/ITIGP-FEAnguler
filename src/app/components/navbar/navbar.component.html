@@ -12,27 +12,46 @@
           <li class="nav-item active">
             <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
+                routerLink="/about">About </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
+                routerLink="/contactus">Contact Us </a>
+        </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/woman">Woman</a>
+            <a class="nav-link" routerLink="/woman" *ngIf="getToken()!=='hhh'&& getType()==='user'">Women</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/man">Man</a>
+            <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/man" *ngIf="getToken()!=='hhh'&& getType()==='user'">Men</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/store/products">store</a>
+            <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/cart" *ngIf="getToken()!=='hhh'&& getType()==='user'">cart</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/store/products" *ngIf="getToken()!=='hhh'&& getType()==='shop'">store</a>
+          </li>
 
+          <li ngbDropdown  class="nav-item dropdown" *ngIf="getToken()!=='hhh'&& getType()==='shop'">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{fName}}</a>
+            <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="dropdown01">
+              <a ngbDropdownItem class="dropdown-item" routerLink="#">Profile</a>
+              <a ngbDropdownItem class="dropdown-item" routerLink="#" >Requests</a>
+              <!-- <a ngbDropdownItem class="dropdown-item" >Logout</a> -->
+            </div>
+          </li>
 
-          <li ngbDropdown  class="nav-item dropdown">
-            <a ngbDropdownToggle class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UserName</a>
+          <li ngbDropdown  class="nav-item dropdown" *ngIf="getToken()!=='hhh'&& getType()==='user'">
+            <a ngbDropdownToggle [routerLinkActiveOptions]={exact:true} routerLinkActive='active' class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{fName}}</a>
             <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="dropdown01">
               <a ngbDropdownItem class="dropdown-item" routerLink="#">Profile</a>
               <a ngbDropdownItem class="dropdown-item" routerLink="#">Purchases</a>
-              <a ngbDropdownItem class="dropdown-item" >Logout</a>
+              <!-- <a ngbDropdownItem class="dropdown-item" >Logout</a> -->
             </div>
           </li>
 
@@ -52,7 +71,7 @@
      <app-register></app-register>
       </div>
     </ng-template>
-    <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="open(content)">Sign Up</button>
+    <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="open(content)" *ngIf="getToken()==='hhh'">SignUp</button>
      <!--Login-->
      <ng-template #contentLogin let-modal>
       <div class="modal-header">
@@ -65,8 +84,10 @@
         <app-login></app-login>
       </div>
     </ng-template>
-    <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="openLogin(contentLogin)">Log In</button>
+    <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="openLogin(contentLogin)" *ngIf="getToken()==='hhh'">LogIn</button>
     
     <hr>
+    <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="logout()" *ngIf="getToken()!=='hhh'">LogOut</button>
+
   </nav>
        

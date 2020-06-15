@@ -23,6 +23,9 @@ import { NgbdModalContent } from './auth/register/register.component';
 
 import { ProductFormComponent } from './components/store/product-form/product-form.component';
 import {ProductsComponent} from './components/store/products/products.component';
+import { CartComponent } from './components/cart/cart.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactUSComponent } from './components/contact-us/contact-us.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,9 @@ import {ProductsComponent} from './components/store/products/products.component'
     NgbdModalContent ,
     ProductFormComponent,
     ProductsComponent,
+    CartComponent,
+    AboutComponent,
+    ContactUSComponent,
 
 
   ],
@@ -58,7 +64,10 @@ import {ProductsComponent} from './components/store/products/products.component'
       {path:'login',component :LoginComponent},
       {path:'register',component :RegisterComponent},
       {path:'store/products',component :ProductsComponent},
-      {path:'store/products/new',component :ProductFormComponent}
+      {path:'store/products/new',component :ProductFormComponent},
+      {path:'cart',component :CartComponent},
+      {path:'about',component :AboutComponent},
+      {path:'contactus',component :ContactUSComponent}
     ])
   ],
   providers: [

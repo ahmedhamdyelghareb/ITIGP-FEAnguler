@@ -1,23 +1,7 @@
-<!--
 <div class="row">
     <div class="col-sm-6 col-md-4 mb-2" *ngFor="let p of products">
-        <div class="card">
-            <img [src]="imagePreview" class="card-img-top" *ngIf="imagePreview !== '' && imagePreview">
-            <div class="card-body">
-                <h5 class="card-title">{{ p.title }}</h5>
-                Currency PIPE
-                <p class="card-text">{{p.price | currency:'USD':'symbol'}}</p>
-                <p class="card-text">{{p.details}}</p>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<div class="row">
-    <div class="col-sm-6 col-md-4 mb-2" *ngFor="let p of products">
-        <div class="card" style="width: 18rem;">
-            <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/1/14/Conan_Edogawa.svg/1200px-Conan_Edogawa.svg.png"
-
+        <div class="card " style="width: 18rem;">
+            <img [src]="p.imageUrl"
              class="card-img-top" alt="..." (click)="p.isCollapsed =!p.isCollapsed"
             [attr.aria-expanded]="!p.isCollapsed" aria-controls="collapseExample">
         
@@ -26,8 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ p.title }}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                            content.</p>
+                        <p class="card-text">{{p.description}}</p>
                         <a href="#" class="btn btn-primary">Add to card</a>
                     </div>
                 </div>

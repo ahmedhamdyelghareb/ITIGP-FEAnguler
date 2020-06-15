@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shop-login',
@@ -12,4 +13,19 @@ export class ShopLoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  ShopRegForm=new FormGroup({
+    FName:new FormControl('',Validators.nullValidator),
+    LName:new FormControl('',Validators.nullValidator),
+    email:new FormControl('',Validators.nullValidator),
+    password:new FormControl('',Validators.nullValidator),
+    phone:new FormControl('',),
+    shopname:new FormControl('',),
+    agree:new FormControl('',),
+    address:new FormControl('',),
+    type:new FormControl('shop')
+  })
+
+  onSubmit(){
+    console.log(this.ShopRegForm.value)
+  }
 }

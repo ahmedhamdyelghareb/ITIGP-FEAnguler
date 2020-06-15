@@ -1,1 +1,56 @@
-<p>shop-login works!</p>
+<!-- Default form register -->
+<div class="container">
+
+    <div class="row text-center">
+
+        <div class="col-4 d-inline-block mt-4">
+            <h2 class="text text-info mb-4 font-weight-bold"> Create a free <br> Online Store</h2> <br>
+            <p>Start adding products under a minute. It's not a free trial , it's just free</p>
+        </div>
+
+        <div class="col-6 d-inline-block ml-5">
+            <form  [formGroup]="ShopRegForm" #ShopForm="ngForm" (ngSubmit)="onSubmit(ShopForm)" class="text-center border border-light p-5">
+
+                <p class="h4 mb-4">Sign up</p>
+
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <!-- First name -->
+                        <input formControlName="FName" type="text" id="FirstName" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <!-- Last name -->
+                        <input formControlName="LName" type="text" id="LastName" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+
+                <!-- E-mail -->
+                <input formControlName="email" type="email" id="Email" class="form-control mb-4" placeholder="E-mail">
+
+                <!-- Password -->
+                <input formControlName="password" type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password">
+                <small class="form-text text-muted mb-4">At least 6 characters</small>
+
+                <!-- Phone number -->
+                <input formControlName="phone" type="number" id="Phone" class="form-control mb-4" placeholder="Phone number">
+
+
+                <input formControlName="shopname" type="text" id="shopName" class="form-control mb-4" placeholder="Shop name">
+                <textarea formControlName="address" class="form-control" id="exampleFormControlTextarea1" placeholder="Address"
+                    rows="3"></textarea>
+                <hr>
+
+                <!-- Terms of service -->
+                <div class="form-check mb-4">
+                    <input [(ngModel)]="agree" formControlName="agree" class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                    <label class="form-check-label" for="defaultCheck1">
+                        you agree to our <a href="" target="_blank">terms of service</a>
+                    </label>
+                </div>
+                <!-- Sign up button -->
+                <button color="info" block="true" class="btn btn-outline-success" type="submit" [disabled]="!agree">Sign in</button>
+            </form>
+        </div>
+    </div>
+
+</div>

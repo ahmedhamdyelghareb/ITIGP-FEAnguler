@@ -69,7 +69,8 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
       {path:'store/products/new',component :ProductFormComponent},
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},
-      {path:'contactus',component :ContactUSComponent}
+      {path:'contactus',component :ContactUSComponent},
+      {path:'shop/register',component:ShopLoginComponent}
     ])
   ],
   providers: [

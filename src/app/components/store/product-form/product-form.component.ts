@@ -16,11 +16,13 @@ export class ProductFormComponent implements OnInit {
   onUpload(){
 const fd=new FormData();
 fd.append('image',this.selectedFile,this.selectedFile.name);
-this.http.post('http://localhost:3000/products/Create',fd).subscribe(res=>{
+this.http.post('http://localhost:5000/products/Create',fd).subscribe(res=>{
   console.log(res);
 });
   }
   ngOnInit() {
   }
-
+  onAddNewProduct(){
+alert("new product added");
+  }
 }

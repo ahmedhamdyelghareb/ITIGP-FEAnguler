@@ -16,12 +16,13 @@
 
 </tr>
   </thead>
-  <tbody>
-   <tr>
-     <td>title</td>
-     <td>price</td>
+  <tbody *ngIf="products.length > 0">
+   <tr *ngFor="let product of products">
+     <td>{{product.title}}</td>
+     <td>{{product.price}}</td>
      <td><a [routerLink]="['/store/products/new']">Edit</a></td>
    </tr>
 
   </tbody>
 </table>
+<p class="empty" *ngIf="products.length <= 0">No Products added Yet!</p>

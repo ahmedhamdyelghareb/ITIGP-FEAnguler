@@ -26,6 +26,7 @@ import {ProductsComponent} from './components/store/products/products.component'
 import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
+import { ShopLoginComponent } from './components/shop-login/shop-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { ContactUSComponent } from './components/contact-us/contact-us.component
     CartComponent,
     AboutComponent,
     ContactUSComponent,
+    ShopLoginComponent,
 
 
   ],

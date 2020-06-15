@@ -26,4 +26,9 @@ export class UsersService {
    console.log(user)
    return this.myHttp.post<{message: string }>(this.baseUrl, user)
   }
+
+
+  getshopname(id){
+    return this.myHttp.get(`http://localhost:5000/api/home/user/${id}`)
+  }
 }

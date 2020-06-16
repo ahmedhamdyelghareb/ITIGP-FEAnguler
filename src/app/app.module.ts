@@ -14,6 +14,10 @@ import { SliderComponent } from './components/slider/slider.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ProductService } from './Services/product.service';
+
+import {ContactService} from './Services/contact.service'
+import {UsersService} from './Services/users.service'
+
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -27,6 +31,9 @@ import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +55,7 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
     ShopLoginComponent,
 
 
+
   ],
   entryComponents: [
     NgbdModalContent,
@@ -58,6 +66,7 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
+    HttpClientModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path:'',component :HomeComponent},
@@ -74,7 +83,9 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
     ])
   ],
   providers: [
-    ProductService
+    ProductService,
+    ContactService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

@@ -21,7 +21,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
-            routerLink="/contactus">Contact Us </a>
+          routerLink=""  (click)="openContact(contentContact)">Contact Us </a>
         </li>
 
         <li class="nav-item">
@@ -40,7 +40,7 @@
 
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
-            routerLink="/store/products" *ngIf="getToken()!=='hhh'&& getType()==='shop'">store</a>
+            routerLink="/store/products" *ngIf="getToken()!=='hhh'&& getType()==='shop'">Store</a>
         </li>
 
         <li ngbDropdown class="nav-item dropdown" *ngIf="getToken()!=='hhh'&& getType()==='shop'">
@@ -104,6 +104,18 @@
     </div>
     <div class="modal-body">
       <app-login></app-login>
+    </div>
+  </ng-template>
+   <!--Contact US-->
+   <ng-template #contentContact let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Contact Us</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body " style="width: 100%;">
+      <app-contact-us></app-contact-us>
     </div>
   </ng-template>
   <!-- <button  class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="openLogin(contentLogin)" *ngIf="getToken()==='hhh'">LogIn</button> -->

@@ -1,1 +1,59 @@
-<p>contact-us works!</p>
+<div class="container mt-5">
+    <div class="row">
+      <div class="col ">
+        <form [formGroup]="FormData" #postForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              formControlName="email"
+              #email
+            
+            />
+           
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              class="form-control"
+              name="subject"
+              placeholder="Subject"
+              formControlName="subject"
+              #subject
+            
+            />
+          
+          </div>
+          <div class="form-group">
+            <label for="body">Comment</label>
+            <textarea
+              class="form-control"
+              formControlName="body" #body class="form-control" name="body"
+            
+            >
+        
+            </textarea>
+          </div>
+        
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click) = "SendData(postForm)"
+            [disabled]="!FormData.valid"
+          >
+            Submit
+          </button>
+          <br/>
+        </form>
+      </div>
+    </div>
+  </div>
+  

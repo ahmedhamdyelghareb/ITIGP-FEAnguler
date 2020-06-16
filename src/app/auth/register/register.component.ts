@@ -47,7 +47,7 @@ import { MustMatch } from "../../helpers/must-match.validator";
 export class NgbdModalContent {
   @Input() message;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal) { }
 }
 @Component({
   selector: "app-register",
@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private router: Router,
     config: NgbModalConfig,
     private modalService: NgbModal
-  ){}
+  ) { }
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
@@ -93,8 +93,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     // console.log("kkkkkkkk")
-if( form.value.DOB == null)
-form.value.DOB = null
+    if (form.value.DOB == null)
+      form.value.DOB = null
     return this.userService
       .addUser(
         form.value.firstName,
@@ -110,9 +110,9 @@ form.value.DOB = null
         if (res.message == "this email is already exist") {
           this.open();
         } else if (res.message) {
-         // console.log(this.message);
+          // console.log(this.message);
           this.open();
-        }else {
+        } else {
           this.router.navigate(["/"]).then(() => {
             window.location.reload();
           });

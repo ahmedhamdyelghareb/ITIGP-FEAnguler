@@ -14,13 +14,14 @@ export class ShopLoginComponent implements OnInit {
     public route: ActivatedRoute,
     private router: Router,) { }
 
+    message
   ngOnInit() {
   }
 
   ShopRegForm=new FormGroup({
     FName:new FormControl('',[Validators.required]),
     LName:new FormControl('',[Validators.required]),
-    email:new FormControl('',[Validators.required,Validators.pattern("[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}")]),
+    email:new FormControl('',[Validators.required,Validators.email]),
     password:new FormControl('',[Validators.required,Validators.minLength(6)]),
     phone:new FormControl('',[Validators.required,Validators.minLength(11)]),
     shopname:new FormControl('',[Validators.required]),
@@ -31,16 +32,19 @@ export class ShopLoginComponent implements OnInit {
 
   onSubmit(){
     console.log(this.ShopRegForm.value)
-    // this.user.addShop(
-    //   this.ShopRegForm.value.FName,
-    //   this.ShopRegForm.value.LName,
-    //   this.ShopRegForm.value.email,
-    //   this.ShopRegForm.value.phone,
-    //   this.ShopRegForm.value.password,
-    //   this.ShopRegForm.value.Type,
-    //   this.ShopRegForm.value.shopName,
-    //   ).subscribe(res => {
-    //     console.log(res)
-    //   });
+    this.user.addShop(
+      this.ShopRegForm.value.FName,
+      this.ShopRegForm.value.LName,
+      this.ShopRegForm.value.email,
+      this.ShopRegForm.value.phone,
+      this.ShopRegForm.value.password,
+      this.ShopRegForm.value.type,
+      this.ShopRegForm.value.shopname,
+      ).subscribe(res => {
+        console.log(res)
+      });
   }
+
+  
+  
 }

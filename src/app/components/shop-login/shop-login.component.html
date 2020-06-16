@@ -16,67 +16,67 @@
                 <div class="form-row mb-4">
                     <div class="col">
                         <!-- First name -->
-                        <input formControlName="FName" type="text" id="FirstName" class="form-control" placeholder="First name">
-                       <div *ngIf="ShopRegForm.get('FName').touched && ShopRegForm.get('FName').invalid" class="alert alert-danger">
+                        <input [class.is-invalid] ="ShopRegForm.get('FName').touched && ShopRegForm.get('FName').invalid" formControlName="FName" type="text" id="FirstName" class="form-control" placeholder="First name">
+                       <small *ngIf="ShopRegForm.get('FName').touched && ShopRegForm.get('FName').invalid" class="text-danger">
                            This field is required
-                       </div>
+                       </small>
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        <input formControlName="LName" type="text" id="LastName" class="form-control" placeholder="Last name">
-                        <div *ngIf="ShopRegForm.get('LName').touched && ShopRegForm.get('LName').invalid" class="alert alert-danger">
+                        <input [class.is-invalid] ="ShopRegForm.get('LName').touched && ShopRegForm.get('LName').invalid" formControlName="LName" type="text" id="LastName" class="form-control" placeholder="Last name">
+                        <small *ngIf="ShopRegForm.get('LName').touched && ShopRegForm.get('LName').invalid" class="text-danger">
                             This field is required
-                        </div>
+                        </small>
                     </div>
                 </div>
 
                 <!-- E-mail -->
-                <input formControlName="email" type="email" id="Email" class="form-control" placeholder="E-mail">
-                <div *ngIf="ShopRegForm.get('email').touched && ShopRegForm.get('email').invalid" class="alert alert-danger">
-                    <div *ngIf="ShopRegForm.get('email').errors.required">
+                <input [class.is-invalid] ="ShopRegForm.get('email').touched && ShopRegForm.get('email').invalid"  formControlName="email" type="email" id="Email" class="form-control" placeholder="E-mail">
+                <div *ngIf="ShopRegForm.get('email').touched && ShopRegForm.get('email').invalid" class="text-danger">
+                    <small *ngIf="ShopRegForm.get('email').errors.required">
                         This field is required
-                    </div>
-                    <div *ngIf="ShopRegForm.get('email').errors.pattern">
+                    </small>
+                    <small *ngIf="ShopRegForm.get('email').errors.email">
                         invalid Email 
-                    </div>
+                    </small>
                     <!-- <div *ngIf="ShopRegForm.get('email').errors.pattern">
                         This Email already used.. 
                     </div> -->
                 </div>
 
                 <!-- Password -->
-                <input formControlName="password" type="password" id="password" class="form-control mt-4" placeholder="Password">
-                <div *ngIf="ShopRegForm.get('password').touched && ShopRegForm.get('password').invalid" class="alert alert-danger">
-                    <div *ngIf="ShopRegForm.get('password').errors.required">
+                <input [class.is-invalid] ="ShopRegForm.get('password').touched && ShopRegForm.get('password').invalid" formControlName="password" type="password" id="password" class="form-control mt-4" placeholder="Password">
+                <div *ngIf="ShopRegForm.get('password').touched && ShopRegForm.get('password').invalid" class="text-danger">
+                    <small *ngIf="ShopRegForm.get('password').errors.required">
                         This field is required
-                    </div>
-                    <div *ngIf="ShopRegForm.get('password').errors.minlength">
+                    </small>
+                    <small *ngIf="ShopRegForm.get('password').errors.minlength">
                         shoud length at least {{ShopRegForm.get('password').errors.minlength.requiredLength}} characters
-                    </div>
+                    </small>
                 </div>
                 <small class="form-text text-muted mb-4">At least 6 characters</small>
 
                 <!-- Phone number -->
-                <input formControlName="phone" type="phoneNumber" id="Phone" class="form-control" placeholder="Phone number">
-                <div *ngIf="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" class="alert alert-danger">
-                    <div *ngIf="ShopRegForm.get('phone').errors.required">
+                <input [class.is-invalid] ="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" formControlName="phone" type="phoneNumber" id="Phone" class="form-control" placeholder="Phone number">
+                <div *ngIf="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" class="text-danger">
+                    <small *ngIf="ShopRegForm.get('phone').errors.required">
                         This field is required
-                    </div>
-                    <div *ngIf="ShopRegForm.get('phone').errors.minlength">
+                    </small>
+                    <small *ngIf="ShopRegForm.get('phone').errors.minlength">
                         shoud length at least {{ShopRegForm.get('phone').errors.minlength.requiredLength}} characters
-                    </div>
+                    </small>
                 </div>
 
 
-                <input formControlName="shopname" type="text" id="shopName" class="form-control mt-4" placeholder="Shop name">
-                <div *ngIf="ShopRegForm.get('shopname').touched && ShopRegForm.get('shopname').invalid" class="alert alert-danger">
+                <input [class.is-invalid] ="ShopRegForm.get('shopname').touched && ShopRegForm.get('shopname').invalid" formControlName="shopname" type="text" id="shopName" class="form-control mt-4" placeholder="Shop name">
+                <small *ngIf="ShopRegForm.get('shopname').touched && ShopRegForm.get('shopname').invalid" class="text-danger">
                     This field is required
-                </div>
+                </small>
 
-                <textarea formControlName="address" class="form-control mt-4" id="exampleFormControlTextarea1" placeholder="Address"rows="3"></textarea>
-                <div *ngIf="ShopRegForm.get('address').touched && ShopRegForm.get('address').invalid" class="alert alert-danger">
+                <textarea [class.is-invalid] ="ShopRegForm.get('address').touched && ShopRegForm.get('address').invalid" formControlName="address" class="form-control mt-4" id="exampleFormControlTextarea1" placeholder="Address"rows="3"></textarea>
+                <small *ngIf="ShopRegForm.get('address').touched && ShopRegForm.get('address').invalid" class="text-danger">
                     This field is required
-                </div>
+                </small>
 
                 <hr>
 

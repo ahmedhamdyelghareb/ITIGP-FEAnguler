@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderComponent implements OnInit {
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/1800/500`);
+  images = ['../../../assets/cover.png', '../../../assets/cover.png', '../../../assets/cover.png']
 
   constructor() { }
 

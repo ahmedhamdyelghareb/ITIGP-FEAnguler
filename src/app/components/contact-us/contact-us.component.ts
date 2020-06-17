@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup , FormControl, Validators ,  NgForm} from '@angular/forms';
 import {ContactService} from '../../Services/contact.service'
-
+import {NgbdModalContent} from "../../auth/register/register.component"
 import { ActivatedRoute, Router} from "@angular/router";
-import { format } from 'url';
+import {
+  NgbModalConfig,
+  NgbModal,
+  NgbActiveModal
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-contact-us',
@@ -14,7 +18,7 @@ import { format } from 'url';
 export class ContactUSComponent implements OnInit {
   FormData: FormGroup;
   submitted = false;
-  constructor(private builder: FormBuilder  , private contact: ContactService ,private router:Router) { }
+  constructor(private builder: FormBuilder  , private contact: ContactService ,private router:Router,  private modalService: NgbModal) { }
 
   ngOnInit() {
     this.FormData = this.builder.group({
@@ -23,6 +27,7 @@ export class ContactUSComponent implements OnInit {
       body: new FormControl('', [Validators.required])
   })
 }
+message
  SendData(form: NgForm){
   this.submitted = true;
     if (this.FormData.invalid) {
@@ -30,8 +35,12 @@ export class ContactUSComponent implements OnInit {
     }
     return this.contact.postMessage(form.value.email,form.value.subject,form.value.body)
     .subscribe(res=>{
-      console.log(res.message)
-     alert("Your Message sent; thank you")
+     this.message = res.message
+     if(this.message )
+     this.open()
+     console.log(this.message)
+
+    // alert("Your Message sent; thank you")
     
     })
     
@@ -45,5 +54,9 @@ export class ContactUSComponent implements OnInit {
       return;
     }
     this.FormData.reset()
+  }
+  open() {
+    const modalRef = this.modalService.open(NgbdModalContent);
+    modalRef.componentInstance.message = this.message;
   }
 }

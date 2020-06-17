@@ -11,7 +11,7 @@
         <div class="col-6 d-inline-block ml-5">
             <form  [formGroup]="ShopRegForm" #ShopForm="ngForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
 
-                <p class="h4 mb-4">Sign up</p>
+                <p class="h4 mb-4">SIGN UP</p>
 
                 <div class="form-row mb-4">
                     <div class="col">
@@ -57,7 +57,7 @@
                 <small class="form-text text-muted mb-4">At least 6 characters</small>
 
                 <!-- Phone number -->
-                <input [class.is-invalid] ="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" formControlName="phone" type="phoneNumber" id="Phone" class="form-control" placeholder="Phone number">
+                <input (keypress)="numberOnly($event)" [class.is-invalid] ="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" formControlName="phone" type="phoneNumber" id="Phone" class="form-control" placeholder="Phone number">
                 <div *ngIf="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" class="text-danger">
                     <small *ngIf="ShopRegForm.get('phone').errors.required">
                         This field is required
@@ -88,9 +88,21 @@
                     </label>
                 </div>
                 <!-- Sign up button -->
-                <button  color="info" block="true" class="btn btn-outline-success" type="submit" [disabled]="!ShopForm.valid">Create</button>
+                <button  color="info" block="true" class="btn btn-outline-success" (click)="openLogin(contentLogin)" type="submit" [disabled]="!ShopForm.valid">Create</button>
             </form>
         </div>
     </div>
 
 </div>
+
+<ng-template #contentLogin  let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-login></app-login>
+    </div>
+ </ng-template>

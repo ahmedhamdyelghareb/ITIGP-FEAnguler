@@ -3,6 +3,7 @@
 
     <a class="navbar-brand text-white" routerLink="/">
       <!--<img src="../../../assets/nav.jpg" style="width: 50px; height: 50px;">--> Dukan</a>
+
     <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" data-toggle="collapse"
       data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -13,34 +14,34 @@
       <ul class="navbar-nav mr-auto">
 
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/">HOME <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/about">About
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/about">ABOUT
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" 
-          routerLink=""  (click)="openContact(contentContact)">Contact Us </a>
+          <button class="nav-link  bg-dark btn"
+            (click)="openContact(contentContact)">CONTACT US </button>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/woman" *ngIf="getToken()!=='hhh'&& getType()==='user'">Women</a>
+          <a class="nav-link" routerLink="/woman" *ngIf="getToken()!=='hhh'&& getType()==='user'">WOMEN</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/man"
-            *ngIf="getToken()!=='hhh'&& getType()==='user'">Men</a>
+            *ngIf="getToken()!=='hhh'&& getType()==='user'">MEN</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/cart"
-            *ngIf="getToken()!=='hhh'&& getType()==='user'">cart</a>
+            *ngIf="getToken()!=='hhh'&& getType()==='user'">CART</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
-            routerLink="/store/products" *ngIf="getToken()!=='hhh'&& getType()==='shop'">Store</a>
+            routerLink="/store/products" *ngIf="getToken()!=='hhh'&& getType()==='shop'">STORE</a>
         </li>
 
         <li ngbDropdown class="nav-item dropdown" *ngIf="getToken()!=='hhh'&& getType()==='shop'">
@@ -68,15 +69,15 @@
 
       </ul>
       <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="open(content)"
-        *ngIf="getToken()==='hhh'">SignUp</button>
+        *ngIf="getToken()==='hhh'" >SIGN UP</button>
       <br>
       <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="openLogin(contentLogin)"
-        *ngIf="getToken()==='hhh'">LogIn</button>
+        *ngIf="getToken()==='hhh'">LOG IN</button>
       <br>
       <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="logout()" *ngIf="getToken()!=='hhh'">LogOut</button>
 
       <!-- <button  class="btn btn-success my-2 my-sm-0 mr-2 rounded" >Stat Shop</button> -->
-      <a  routerLink="/shop/register" class="btn btn-success my-2 my-sm-0 mr-2 rounded"  *ngIf="getToken()==='hhh'" >Start Shop</a>
+      <a  routerLink="/shop/register" class="btn btn-success my-2 my-sm-0 mr-2 rounded"  *ngIf="getToken()==='hhh'" >START SHOP</a>
 
       <!-- aflbfl'sf -->
     </div>
@@ -84,7 +85,7 @@
   <!--Registaraion-->
   <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Registeration</h4>
+      <h4 class="modal-title" id="modal-basic-title">REGISTRATION</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -95,9 +96,9 @@
   </ng-template>
   <!-- <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="open(content)" *ngIf="getToken()==='hhh'">SignUp</button> -->
   <!--Login-->
-  <ng-template #contentLogin let-modal>
+  <ng-template #contentLogin  let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Log In</h4>
+      <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -109,7 +110,7 @@
    <!--Contact US-->
    <ng-template #contentContact let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Contact Us</h4>
+      <h4 class="modal-title" id="modal-basic-title">CONTACT US</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>

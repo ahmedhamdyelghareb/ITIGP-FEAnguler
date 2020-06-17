@@ -12,7 +12,7 @@
         <label for="price">Price</label>
         <div class="input-group">
 
-          <span class="input-group-prepend">$</span>
+          <span class="input-group-prepend"></span>
 
         <input #price="ngModel" ngModel name="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required [min]="0">
         </div>
@@ -64,14 +64,14 @@
       <button class="btn-primary" (click)='onAddNewProduct()'>Save</button>
     </form>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" style="margin-top: 10%;">
     <div class="card" style="width: 18rem;">
-      <img [src]="imageUrl.value" class="card-img-top" alt="...">
+      <img [src]="imageUrl.value" class="card-img-top" alt="product image">
       <div class="card-body">
         <h5 class="card-title">{{title.value}}</h5>
         <p class="card-text">{{price.value |currency:'USD':true}}</p>
         <p class="card-text">{{description.value}}</p>
-        <a href="#" class="btn-primary">Add To Cart</a>
+        <!-- <a href="#" class="btn-primary">Add To Cart</a> -->
       </div>
     </div>
   </div>

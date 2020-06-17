@@ -9,17 +9,19 @@ import {
 import {
   NgbModalConfig,
   NgbModal,
-  NgbActiveModal
+  NgbActiveModal,
+  ModalDismissReasons
 } from "@ng-bootstrap/ng-bootstrap";
 import { UsersService } from "../../Services/users.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MustMatch } from "../../helpers/must-match.validator";
 
+
 @Component({
   selector: "ngbd-modal-content",
   template: `
     <div class="modal-header">
-      <h4 class="modal-title" style="color:red">Oooooooooops :(</h4>
+      <h4 class="modal-title" style="color:gray">Dukan Replay </h4>
       <button
         type="button"
         class="close"
@@ -30,7 +32,7 @@ import { MustMatch } from "../../helpers/must-match.validator";
       </button>
     </div>
     <div class="modal-body">
-      <h5>{{ message }}!</h5>
+      <h5>{{ message }}</h5>
       <!-- <p >please try another email</p> -->
     </div>
     <div class="modal-footer">
@@ -113,9 +115,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
           // console.log(this.message);
           this.open();
         } else {
-          this.router.navigate(["/"]).then(() => {
-            window.location.reload();
-          });
+          // this.router.navigate(["/"]).then(() => {
+          //   window.location.reload();
+          // });
         }
       });
 
@@ -156,6 +158,28 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.mySubscription) {
       this.mySubscription.unsubscribe();
+    }
+  }
+  closeResult = "";
+  openLogin(contentLogin) {
+    this.modalService
+      .open(contentLogin, { ariaLabelledBy: "modal-basic-title" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReasonLogin(reason)}`;
+        }
+      );
+  }
+  private getDismissReasonLogin(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
     }
   }
 }

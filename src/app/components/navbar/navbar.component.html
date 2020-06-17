@@ -15,13 +15,13 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/">HOME <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/about">ABOUT
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" 
-          routerLink="#"  (click)="openContact(contentContact)">CONTACT US </a>
+          <button class="nav-link  bg-dark btn"
+            (click)="openContact(contentContact)">CONTACT US </button>
         </li>
 
         <li class="nav-item">
@@ -68,7 +68,7 @@
 
       </ul>
       <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="open(content)"
-        *ngIf="getToken()==='hhh'">SIGN UP</button>
+        *ngIf="getToken()==='hhh'" >SIGN UP</button>
       <br>
       <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="openLogin(contentLogin)"
         *ngIf="getToken()==='hhh'">LOG IN</button>
@@ -95,7 +95,7 @@
   </ng-template>
   <!-- <button class="btn btn-secondary my-2 my-sm-0 mr-2" (click)="open(content)" *ngIf="getToken()==='hhh'">SignUp</button> -->
   <!--Login-->
-  <ng-template #contentLogin let-modal>
+  <ng-template #contentLogin  let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">

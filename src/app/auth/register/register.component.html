@@ -108,7 +108,7 @@
 </div>                                  -->
     <div class="form-group">
         <!--  -->
-        <button type="submit" (click)="onAddUser(postForm)"  class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="submit" (click)="onAddUser(postForm)" (click)="openLogin(contentLogin)"  class="btn btn-primary btn-block"> Create Account  </button>
         <br/>
         <button class="btn btn-secondary btn-block" type="reset" (click)="onReset()">Cancel</button>
     </div>  
@@ -118,5 +118,17 @@
 </div> 
 
 </div> 
+
+<ng-template #contentLogin  let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-login></app-login>
+    </div>
+ </ng-template>
 
 

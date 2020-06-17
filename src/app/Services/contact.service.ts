@@ -19,6 +19,6 @@ export class ContactService {
     }
 
     
-    return this.http.post<{message: string }>(this.api, content)
+    return this.http.post<{message:string}>(this.api, content)
   }
 }

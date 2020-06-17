@@ -1,0 +1,29 @@
+<br/><br/>
+<p>
+  <a routerLink="/store/products/new" class="btn btn-primary ml-4">New Product</a>
+</p>
+<p>
+  <input
+  #query
+  (keyup)="filter(query.value)"
+  type="text" class="form-control" placeholder="Search">
+</p>
+<table class="table">
+  <thead>
+<tr>
+  <th>title</th>
+  <th>price</th>
+  <th></th>
+
+</tr>
+  </thead>
+  <tbody *ngIf="products.length > 0">
+   <tr *ngFor="let product of products">
+     <td>{{product.title}}</td>
+     <td>{{product.price}}</td>
+     <td><a [routerLink]="['/store/products/new']">Edit</a></td>
+   </tr>
+
+  </tbody>
+</table>
+<p class="empty" *ngIf="products.length <= 0">No Products added Yet!</p>

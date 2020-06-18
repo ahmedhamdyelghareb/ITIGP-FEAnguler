@@ -17,36 +17,36 @@
           <a class="nav-link btn-secondary btn text-white" routerLink="/">HOME <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn-secondary btn text-white" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/about">ABOUT
+          <a class="nav-link btn-secondary btn text-white" *ngIf="getToken()==='hhh'" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/about">ABOUT
           </a>
         </li>
         <li class="nav-item">
           <!-- <button class="nav-link btn-secondary btn" (click)="openContact(contentContact)">CONTACT US </button> -->
-          <a  routerLink="/contactus" class="nav-link btn-secondary btn text-white" >CONTACT US</a>
+          <a  routerLink="/contactus" *ngIf="getToken()==='hhh'" class="nav-link btn-secondary btn text-white" >CONTACT US</a>
 
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/woman" *ngIf="getToken()!=='hhh'&& getType()==='user'">WOMEN</a>
+          <a class="nav-link text-white btn-secondary btn" routerLink="/woman" *ngIf="getToken()!=='hhh'&& getType()==='user'">WOMEN</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/man"
+          <a class="nav-link text-white btn-secondary btn" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/man"
             *ngIf="getToken()!=='hhh'&& getType()==='user'">MEN</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/cart"
+          <a class="nav-link text-white btn-secondary btn" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/cart"
             *ngIf="getToken()!=='hhh'&& getType()==='user'">CART</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
+          <a class="nav-link text-white btn-secondary btn" [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
             routerLink="/store/products" *ngIf="getToken()!=='hhh'&& getType()==='shop'">STORE</a>
         </li>
 
-        <li ngbDropdown class="nav-item dropdown" *ngIf="getToken()!=='hhh'&& getType()==='shop'">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" [routerLinkActiveOptions]={exact:true}
+        <li ngbDropdown class="nav-item dropdown text-white" *ngIf="getToken()!=='hhh'&& getType()==='shop'">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle text-white" [routerLinkActiveOptions]={exact:true}
             routerLinkActive='active' id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">{{fName}}</a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
@@ -56,9 +56,9 @@
           </div>
         </li>
 
-        <li ngbDropdown class="nav-item dropdown" *ngIf="getToken()!=='hhh'&& getType()==='user'">
+        <li ngbDropdown class="nav-item dropdown text-white" *ngIf="getToken()!=='hhh'&& getType()==='user'">
           <a ngbDropdownToggle [routerLinkActiveOptions]={exact:true} routerLinkActive='active'
-            class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+            class="nav-link dropdown-toggle text-white" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">{{fName}}</a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
             <a ngbDropdownItem class="dropdown-item" routerLink="#">Profile</a>

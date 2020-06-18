@@ -31,6 +31,11 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
 
 
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+
+
+
+import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 
 
 
@@ -62,6 +67,7 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
     ProductEditComponent,
 
     ServicesectionComponent,
+    LoginModalComponent,
 
 
 

@@ -2,6 +2,7 @@
 
 
 <div class="row">
+<!-- <div class="row">
     <div class="col-sm-6 col-md-4 mb-2" *ngFor="let p of products">
         <div class="card " style="width: 18rem;">
             <img [src]="p.imageUrl"
@@ -10,11 +11,13 @@
 
 
 
-<!-- <div class="row">
+<div class="row">
+<div class="row">
     <div class="pb-4 views-row views-row-2 views-row-even col-lg-3 col-md-3 col-sm-6 col-xs-6 product-grid-row" *ngFor="let p of products">
         <div class="card" id="pro">
             <img [src]="p.imageUrl" class="card-img-top" (click)="p.isCollapsed =!p.isCollapsed"
                 [attr.aria-expanded]="!p.isCollapsed" aria-controls="collapseExample">
+
 
             <div id="collapseExample" [ngbCollapse]="p.isCollapsed">
                 <div class="card">
@@ -44,7 +47,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3 " *ngFor="let p of products">
+            <div class="col-sm-12 col-md-6 col-lg-3 " *ngFor="let p of products" >
                 <div class="product d-flex flex-column">
                     <a href="#" class="img-prod"><img class="img-fluid" [src]="p.imageUrl" alt="Colorlib Template">
                         <div class="overlay"></div>

@@ -28,14 +28,17 @@ import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
-<<<<<<< HEAD
-import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
-=======
+
+
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 
 
 
->>>>>>> c532e9b728f80b3605b11d04fca298dfc80c2bea
+import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,12 +58,15 @@ import { ServicesectionComponent } from './components/servicesection/servicesect
     AboutComponent,
     ContactUSComponent,
     ShopLoginComponent,
-<<<<<<< HEAD
+
     ProductEditComponent,
-=======
+
     ServicesectionComponent,
 
->>>>>>> c532e9b728f80b3605b11d04fca298dfc80c2bea
+
+
+    ServicesectionComponent,
+
 
 
   ],

@@ -38,12 +38,12 @@ export class UsersService {
   }
   
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  token = this.currentUser.token;
+  // token = this.currentUser.token;
 
   updateUserStatus(id:string , status:string){
     const updatedSatus = { status:status};
    return this.myHttp.patch<{ message: string }>(` http://localhost:5000/api/user/status/update/${id}`,updatedSatus,{
-      headers :new HttpHeaders().set("authorization",this.token )
+      headers :new HttpHeaders().set("authorization",this.currentUser.token )
      })  
   }
 }

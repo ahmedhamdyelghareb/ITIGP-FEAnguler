@@ -1,6 +1,6 @@
-<!-- <ngb-carousel *ngIf="images" class="container">
+<ngb-carousel *ngIf="images">
   <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
+    <div class="picsum-img-wrapper ">
       <img [src]="images[0]" alt="Random first slide ">
     </div>
     <div class="carousel-caption">
@@ -26,13 +26,22 @@
       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
     </div>
   </ng-template>
-</ngb-carousel> -->
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[3]" alt="Random third slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>4 slide label</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
 
-<div class="cover responsive">
+<!-- <div class="cover col-12">
   <div class="clearfix"></div>
    <div class="carousel-caption">
       <h3>First slide label</h3>
       <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
     </div>
 
-</div>
+</div> -->

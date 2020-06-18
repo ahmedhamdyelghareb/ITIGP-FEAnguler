@@ -14,6 +14,10 @@ import { SliderComponent } from './components/slider/slider.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ProductService } from './Services/product.service';
+
+import {ContactService} from './Services/contact.service'
+import {UsersService} from './Services/users.service'
+
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -24,7 +28,14 @@ import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
+<<<<<<< HEAD
 import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+=======
+import { ServicesectionComponent } from './components/servicesection/servicesection.component';
+
+
+
+>>>>>>> c532e9b728f80b3605b11d04fca298dfc80c2bea
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +55,12 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
     AboutComponent,
     ContactUSComponent,
     ShopLoginComponent,
+<<<<<<< HEAD
     ProductEditComponent,
+=======
+    ServicesectionComponent,
+
+>>>>>>> c532e9b728f80b3605b11d04fca298dfc80c2bea
 
 
   ],
@@ -57,6 +73,7 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
+    HttpClientModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path:'',component :HomeComponent},
@@ -74,7 +91,9 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
     ])
   ],
   providers: [
-    ProductService
+    ProductService,
+    ContactService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

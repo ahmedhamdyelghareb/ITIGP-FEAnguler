@@ -119,4 +119,18 @@ export class NavbarComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+  /////////////////////////////Contact Us 
+  /////////////////register modal
+  openContact(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: "modal-basic-title" })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
 }

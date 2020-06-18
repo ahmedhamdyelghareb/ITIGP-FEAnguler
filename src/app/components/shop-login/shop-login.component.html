@@ -3,54 +3,106 @@
 
     <div class="row text-center">
 
-        <div class="col-4 d-inline-block mt-4">
+        <div id="fonttext" class="col-4 d-inline-block mt-4">
             <h2 class="text text-info mb-4 font-weight-bold"> Create a free <br> Online Store</h2> <br>
             <p>Start adding products under a minute. It's not a free trial , it's just free</p>
         </div>
 
         <div class="col-6 d-inline-block ml-5">
-            <form  [formGroup]="ShopRegForm" #ShopForm="ngForm" (ngSubmit)="onSubmit(ShopForm)" class="text-center border border-light p-5">
+            <form  [formGroup]="ShopRegForm" #ShopForm="ngForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
 
-                <p class="h4 mb-4">Sign up</p>
+                <p class="h4 mb-4">SIGN UP</p>
 
                 <div class="form-row mb-4">
                     <div class="col">
                         <!-- First name -->
-                        <input formControlName="FName" type="text" id="FirstName" class="form-control" placeholder="First name">
+                        <input [class.is-invalid] ="ShopRegForm.get('FName').touched && ShopRegForm.get('FName').invalid" formControlName="FName" type="text" id="FirstName" class="form-control" placeholder="First name">
+                       <small *ngIf="ShopRegForm.get('FName').touched && ShopRegForm.get('FName').invalid" class="text-danger">
+                           This field is required
+                       </small>
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        <input formControlName="LName" type="text" id="LastName" class="form-control" placeholder="Last name">
+                        <input [class.is-invalid] ="ShopRegForm.get('LName').touched && ShopRegForm.get('LName').invalid" formControlName="LName" type="text" id="LastName" class="form-control" placeholder="Last name">
+                        <small *ngIf="ShopRegForm.get('LName').touched && ShopRegForm.get('LName').invalid" class="text-danger">
+                            This field is required
+                        </small>
                     </div>
                 </div>
 
                 <!-- E-mail -->
-                <input formControlName="email" type="email" id="Email" class="form-control mb-4" placeholder="E-mail">
+                <input [class.is-invalid] ="ShopRegForm.get('email').touched && ShopRegForm.get('email').invalid"  formControlName="email" type="email" id="Email" class="form-control" placeholder="E-mail">
+                <div *ngIf="ShopRegForm.get('email').touched && ShopRegForm.get('email').invalid" class="text-danger">
+                    <small *ngIf="ShopRegForm.get('email').errors.required">
+                        This field is required
+                    </small>
+                    <small *ngIf="ShopRegForm.get('email').errors.email">
+                        invalid Email 
+                    </small>
+                    <!-- <div *ngIf="ShopRegForm.get('email').errors.pattern">
+                        This Email already used.. 
+                    </div> -->
+                </div>
 
                 <!-- Password -->
-                <input formControlName="password" type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password">
+                <input [class.is-invalid] ="ShopRegForm.get('password').touched && ShopRegForm.get('password').invalid" formControlName="password" type="password" id="password" class="form-control mt-4" placeholder="Password">
+                <div *ngIf="ShopRegForm.get('password').touched && ShopRegForm.get('password').invalid" class="text-danger">
+                    <small *ngIf="ShopRegForm.get('password').errors.required">
+                        This field is required
+                    </small>
+                    <small *ngIf="ShopRegForm.get('password').errors.minlength">
+                        shoud length at least {{ShopRegForm.get('password').errors.minlength.requiredLength}} characters
+                    </small>
+                </div>
                 <small class="form-text text-muted mb-4">At least 6 characters</small>
 
                 <!-- Phone number -->
-                <input formControlName="phone" type="number" id="Phone" class="form-control mb-4" placeholder="Phone number">
+                <input (keypress)="numberOnly($event)" [class.is-invalid] ="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" formControlName="phone" type="phoneNumber" id="Phone" class="form-control" placeholder="Phone number">
+                <div *ngIf="ShopRegForm.get('phone').touched && ShopRegForm.get('phone').invalid" class="text-danger">
+                    <small *ngIf="ShopRegForm.get('phone').errors.required">
+                        This field is required
+                    </small>
+                    <small *ngIf="ShopRegForm.get('phone').errors.minlength">
+                        shoud length at least {{ShopRegForm.get('phone').errors.minlength.requiredLength}} characters
+                    </small>
+                </div>
 
 
-                <input formControlName="shopname" type="text" id="shopName" class="form-control mb-4" placeholder="Shop name">
-                <textarea formControlName="address" class="form-control" id="exampleFormControlTextarea1" placeholder="Address"
-                    rows="3"></textarea>
+                <input [class.is-invalid] ="ShopRegForm.get('shopname').touched && ShopRegForm.get('shopname').invalid" formControlName="shopname" type="text" id="shopName" class="form-control mt-4" placeholder="Shop name">
+                <small *ngIf="ShopRegForm.get('shopname').touched && ShopRegForm.get('shopname').invalid" class="text-danger">
+                    This field is required
+                </small>
+
+                <textarea [class.is-invalid] ="ShopRegForm.get('address').touched && ShopRegForm.get('address').invalid" formControlName="address" class="form-control mt-4" id="exampleFormControlTextarea1" placeholder="Address"rows="3"></textarea>
+                <small *ngIf="ShopRegForm.get('address').touched && ShopRegForm.get('address').invalid" class="text-danger">
+                    This field is required
+                </small>
+
                 <hr>
 
                 <!-- Terms of service -->
                 <div class="form-check mb-4">
-                    <input [(ngModel)]="agree" formControlName="agree" class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                    <input  formControlName="agree" class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
                     <label class="form-check-label" for="defaultCheck1">
                         you agree to our <a href="" target="_blank">terms of service</a>
                     </label>
                 </div>
                 <!-- Sign up button -->
-                <button color="info" block="true" class="btn btn-outline-success" type="submit" [disabled]="!agree">Sign in</button>
+                <button  color="info" block="true" class="btn btn-outline-success" (click)="openLogin(contentLogin)" type="submit" [disabled]="!ShopForm.valid">Create</button>
             </form>
         </div>
     </div>
 
 </div>
+
+<ng-template #contentLogin  let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-login></app-login>
+    </div>
+ </ng-template>

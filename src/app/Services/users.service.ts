@@ -27,8 +27,23 @@ export class UsersService {
    return this.myHttp.post<{message: string }>(this.baseUrl, user)
   }
 
+  addShop(fName:string,lName:string , email:string ,  phone:string , password:string ,Type:string,shopName:string  ){
+   const user = { fName: fName,lName:lName, email: email ,phone:phone , password:password ,Type:Type,shopName:shopName};
+   console.log(user)
+   return this.myHttp.post<{message: string }>(this.baseUrl, user)
+  }
 
   getshopname(id){
     return this.myHttp.get(`http://localhost:5000/api/home/user/${id}`)
+  }
+  
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  // token = this.currentUser.token;
+
+  updateUserStatus(id:string , status:string){
+    const updatedSatus = { status:status};
+   return this.myHttp.patch<{ message: string }>(` http://localhost:5000/api/user/status/update/${id}`,updatedSatus,{
+      headers :new HttpHeaders().set("authorization",this.currentUser.token )
+     })  
   }
 }

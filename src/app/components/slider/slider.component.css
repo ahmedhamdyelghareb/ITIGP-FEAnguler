@@ -1,6 +1,19 @@
-.cover{
+/* .cover{
     color: rgb(255, 255, 255);
     position: relative;
     min-height: 500px;
     background: url("../../../assets/cover.png") no-repeat scroll 0px 100% / cover transparent;
+} */
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+h3{
+    padding-top: 50px;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 26px;
+    color: navy;
+    
 }

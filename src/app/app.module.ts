@@ -31,6 +31,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
+import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 
 
 
@@ -53,6 +54,7 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
     AboutComponent,
     ContactUSComponent,
     ShopLoginComponent,
+    ServicesectionComponent,
 
 
 

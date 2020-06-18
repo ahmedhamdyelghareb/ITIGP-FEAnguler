@@ -9,10 +9,30 @@ import { Product } from 'src/app/Models/product.model';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-  product: Product[];
+  products: Product[]=[];
+  selectedProduct:Product={
+    id:0,
+    title:"",
+    price:0,
+    imageUrl:"",
+    description:"",
+    amount:0
+
+  }
+
   constructor(private productService:ProductService, private router: Router) { }
 
   ngOnInit() {
+  }
+  getProductById(product:Product){
+    this.selectedProduct.id=product.id;
+    this.selectedProduct.title=product.title;
+    this.selectedProduct.price=product.price;
+    this.selectedProduct.imageUrl=product.imageUrl;
+    this.selectedProduct.description=product.description;
+    this.selectedProduct.amount=product.amount;
+    console.log(this.selectedProduct)
+
   }
   onUpdateProduct(id,product: Product){
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Product } from '../Models/product.model';
 
 
 
@@ -42,10 +43,10 @@ deleteProduct(id:number):Observable<any>{
 }
 
 
-updateProduct(id,product:Object){
+updateProduct(id,product:Product){
   return this.http.patch<Product>(`http://localhost:5000/api/store/Edit/${id}`,product)
 }
-products : Product[] = []
+products : Product[]
 getProducts(){
   return this.http.get('http://localhost:5000/api/store/')
 }

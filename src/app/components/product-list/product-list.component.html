@@ -4,7 +4,7 @@
             <img [src]="p.imageUrl"
              class="card-img-top" alt="..." (click)="p.isCollapsed =!p.isCollapsed"
             [attr.aria-expanded]="!p.isCollapsed" aria-controls="collapseExample">
-        
+
             <div id="collapseExample" [ngbCollapse]="p.isCollapsed">
 
                 <div class="card">
@@ -14,6 +14,7 @@
                         <h5 class="text-info">Price:{{p.price}}</h5>
                         <h5>By :<a href="#">{{p.shop}}</a></h5>
                         <a href="#" class="btn btn-outline-success">Add to card</a>
+
                     </div>
                 </div>
             </div>

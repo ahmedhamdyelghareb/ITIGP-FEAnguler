@@ -18,15 +18,13 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NgbdModalContent } from './auth/register/register.component';
-
-
-
 import { ProductFormComponent } from './components/store/product-form/product-form.component';
 import {ProductsComponent} from './components/store/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
+import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +44,7 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
     AboutComponent,
     ContactUSComponent,
     ShopLoginComponent,
+    ProductEditComponent,
 
 
   ],
@@ -67,6 +66,7 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
       {path:'register',component :RegisterComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'store/products/new',component :ProductFormComponent},
+      {path:'store/products/Edit/:id',component : ProductEditComponent},
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},
       {path:'contactus',component :ContactUSComponent},

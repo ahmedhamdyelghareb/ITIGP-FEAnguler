@@ -1,13 +1,9 @@
-export class Product {
-    id: number;
+export interface Product {
+    id:string;
     title:string;
     price:number;
     imageUrl: string;
     description:string;
     amount: number;
-    category: string;
-    rate: number;
-    createdAt: Date;
-    updatedAt: Date;
-    userId:number
+
 }

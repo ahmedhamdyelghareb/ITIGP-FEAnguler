@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
     return this.productService.getAllProducts().subscribe(res => {
       this.products = res;
       // console.log(this.products)
-      
+
       this.products=this.products.map(function (el) {
         var o = Object.assign({}, el);
         o.isCollapsed = true;
@@ -92,6 +92,7 @@ export class ProductListComponent implements OnInit {
         }
       );
   }
+
   private getDismissReasonLogin(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return "by pressing ESC";
@@ -101,5 +102,7 @@ export class ProductListComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+
 
 }

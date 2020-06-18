@@ -29,12 +29,20 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
 
+
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
-import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+
 
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
+
+
+
+import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -60,6 +68,10 @@ import { ServicesectionComponent } from './components/servicesection/servicesect
 
     ServicesectionComponent,
     LoginModalComponent,
+
+
+
+    ServicesectionComponent,
 
 
 

@@ -14,11 +14,11 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit() {
   }
-  onUpadate(id,product: Product){
+  onUpdateProduct(id,product: Product){
 
 
     this.productService.updateProduct(id,product);
-    this.router.navigate(['store/products'])
+
   }
 
 }

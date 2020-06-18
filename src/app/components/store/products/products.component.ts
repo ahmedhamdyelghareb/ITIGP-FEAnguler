@@ -1,26 +1,38 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import{ ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Models/product.model';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+
+
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
-  constructor(public productService:ProductService ,private router: Router) {
+ selectedProduct:Product={
+   id:0,
+   title:"",
+   price:0,
+   imageUrl:"",
+   description:"",
+   amount:0
+ };
+  constructor(private http:HttpClient,public productService:ProductService ,private router: Router) {
 
    }
-   product:Product[] = [];
+
    private productsSub: Subscription;
    ngOnInit() {
      this.getAllProducts()
    }
  id
-   products :any []
-   fetechedProducts : any[]
+   products :Product []
+   fetechedProducts : Product[]
    getAllProducts(){
     this.productsSub= this.productService.getProducts()
      .subscribe(
@@ -32,25 +44,46 @@ export class ProductsComponent implements OnInit {
        }
      )
    }
-
+   selectedFile:File=null;
   filter(query:string){
     console.log(query);
   }
+  onFileSelected(event){
+    this.selectedFile=<File>event.target.files[0];
+  }
+  onUpload(){
+const fd=new FormData();
+fd.append('image',this.selectedFile,this.selectedFile.name);
+this.http.post('http://localhost:5000/api/store/create',fd,{
+  reportProgress:true,
+  observe:'events'
+}).subscribe(event=>{
+  if(event.type === HttpEventType.UploadProgress){
+    console.log('uploadProgress' + Math.round(event.loaded/event.total *100) +'%');
+  }else if(event.type === HttpEventType.Response){
+  console.log(event);
+  }
+});
+  }
 
 
-// getData(){
-//   const url ='https://jsonplaceholder.typicode.com/photos?albumId=1'
-//   this.http.get(url).subscribe((res)=>{
-//     this.products = res
-//     console.log(this.products)
-//   })
-// }
-// getAllProducts(){
-//   this.productService.getProducts().subscribe((res)=>{
-//         this.products = res
-//         console.log(this.products)
-//       })
-//     }
+  onAddNewProduct(form:NgForm){
+
+    this.productService.addProduct(
+      form.value.title,
+      form.value.price,
+      form.value.imageUrl,
+      form.value.description,
+      form.value.amount,
+      ).subscribe(res => {
+        console.log("done")
+        console.log("added")
+    });
+    form.resetForm();
+      }
+
+
+
 
     onDeleteProduct(id){
       this.productService.deleteProduct(id).subscribe(data=>{
@@ -59,17 +92,18 @@ export class ProductsComponent implements OnInit {
         });
       })
 
-      this.router.navigate(['/store/products'])
     }
-    onUpdateProduct(id,product){
-      this.productService.updateProduct(id,product).subscribe(data=>{
-        console.log(data,"updated");
-      })
+    getProductById(product:Product){
+      this.selectedProduct.id=product.id;
+      this.selectedProduct.title=product.title;
+      this.selectedProduct.price=product.price;
+      this.selectedProduct.imageUrl=product.imageUrl;
+      this.selectedProduct.description=product.description;
+      this.selectedProduct.amount=product.amount;
+      console.log(this.selectedProduct)
+
     }
 
-    getOne(id:string){
-      this.productService.getById(id)
-  }
   }
 
 

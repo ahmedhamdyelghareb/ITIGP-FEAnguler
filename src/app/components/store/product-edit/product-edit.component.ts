@@ -19,9 +19,20 @@ export class ProductEditComponent implements OnInit {
     amount:0
 
   }
+
   constructor(private productService:ProductService, private router: Router) { }
 
   ngOnInit() {
+  }
+  getProductById(product:Product){
+    this.selectedProduct.id=product.id;
+    this.selectedProduct.title=product.title;
+    this.selectedProduct.price=product.price;
+    this.selectedProduct.imageUrl=product.imageUrl;
+    this.selectedProduct.description=product.description;
+    this.selectedProduct.amount=product.amount;
+    console.log(this.selectedProduct)
+
   }
   onUpdateProduct(id,product: Product){
 

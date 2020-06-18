@@ -22,26 +22,19 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NgbdModalContent } from './auth/register/register.component';
-import { ProductFormComponent } from './components/store/product-form/product-form.component';
+// import { ProductFormComponent } from './components/store/product-form/product-form.component';
 import {ProductsComponent} from './components/store/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
 
-<<<<<<< HEAD
-=======
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
->>>>>>> 4e4498e101ee2be6d7764e268595d240d856b3cf
-
-import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 
 
-
-import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
 
 
 
@@ -59,7 +52,7 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
     LoginComponent,
     RegisterComponent,
     NgbdModalContent ,
-    ProductFormComponent,
+    // ProductFormComponent,
     ProductsComponent,
     CartComponent,
     AboutComponent,
@@ -96,7 +89,7 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
       {path:'login',component :LoginComponent},
       {path:'register',component :RegisterComponent},
       {path:'store/products',component :ProductsComponent},
-      {path:'store/products/new',component :ProductFormComponent},
+      // {path:'store/products/new',component :ProductFormComponent},
       {path:'store/products/Edit/:id',component : ProductEditComponent},
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},

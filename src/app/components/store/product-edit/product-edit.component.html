@@ -14,7 +14,7 @@
 
           <span class="input-group-prepend"></span>
 
-        <input #price="ngModel" ngModel value={{selectedProduct.price}} name="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required [min]="0">
+        <input #price="ngModel" ngModel [value]="selectedProduct.price" name="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required [min]="0">
         </div>
         <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
          <div *ngIf="price.errors.required">

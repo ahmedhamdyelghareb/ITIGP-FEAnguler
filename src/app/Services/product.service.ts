@@ -43,7 +43,7 @@ deleteProduct(id:number):Observable<any>{
 
 
 updateProduct(id,product:Object){
-  return this.http.patch<Product>(`http://localhost:5000/api/store/Delete/${id}`,product)
+  return this.http.patch<Product>(`http://localhost:5000/api/store/Edit/${id}`,product)
 }
 products : Product[] = []
 getProducts(){

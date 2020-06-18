@@ -81,7 +81,7 @@
                             <p class="price"><span>{{p.price}} EGP</span></p>
                         </div>
                         <p class="bottom-area d-flex px-3">
-                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                            <a (click)="openLogin(content)" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
                         </p>
                     </div>
                 </div>
@@ -89,3 +89,14 @@
         </div>
     </div>
 </section>
+<ng-template #content  let-modal >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-login></app-login>
+    </div>
+  </ng-template>

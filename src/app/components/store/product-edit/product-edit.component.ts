@@ -9,7 +9,16 @@ import { Product } from 'src/app/Models/product.model';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-  product: Product[];
+  products: Product[]=[];
+  selectedProduct:Product={
+    id:0,
+    title:"",
+    price:0,
+    imageUrl:"",
+    description:"",
+    amount:0
+
+  }
   constructor(private productService:ProductService, private router: Router) { }
 
   ngOnInit() {

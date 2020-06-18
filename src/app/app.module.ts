@@ -29,6 +29,13 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
 
+<<<<<<< HEAD
+=======
+import { ServicesectionComponent } from './components/servicesection/servicesection.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+
+import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+>>>>>>> 4e4498e101ee2be6d7764e268595d240d856b3cf
 
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 
@@ -62,6 +69,7 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
     ProductEditComponent,
 
     ServicesectionComponent,
+    LoginModalComponent,
 
 
 

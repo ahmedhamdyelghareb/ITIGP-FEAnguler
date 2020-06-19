@@ -48,12 +48,16 @@ export class ProductService {
     return this.http.delete(`http://localhost:5000/api/store/Delete/${id}`);
   }
 
-  updateProduct(id, product: Product) {
-    return this.http.patch<Product>(
-      `http://localhost:5000/api/store/Edit/${id}`,
-      product
-    );
-  }
+
+updateProduct(id:number,product:Product){
+  return this.http.patch<Product>(`http://localhost:5000/api/store/Edit/${id}`,product)
+}
+
+getById(id){
+  return this.http.get(`http://localhost:5000/api/store/getone/${id}`)
+
+
+}
   products: Product[];
   getProducts() {
     return this.http.get("http://localhost:5000/api/store/");
@@ -61,4 +65,5 @@ export class ProductService {
   getById(id) {
     return this.http.get(`http://localhost:5000/api/store/getone/${id}`);
   }
+
 }

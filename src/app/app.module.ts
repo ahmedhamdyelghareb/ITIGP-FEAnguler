@@ -33,6 +33,12 @@ import { ServicesectionComponent } from './components/servicesection/servicesect
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { ProductCreateComponent } from './components/store/product-create/product-create.component';
 
+import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+import { ProfileComponent } from './auth/profile/profile.component';
+
+
+
+
 
 
 @NgModule({
@@ -57,7 +63,16 @@ import { ProductCreateComponent } from './components/store/product-create/produc
     ServicesectionComponent,
     LoginModalComponent,
     ServicesectionComponent,
+
     ProductCreateComponent,
+
+
+
+
+
+    ProfileComponent,
+
+
   ],
   entryComponents: [
     NgbdModalContent,

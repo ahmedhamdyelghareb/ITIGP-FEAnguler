@@ -32,6 +32,12 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
+import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+import { ProfileComponent } from './auth/profile/profile.component';
+
+
+
+
 
 
 @NgModule({
@@ -56,6 +62,12 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
     ServicesectionComponent,
     LoginModalComponent,
     ServicesectionComponent,
+
+
+
+
+    ProfileComponent,
+
   ],
   entryComponents: [
     NgbdModalContent,

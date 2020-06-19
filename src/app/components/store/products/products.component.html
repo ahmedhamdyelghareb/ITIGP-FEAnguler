@@ -1,20 +1,22 @@
 
+<br/>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  New Product
+</button>
 
-<p>
+<p class="mt-4">
   <input
   #query
   (keyup)="filter(query.value)"
-  type="text" class="form-control" placeholder="Search">
+  type="text" class="form-control" placeholder="Search...">
 </p>
 
-
+<br/>
 <div class="row">
   <div class="col-md-6">
 
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  New Product
-</button>
+   
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,7 +97,8 @@
 
   </div>
 </div>
-<table class="table">
+
+<table class="table mt-2">
   <thead>
 <tr>
   <th>image</th>

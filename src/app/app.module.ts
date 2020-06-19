@@ -31,10 +31,11 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
 
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
-import { ProductCreateComponent } from './components/store/product-create/product-create.component';
 
-import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+
+
 import { ProfileComponent } from './auth/profile/profile.component';
+import { ProductAddComponent } from './components/store/product-add/product-add.component';
 
 
 
@@ -64,13 +65,21 @@ import { ProfileComponent } from './auth/profile/profile.component';
     LoginModalComponent,
     ServicesectionComponent,
 
-    ProductCreateComponent,
+
 
 
 
 
 
     ProfileComponent,
+
+
+
+
+
+
+
+    ProductAddComponent,
 
 
   ],

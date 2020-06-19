@@ -65,7 +65,7 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
   }
 });
   }
-
+//new product
 
   onAddNewProduct(form:NgForm){
 if(this.selectedProduct.id==0){

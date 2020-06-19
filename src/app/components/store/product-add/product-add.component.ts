@@ -6,12 +6,16 @@ import { Subscription } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+
 @Component({
-  selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  selector: 'app-product-add',
+  templateUrl: './product-add.component.html',
+  styleUrls: ['./product-add.component.css']
 })
-export class ProductCreateComponent implements OnInit {
+export class ProductAddComponent implements OnInit {
+
+
+
 
 
  selectedProduct:Product={

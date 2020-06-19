@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product} from '../Models/product.model';
+import { Observable } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,4 +20,38 @@ export class ProductService {
     return this.http.get(`http://localhost:5000/api/home/category/${category}`)
 
   }
+
+  addProduct(title:string,price:number,imageUrl: string,description:string,amount:number){
+const product={
+title:title,
+price:price,
+imageUrl:imageUrl,
+description:description,
+amount:amount,
+
+}
+
+console.log(product)
+
+return this.http.post('http://localhost:5000/api/store/create',product)
+  }
+
+
+deleteProduct(id:number):Observable<any>{
+  return this.http.delete(`http://localhost:5000/api/store/Delete/${id}`)
+}
+
+
+updateProduct(id,product:Object){
+  return this.http.patch<Product>(`http://localhost:5000/api/store/Edit/${id}`,product)
+}
+products : Product[] = []
+getProducts(){
+  return this.http.get('http://localhost:5000/api/store/')
+}
+getById(id){
+  return this.http.get(`http://localhost:5000/api/store/getone/${id}`)
+
+
+}
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit,ViewChild} from '@angular/core';
 import{ ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Models/product.model';
 import { Subscription } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
+import { NgForm,FormBuilder } from '@angular/forms';
 
 
 
@@ -14,6 +14,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  @ViewChild('editProductForm',{static: false}) editForm: NgForm;
+
  selectedProduct:Product={
    id:0,
    title:"",
@@ -67,26 +69,20 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
   }
 
 
-  onAddNewProduct(form:NgForm){
-if(this.selectedProduct.id==0){
-    this.productService.addProduct(
-      form.value.title,
-      form.value.price,
-      form.value.imageUrl,
-      form.value.description,
-      form.value.amount,
-      ).subscribe(res => {
-        console.log("done")
-        console.log("added")
-    });
-  }else{
-this.productService.updateProduct(this.selectedProduct.id,this.selectedProduct).subscribe(res=>{
-  console.log("updated")
-  console.log(this.selectedProduct)
-})
-  }
-    form.resetForm();
-      }
+  // onAddNewProduct(form:NgForm){
+
+  //   this.productService.addProduct(
+  //     form.value.title,
+  //     form.value.price,
+  //     form.value.imageUrl,
+  //     form.value.description,
+  //     form.value.amount,
+  //     ).subscribe(res => {
+  //       console.log("done")
+  //       console.log("added")
+  //   });
+  //   form.resetForm();
+  //     }
 
 
 
@@ -107,8 +103,39 @@ this.productService.updateProduct(this.selectedProduct.id,this.selectedProduct).
       this.selectedProduct.description=product.description;
       this.selectedProduct.amount=product.amount;
       console.log(this.selectedProduct)
+      this.editForm.form.patchValue({
+        id : this.selectedProduct.id,
+        title : this.selectedProduct.title,
+        price : this.selectedProduct.price,
+        imageUrl : this.selectedProduct.imageUrl,
+        description : this.selectedProduct.description,
+      })
+    }
+
+    onSubmitEdit(){
+      this.selectedProduct.id = this.editForm.value.id;
+      this.selectedProduct.title = this.editForm.value.title;
+      this.selectedProduct.price = this.editForm.value.price;
+      this.selectedProduct.imageUrl = this.editForm.value.imageUrl;
+      this.selectedProduct.description = this.editForm.value.description;
+      this.selectedProduct.amount = this.editForm.value.amount;
+
+
+      console.log(this.selectedProduct);
+
+      this.productService.updateProduct(
+        this.selectedProduct.id,
+        this.selectedProduct
+      )
+        .subscribe(()=> {
+          this.getAllProducts();
+          console.log("Product Editted")
+        }, (err)=>{
+          console.log(err)
+        })
 
     }
+
 
   }
 

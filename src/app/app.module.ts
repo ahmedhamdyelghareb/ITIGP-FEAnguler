@@ -31,6 +31,7 @@ import { ShopLoginComponent } from './components/shop-login/shop-login.component
 
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { ProductCreateComponent } from './components/store/product-create/product-create.component';
 
 
 
@@ -56,6 +57,7 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
     ServicesectionComponent,
     LoginModalComponent,
     ServicesectionComponent,
+    ProductCreateComponent,
   ],
   entryComponents: [
     NgbdModalContent,

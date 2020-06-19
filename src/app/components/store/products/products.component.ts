@@ -68,7 +68,7 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
 
 
   onAddNewProduct(form:NgForm){
-
+if(this.selectedProduct.id==0){
     this.productService.addProduct(
       form.value.title,
       form.value.price,
@@ -79,6 +79,12 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
         console.log("done")
         console.log("added")
     });
+  }else{
+this.productService.updateProduct(this.selectedProduct.id,this.selectedProduct).subscribe(res=>{
+  console.log("updated")
+  console.log(this.selectedProduct)
+})
+  }
     form.resetForm();
       }
 

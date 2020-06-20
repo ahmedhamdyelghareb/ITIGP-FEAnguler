@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input,ViewChild} from '@angular/core';
 import{ ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Models/product.model';
@@ -15,6 +16,7 @@ import { NgForm,FormBuilder } from '@angular/forms';
 })
 export class ProductsComponent implements OnInit {
   @ViewChild('editProductForm',{static: false}) editForm: NgForm;
+
 
  selectedProduct:Product={
    id:0,
@@ -87,12 +89,14 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
 
 
 
-    onDeleteProduct(id){
-      this.productService.deleteProduct(id).subscribe(data=>{
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/store/products']);
-        });
-      })
+
+  onDeleteProduct(id) {
+    this.productService.deleteProduct(id).subscribe(data => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/store/products']);
+      });
+    })
+
 
     }
     getProductById(product:Product){

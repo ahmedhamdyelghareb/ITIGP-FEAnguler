@@ -55,7 +55,7 @@
                         <div class="d-flex">
                             <div class="cat">
 
-                                <span><a routerLink="/store/profile/{{p.user.id}}">{{p.user.shopName}}</a></span>
+                                <span><a routerLink="/store/profile/{{p.user?.id}}">{{p.user?.shopName}}</a></span>
                             </div>
                             <div class="rating">
                                 <p class="text-right mb-0">
@@ -75,7 +75,7 @@
                             <p class="price"><span>{{p.price}} EGP</span></p>
                         </div>
                         <p class="bottom-area d-flex px-3">
-                            <a (click)="openLogin(content)" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                            <a (click)="openLogin(content)  " class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
                         </p>
                     </div>
                 </div>

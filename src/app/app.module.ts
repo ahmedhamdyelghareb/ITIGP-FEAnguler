@@ -83,6 +83,7 @@ import { ProfileEditComponent } from './components/user-profile/profile-edit/pro
       {path:'register',component :RegisterComponent},
       {path:'store/profile/:id',component :ShopProfileComponent},
       {path:'profile',component :UserProfileComponent},
+      {path:'shop/profile',component :UserProfileComponent},
       {path:'profile/edit',component :ProfileEditComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'cart',component :CartComponent},

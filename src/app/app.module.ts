@@ -77,7 +77,7 @@ import { ProductAddComponent } from './components/store/product-add/product-add.
       {path:'man',component :ManComponent},
       {path:'login',component :LoginComponent},
       {path:'register',component :RegisterComponent},
-      {path:'store/:id',component :ShopProfileComponent},
+      {path:'store/profile/:id',component :ShopProfileComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},

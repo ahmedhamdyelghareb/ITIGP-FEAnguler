@@ -24,9 +24,9 @@ export class ProductService {
     imageUrl: string,
     description: string,
     amount: number
-  ) 
+  )
   {
-   
+
     const product = {
       id:this.id,
       title: title,
@@ -62,8 +62,6 @@ getById(id){
   getProducts() {
     return this.http.get("http://localhost:5000/api/store/");
   }
-  getById(id) {
-    return this.http.get(`http://localhost:5000/api/store/getone/${id}`);
-  }
+
 
 }

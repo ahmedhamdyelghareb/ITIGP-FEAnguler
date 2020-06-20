@@ -31,6 +31,8 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { ShopProfileComponent } from './components/shop-profile/shop-profile.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { ProductAddComponent } from './components/store/product-add/product-add.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ProfileEditComponent } from './components/user-profile/profile-edit/profile-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +59,8 @@ import { ProductAddComponent } from './components/store/product-add/product-add.
 
  ProfileComponent,
     ProductAddComponent,
+    UserProfileComponent,
+    ProfileEditComponent,
 
 
   ],
@@ -78,6 +82,8 @@ import { ProductAddComponent } from './components/store/product-add/product-add.
       {path:'login',component :LoginComponent},
       {path:'register',component :RegisterComponent},
       {path:'store/profile/:id',component :ShopProfileComponent},
+      {path:'profile',component :UserProfileComponent},
+      {path:'profile/edit',component :ProfileEditComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},

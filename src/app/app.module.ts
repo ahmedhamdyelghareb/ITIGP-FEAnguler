@@ -22,7 +22,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NgbdModalContent } from './auth/register/register.component';
-// import { ProductFormComponent } from './components/store/product-form/product-form.component';
+
 import {ProductsComponent} from './components/store/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
@@ -59,21 +59,14 @@ import { ProfileComponent } from './auth/profile/profile.component';
     AboutComponent,
     ContactUSComponent,
     ShopLoginComponent,
-
-    ProductEditComponent,
-
     ServicesectionComponent,
     LoginModalComponent,
-
-
-
     ServicesectionComponent,
+
 
 
 
     ProfileComponent,
-
-
 
   ],
   entryComponents: [
@@ -94,8 +87,6 @@ import { ProfileComponent } from './auth/profile/profile.component';
       {path:'login',component :LoginComponent},
       {path:'register',component :RegisterComponent},
       {path:'store/products',component :ProductsComponent},
-      // {path:'store/products/new',component :ProductFormComponent},
-      {path:'store/products/Edit/:id',component : ProductEditComponent},
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},
       {path:'contactus',component :ContactUSComponent},

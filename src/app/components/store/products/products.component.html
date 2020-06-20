@@ -1,5 +1,6 @@
-
-
+<div class="container mt-3">
+  <br/>
+<app-product-add class="m-auto"></app-product-add>
 
 <p class="mt-4">
   <input
@@ -11,7 +12,7 @@
 <br/>
 <div class="row">
   <div class="col-md-6">
-<app-product-add></app-product-add>
+
     <!-- Button trigger modal -->
 
 <!-- Modal -->
@@ -110,7 +111,7 @@
 </tr>
   </thead>
   <tbody >
-   <tr *ngFor="let product of fetechedProducts ">
+   <tr *ngFor="let product of fetechedProducts">
      <td><img [src]="product.imageUrl" width="50px" height="50px" ></td>
      <td>{{product.title}}</td>
      <td>{{product.price}}</td>
@@ -123,3 +124,4 @@
   </tbody>
 </table>
 <!-- <p class="empty" *ngIf="fetechedProducts.length <= 0">No Products added Yet!</p> -->
+</div>

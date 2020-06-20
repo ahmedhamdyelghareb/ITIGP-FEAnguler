@@ -1,45 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/Services/product.service';
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { UsersService } from 'src/app/Services/users.service';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Product } from 'src/app/Models/product.model';
-import { AuthService } from "../../auth/auth.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+
+
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-shop-profile',
+  templateUrl: './shop-profile.component.html',
+  styleUrls: ['./shop-profile.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ShopProfileComponent implements OnInit {
 
   products;
   isCollapsed: boolean;
   type: string = "";
   token: string = "hhh";
   id: string = "";
-  fName:string=""
+  fName: string = ""
+  userowner;
 
- 
-  constructor(private productService: ProductService,
-    private modalService: NgbModal,
-    public route: ActivatedRoute,
-    private router: Router) { }
-
+  constructor(private shop: UsersService, private route: ActivatedRoute, private user: UsersService, private modalService: NgbModal, private router: Router) { }
   ngOnInit() {
-    this.authToken();
-    return this.productService.getAllProducts().subscribe(res => {
-      this.products = res;
-      console.log(this.products)
+    const id = this.route.snapshot.paramMap.get('id')
+    this.shop.getshopname(id).subscribe(products => {
+      this.products = products
+      console.log(products);
+    })
 
-      // this.products=this.products.map(function (el) {
-      //   var o = Object.assign({}, el);
-      //   o.isCollapsed = true;
-      //   return o;
-      // })
-      // console.log(this.products)
-    }
-    )
-   
+    this.user.getshopownerdata(id).subscribe(shopowner => {
+      this.userowner = shopowner
+      console.log("owner: ", shopowner)
+    })
   }
+
+
   getToken() {
     if (typeof this.token !== "undefined" && this.token !== null)
       return this.token;
@@ -56,7 +50,7 @@ export class ProductListComponent implements OnInit {
     token: string;
     id: string;
     Type: string;
-    fName:string
+    fName: string
   };
 
   authToken() {
@@ -102,7 +96,5 @@ export class ProductListComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
-
 
 }

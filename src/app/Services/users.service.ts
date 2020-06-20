@@ -34,7 +34,7 @@ export class UsersService {
   }
 
   getshopname(id){
-    return this.myHttp.get(`http://localhost:5000/api/home/user/${id}`)
+    return this.myHttp.get(`http://localhost:5000/api/home/productowner/${id}`)
   }
   
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -45,5 +45,11 @@ export class UsersService {
    return this.myHttp.patch<{ message: string }>(` http://localhost:5000/api/user/status/update/${id}`,updatedSatus,{
       headers :new HttpHeaders().set("authorization",this.currentUser.token )
      })  
+  }
+
+
+  getshopownerdata(id){
+    return this.myHttp.get(`http://localhost:5000/api/home/owner/${id}`)
+
   }
 }

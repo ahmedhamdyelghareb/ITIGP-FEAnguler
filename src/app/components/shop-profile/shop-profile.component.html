@@ -1,3 +1,17 @@
+<div id="shopcover" class="hero-wrap hero-bread" style="background-image: url('../../../assets/cover1.png');">
+	<div class="container mt-n5">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9  text-center">
+				<p class="breadcrumbs font-weight-bold "><span class="mr-2"><a routerLink="/">Home</a></span>
+					<span>Shop</span></p>
+				<img id="profileimage" src="../../../assets/nav.jpg">
+				<h1 class="mt-3 bread">Shop Name {{userowner[0].shopName}}</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <section class="ftco-section bg-light">
 	<div class="container">
 		<div class="row">
@@ -14,7 +28,7 @@
 							<div class="text py-3 pb-4 px-3">
 								<div class="d-flex">
 									<div class="cat">
-										<span>{{product.user.shopName}}</span>
+										<span>{{userowner[0].shopName}}</span>
 									</div>
 									<div class="rating">
 										<p class="text-right mb-0">

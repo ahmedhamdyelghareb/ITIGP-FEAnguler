@@ -12,12 +12,9 @@ import { WomanComponent } from './components/woman/woman.component';
 import { ManComponent } from './components/man/man.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 import { ProductService } from './Services/product.service';
-
 import {ContactService} from './Services/contact.service'
 import {UsersService} from './Services/users.service'
-
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -28,22 +25,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUSComponent } from './components/contact-us/contact-us.component';
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
-
-
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
-
-
-
-import { ServicesectionComponent } from './components/servicesection/servicesection.component';
-
-
-
 import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
-
-
-
-
+import { ShopProfileComponent } from './components/shop-profile/shop-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,18 +48,10 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
     AboutComponent,
     ContactUSComponent,
     ShopLoginComponent,
-
     ProductEditComponent,
-
     ServicesectionComponent,
     LoginModalComponent,
-
-
-
-    ServicesectionComponent,
-
-
-
+    ShopProfileComponent,
   ],
   entryComponents: [
     NgbdModalContent,
@@ -93,6 +70,7 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
       {path:'man',component :ManComponent},
       {path:'login',component :LoginComponent},
       {path:'register',component :RegisterComponent},
+      {path:'store/:id',component :ShopProfileComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'store/products/new',component :ProductFormComponent},
       {path:'store/products/Edit/:id',component : ProductEditComponent},

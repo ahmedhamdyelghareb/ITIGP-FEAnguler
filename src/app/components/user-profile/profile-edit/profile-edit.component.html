@@ -16,19 +16,19 @@
 
 <div class="container  " style="margin-top: 2%;">
     <div class="bg-light">
-        <form  [formGroup]="edit" #EditForm="ngForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">            
+        <form  [formGroup]="edit" #EditForm="ngForm" (ngSubmit)="onSubmit(EditForm)" class="text-center border border-light p-5">            
             <div class="form-row mb-4">
                 <div class="col">
                     <!-- First name -->
-                    <input   [(ngModel)]="userData.fName"  [class.is-invalid] ="edit.get('FName').touched && edit.get('FName').invalid" formControlName="FName" type="text" id="FirstName" class="form-control" placeholder="First name">
-                   <small *ngIf="edit.get('FName').touched && edit.get('FName').invalid" class="text-danger">
+                    <input   [(ngModel)]="userData.fName"  [class.is-invalid] ="edit.get('fName').touched && edit.get('fName').invalid" formControlName="fName" type="text" id="FirstName" class="form-control" placeholder="First Name">
+                   <small *ngIf="edit.get('fName').touched && edit.get('fName').invalid" class="text-danger">
                        This field is required
                    </small>
                 </div>
                 <div class="col">
                     <!-- Last name -->
-                    <input [(ngModel)]="userData.lName" [class.is-invalid] ="edit.get('LName').touched && edit.get('LName').invalid" formControlName="LName" type="text" id="LastName" class="form-control" placeholder="Last name">
-                    <small *ngIf="edit.get('LName').touched && edit.get('LName').invalid" class="text-danger">
+                    <input [(ngModel)]="userData.lName" [class.is-invalid] ="edit.get('lName').touched && edit.get('lName').invalid" formControlName="lName" type="text" id="LastName" class="form-control" placeholder="Last name">
+                    <small *ngIf="edit.get('lName').touched && edit.get('lName').invalid" class="text-danger">
                         This field is required
                     </small>
                 </div>

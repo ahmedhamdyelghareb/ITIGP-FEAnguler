@@ -50,7 +50,9 @@ export class ProductsComponent implements OnInit {
    }
    selectedFile:File=null;
   filter(query:string){
-    console.log(query);
+    this.fetechedProducts = (query) ?
+    this.products.filter(p=>p.title.toLowerCase().includes(query.toLowerCase())) : 
+    this.products
   }
   onFileSelected(event){
     this.selectedFile=<File>event.target.files[0];
@@ -91,6 +93,7 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
 
 
   onDeleteProduct(id) {
+    if (!confirm('are you sure you want to delete this product')) return;   
     this.productService.deleteProduct(id).subscribe(data => {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/store/products']);
@@ -127,16 +130,16 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
 
       console.log(this.selectedProduct);
 
-      this.productService.updateProduct(
-        this.selectedProduct.id,
-        this.selectedProduct
-      )
-        .subscribe(()=> {
-          this.getAllProducts();
-          console.log("Product Editted")
-        }, (err)=>{
-          console.log(err)
-        })
+      // this.productService.updateProduct(
+      //   this.selectedProduct.id,
+      //   this.selectedProduct
+      // )
+      //   .subscribe(()=> {
+      //     this.getAllProducts();
+      //     console.log("Product Editted")
+      //   }, (err)=>{
+      //     console.log(err)
+      //   })
 
     }
 

@@ -33,6 +33,7 @@ import { ServicesectionComponent } from './components/servicesection/servicesect
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 
 
@@ -67,6 +68,10 @@ import { ProductEditComponent } from './components/store/product-edit/product-ed
 
 
     ServicesectionComponent,
+
+
+
+    ProfileComponent,
 
 
 

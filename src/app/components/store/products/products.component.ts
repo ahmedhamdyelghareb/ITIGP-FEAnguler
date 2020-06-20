@@ -1,56 +1,94 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/Services/product.service';
+
+import { Component, OnInit, Input,ViewChild} from '@angular/core';
+import{ ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Models/product.model';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { NgForm,FormBuilder } from '@angular/forms';
+
+
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  @ViewChild('editProductForm',{static: false}) editForm: NgForm;
 
-  constructor(public productService: ProductService, private router: Router) {
 
-  }
-  product: Product[] = [];
-  private productsSub: Subscription;
-  ngOnInit() {
-    this.getAllProducts()
-  }
-  id
-  products: any[]
-  fetechedProducts: any[]
-  getAllProducts() {
-    this.productsSub = this.productService.getProducts()
-      .subscribe(
-        (productData: []) => {
-          this.fetechedProducts = this.products = productData
-        },
-        (err) => {
-          console.log(err);
-        }
-      )
-  }
+ selectedProduct:Product={
+   id:0,
+   title:"",
+   price:0,
+   imageUrl:"",
+   description:"",
+   amount:0
+ };
+  constructor(private http:HttpClient,public productService:ProductService ,private router: Router) {
 
-  filter(query: string) {
+   }
+
+   private productsSub: Subscription;
+   ngOnInit() {
+     this.getAllProducts()
+   }
+ id
+   products :Product []
+   fetechedProducts : Product[]
+   getAllProducts(){
+    this.productsSub= this.productService.getProducts()
+     .subscribe(
+       (productData:[])=>{
+         this.fetechedProducts =this.products=productData
+       },
+       (err)=>{
+         console.log(err);
+       }
+     )
+   }
+   selectedFile:File=null;
+  filter(query:string){
     console.log(query);
   }
+  onFileSelected(event){
+    this.selectedFile=<File>event.target.files[0];
+  }
+  onUpload(){
+const fd=new FormData();
+fd.append('image',this.selectedFile,this.selectedFile.name);
+this.http.post('http://localhost:5000/api/store/create',fd,{
+  reportProgress:true,
+  observe:'events'
+}).subscribe(event=>{
+  if(event.type === HttpEventType.UploadProgress){
+    console.log('uploadProgress' + Math.round(event.loaded/event.total *100) +'%');
+  }else if(event.type === HttpEventType.Response){
+  console.log(event);
+  }
+});
+  }
 
 
-  // getData(){
-  //   const url ='https://jsonplaceholder.typicode.com/photos?albumId=1'
-  //   this.http.get(url).subscribe((res)=>{
-  //     this.products = res
-  //     console.log(this.products)
-  //   })
-  // }
-  // getAllProducts(){
-  //   this.productService.getProducts().subscribe((res)=>{
-  //         this.products = res
-  //         console.log(this.products)
-  //       })
+  // onAddNewProduct(form:NgForm){
+
+  //   this.productService.addProduct(
+  //     form.value.title,
+  //     form.value.price,
+  //     form.value.imageUrl,
+  //     form.value.description,
+  //     form.value.amount,
+  //     ).subscribe(res => {
+  //       console.log("done")
+  //       console.log("added")
+  //   });
+  //   form.resetForm();
   //     }
+
+
+
+
 
   onDeleteProduct(id) {
     this.productService.deleteProduct(id).subscribe(data => {
@@ -59,17 +97,48 @@ export class ProductsComponent implements OnInit {
       });
     })
 
-    this.router.navigate(['/store/products'])
-  }
-  onUpdateProduct(id, product) {
-    this.productService.updateProduct(id, product).subscribe(data => {
-      console.log(data, "updated");
-    })
-  }
 
-  getOne(id: string) {
-    this.productService.getById(id)
+    }
+    getProductById(product:Product){
+      this.selectedProduct.id=product.id;
+      this.selectedProduct.title=product.title;
+      this.selectedProduct.price=product.price;
+      this.selectedProduct.imageUrl=product.imageUrl;
+      this.selectedProduct.description=product.description;
+      this.selectedProduct.amount=product.amount;
+      console.log(this.selectedProduct)
+      this.editForm.form.patchValue({
+        id : this.selectedProduct.id,
+        title : this.selectedProduct.title,
+        price : this.selectedProduct.price,
+        imageUrl : this.selectedProduct.imageUrl,
+        description : this.selectedProduct.description,
+      })
+    }
+
+    onSubmitEdit(){
+      this.selectedProduct.id = this.editForm.value.id;
+      this.selectedProduct.title = this.editForm.value.title;
+      this.selectedProduct.price = this.editForm.value.price;
+      this.selectedProduct.imageUrl = this.editForm.value.imageUrl;
+      this.selectedProduct.description = this.editForm.value.description;
+      this.selectedProduct.amount = this.editForm.value.amount;
+
+
+      console.log(this.selectedProduct);
+
+      this.productService.updateProduct(
+        this.selectedProduct.id,
+        this.selectedProduct
+      )
+        .subscribe(()=> {
+          this.getAllProducts();
+          console.log("Product Editted")
+        }, (err)=>{
+          console.log(err)
+        })
+
+    }
+
+
   }
-}
-
-

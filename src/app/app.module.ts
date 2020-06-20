@@ -19,7 +19,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NgbdModalContent } from './auth/register/register.component';
-import { ProductFormComponent } from './components/store/product-form/product-form.component';
+
 import {ProductsComponent} from './components/store/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AboutComponent } from './components/about/about.component';
@@ -27,8 +27,10 @@ import { ContactUSComponent } from './components/contact-us/contact-us.component
 import { ShopLoginComponent } from './components/shop-login/shop-login.component';
 import { ServicesectionComponent } from './components/servicesection/servicesection.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
-import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
+// import { ProductEditComponent } from './components/store/product-edit/product-edit.component';
 import { ShopProfileComponent } from './components/shop-profile/shop-profile.component';
+import { ProfileComponent } from './auth/profile/profile.component';
+import { ProductAddComponent } from './components/store/product-add/product-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,16 +44,21 @@ import { ShopProfileComponent } from './components/shop-profile/shop-profile.com
     LoginComponent,
     RegisterComponent,
     NgbdModalContent ,
-    ProductFormComponent,
+    // ProductFormComponent,
     ProductsComponent,
     CartComponent,
     AboutComponent,
     ContactUSComponent,
     ShopLoginComponent,
-    ProductEditComponent,
+    // ProductEditComponent,
     ServicesectionComponent,
     LoginModalComponent,
     ShopProfileComponent,
+
+ ProfileComponent,
+    ProductAddComponent,
+
+
   ],
   entryComponents: [
     NgbdModalContent,
@@ -72,8 +79,6 @@ import { ShopProfileComponent } from './components/shop-profile/shop-profile.com
       {path:'register',component :RegisterComponent},
       {path:'store/:id',component :ShopProfileComponent},
       {path:'store/products',component :ProductsComponent},
-      {path:'store/products/new',component :ProductFormComponent},
-      {path:'store/products/Edit/:id',component : ProductEditComponent},
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},
       {path:'contactus',component :ContactUSComponent},

@@ -1,16 +1,105 @@
-<br/><br/>
-<p>
-  <a routerLink="/store/products/new" class="btn btn-primary">New Product</a>
-</p>
-<p>
+
+
+
+<p class="mt-4">
   <input
   #query
   (keyup)="filter(query.value)"
-  type="text" class="form-control" placeholder="Search">
+  type="text" class="form-control" placeholder="Search...">
 </p>
 
+<br/>
+<div class="row">
+  <div class="col-md-6">
+<app-product-add></app-product-add>
+    <!-- Button trigger modal -->
 
-<table class="table">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editProductForm="ngForm" (ngSubmit)="onSubmitEdit()">
+          <div class="form-group">
+            <input type="hidden" class="form-control" id="id" name="id" ngModel >
+
+          </div>
+
+          <div class="form-group"><label for="title">Title</label>
+            <input #title="ngModel" ngModel  name="title" id="title" type="text" class="form-control" required>
+          <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+            Title is required
+          </div>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price</label>
+
+
+            <input #price="ngModel" ngModel  name="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required [min]="0">
+
+            <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+             <div *ngIf="price.errors.required">
+               price is required
+             </div>
+             <div *ngIf="price.errors.min">
+              price should be higher
+            </div>
+            </div>
+            </div>
+
+
+          <!-- <div class="form-group"><label for="imageUrl">Image Url</label>
+            <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+            <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+              <div *ngIf="imageUrl.errors.required">
+                Image Url is required
+              </div>
+              <div *ngIf="imageUrl.errors.url">
+               Please Enter a valid Url
+             </div>
+            </div>
+          </div> -->
+
+          <div class="form-group"><label for="imageUrl"> Image</label>
+            <input #imageUrl="ngModel" ngModel  name="imageUrl" id="image" type="file" (change)="onFileSelected($event)" class="form-control" required >
+
+            <button type="button" (click)="onUpload()">upload</button>
+
+          <div class="form-group"><label for="description">Decription</label>
+            <input #description="ngModel"   name="description" ngModel  id="description" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+              Description is required
+            </div>
+          </div>
+          </div>
+          <div class="form-group"><label for="amount">Amount</label>
+            <input #amount="ngModel" ngModel  name="amount" id="amount" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
+              Amount is required
+            </div>
+          </div>
+          <div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<button type="submit" class="btn btn-info" onclick="$('.modal').modal('hide')">Save</button>
+					</div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<table class="table col-11  mt-2" style="margin-left: 5%;">
   <thead>
 <tr>
   <th>image</th>
@@ -25,8 +114,10 @@
      <td><img [src]="product.imageUrl" width="50px" height="50px" ></td>
      <td>{{product.title}}</td>
      <td>{{product.price}}</td>
-     <td><a class="btn btn-primary" [routerLink]="['/store/products/Edit/',product.id]"> Edit </a></td>
-     <td> <button class="btn btn-danger" (click)='onDeleteProduct(product.id)'>delete</button></td>
+     <td><a class="btn btn-primary" style="display: inline-block;" (click)="getProductById(product)" data-toggle="modal" data-target="#exampleModal"> Edit </a>
+      <button class="btn btn-outline-danger ml-5" style="display: inline-block;" (click)='onDeleteProduct(product.id)'>delete</button>
+    </td>
+     <!-- <td> <button class="btn btn-danger" (click)='onDeleteProduct(product.id)'>delete</button></td> -->
    </tr>
 
   </tbody>

@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Product } from 'src/app/Models/product.model';
 import { AuthService } from "../../auth/auth.service";
+import { Subscription } from 'rxjs';
+import { Product } from '../../Models/product.model';
+import { ShoppingCartService } from '../../Services/shopping-cart.service';
+import { add, total, list, get, exists ,quantity } from 'cart-localstorage'
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -102,7 +106,43 @@ export class ProductListComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+/////////////////////////
+@Input('shopping-cart') shoppingCart
+// ngOnInit() {
+//   this.getProduct()
+// }
 
+
+carts
+addToCart(product: any) {
+  add({ id: product.id, name: product.title, price: product.price })
+  this.carts = list().length
+  console.log(this.carts)
+  // this.shoppingCart = get(product._id).quantity
+  // console.log(this.shoppingCart)
+  this.getQuantity(product)
+}
+
+getQuantity(product: any) {
+  console.log(product.id)
+  if (exists(product.id)) {
+    this.shoppingCart = get(product.id).quantity
+    return this.shoppingCart
+  }else{
+    this.shoppingCart = 0
+    return this.shoppingCart
+  }
+
+}
+removeFromCart(product: any){
+  if (exists(product.id)) {
+    this.shoppingCart = quantity(product.id,-1)
+    return this.shoppingCart
+  }else{
+    this.shoppingCart = 0
+    return this.shoppingCart
+  }
+}
 
 
 }

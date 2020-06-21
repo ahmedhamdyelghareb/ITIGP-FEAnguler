@@ -72,11 +72,32 @@
                             <p class="price"><span>{{p.description}}</span></p>
                         </div>
                         <div class="pricing">
-                            <p class="price"><span>{{p.price}} EGP</span></p>
+                            <p class="price"><span>{{p.price  | currency:"EGP " }} </span></p>
                         </div>
-                        <p class="bottom-area d-flex px-3">
-                            <a (click)="openLogin(content)  " class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                        </p>
+                        <!-- <p class="bottom-area d-flex px-3">
+                             (click)="openLogin(content)"
+                            <a class="add-to-cart text-center py-2 mr-1" *ngIf="getQuantity(p)===0;else updateQuantity"
+                             (click)="addToCart(p)"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                        </p> -->
+                        <button class="btn btn-secondary" style="width: 100%;" *ngIf="getQuantity(p)===0;else updateQuantity"
+                        (click)="addToCart(p)"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
+                        <ng-template #updateQuantity>
+                            <div class="row no-gutters">
+                                <div class="col-2">
+                                    <button
+                                    (click) = "removeFromCart(p)"
+                                     class="btn btn-secondary btn-block">-</button>
+                                </div>
+                                <div class="col text-center">
+                                    {{getQuantity(p)}} in cart
+                                </div>
+                                <div class="col-2">
+                                    <button 
+                                    (click) = "addToCart(p)"
+                                     class="btn btn-secondary btn-block">+</button>
+                                </div>
+                          </div>
+                        </ng-template>
                     </div>
                 </div>
             </div>

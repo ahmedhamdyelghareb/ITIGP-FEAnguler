@@ -33,6 +33,9 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { ProductAddComponent } from './components/store/product-add/product-add.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ProfileEditComponent } from './components/user-profile/profile-edit/profile-edit.component';
+import { CheckOutComponent } from './components/check-out/check-out.component';
+import { OrderComponent } from './components/order/order.component';
+import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +64,9 @@ import { ProfileEditComponent } from './components/user-profile/profile-edit/pro
     ProductAddComponent,
     UserProfileComponent,
     ProfileEditComponent,
+    CheckOutComponent,
+    OrderComponent,
+    ShoppingCartSummaryComponent,
 
 
   ],
@@ -89,7 +95,8 @@ import { ProfileEditComponent } from './components/user-profile/profile-edit/pro
       {path:'cart',component :CartComponent},
       {path:'about',component :AboutComponent},
       {path:'contactus',component :ContactUSComponent},
-      {path:'shop/register',component:ShopLoginComponent}
+      {path:'shop/register',component:ShopLoginComponent},
+      {path:'checkout',component:CheckOutComponent}
     ])
   ],
   providers: [

@@ -36,6 +36,8 @@ import { ProfileEditComponent } from './components/user-profile/profile-edit/pro
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { OrderComponent } from './components/order/order.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { TermsofserviceComponent } from './components/termsofservice/termsofservice.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +69,8 @@ import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary
     CheckOutComponent,
     OrderComponent,
     ShoppingCartSummaryComponent,
+    NotfoundComponent,
+    TermsofserviceComponent,
 
 
   ],
@@ -96,7 +100,9 @@ import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary
       {path:'about',component :AboutComponent},
       {path:'contactus',component :ContactUSComponent},
       {path:'shop/register',component:ShopLoginComponent},
-      {path:'checkout',component:CheckOutComponent}
+      {path:'checkout',component:CheckOutComponent},
+      {path:'termsofservice',component:TermsofserviceComponent},
+      {path:'**',component:NotfoundComponent}
     ])
   ],
   providers: [

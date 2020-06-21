@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { UsersService } from 'src/app/Services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,7 +15,15 @@ export class ProfileEditComponent implements OnInit {
     private router: Router) { }
 
     message
-    userData;
+    userData = {
+      fName:"",
+      lName:"",
+      email:"",
+      // password:"",
+      phone:"",
+      address:"",
+      image:""
+    }
     ngOnInit() {
       const {id}= JSON.parse(localStorage.getItem('currentUser'))
       console.log(id)
@@ -26,29 +34,33 @@ export class ProfileEditComponent implements OnInit {
     }
 
   edit=new FormGroup({
-    FName:new FormControl('',[Validators.required]),
-    LName:new FormControl('',[Validators.required]),
+    fName:new FormControl('',[Validators.required]),
+    lName:new FormControl('',[Validators.required]),
     email:new FormControl('',[Validators.required,Validators.email]),
     phone:new FormControl('',[Validators.required,Validators.minLength(11)]),
     // shopname:new FormControl('',[Validators.required]),
     address:new FormControl('',[Validators.required]),
   })
-
-  onSubmit(){
+  currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  onSubmit(form:NgForm){
     console.log(this.edit.value)
-    // this.user.addShop(
-    //   this.ShopRegForm.value.FName,
-    //   this.ShopRegForm.value.LName,
-    //   this.ShopRegForm.value.email,
-    //   this.ShopRegForm.value.phone,
-    //   this.ShopRegForm.value.password,
-    //   this.ShopRegForm.value.type,
-    //   this.ShopRegForm.value.shopname,
-    //   ).subscribe(res => {
-    //     console.log(res)
-    //     this.message = res.message;
-    //   });
-  }
+   this.user.updateUserData(
+     this.currentUser.id,
+     form.value.fName,
+     form.value.lName,
+     form.value.email,
+    //  form.value.password,
+     form.value.phone,
+     form.value.address
+    ).subscribe(res => {
+      console.log("done")
+      console.log("added")
+  });
+  console.log("yees")
+  form.resetForm();
+    
+  
+}
 
 
   numberOnly(event): boolean {

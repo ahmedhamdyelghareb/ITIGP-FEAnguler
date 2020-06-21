@@ -90,7 +90,7 @@ export class UsersService {
     fName: string,
     lName: string,
     email: string,
-    // password: string,
+    password: string,
     phone: string,
     address:string,
     
@@ -99,7 +99,7 @@ export class UsersService {
       fName: fName,
       lName: lName,
       email: email,
-      // password: password,
+      password: password,
       phone: phone,
       address:address
     };

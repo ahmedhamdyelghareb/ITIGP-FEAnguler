@@ -35,7 +35,9 @@
             </div>
 
             <!-- E-mail -->
+
             <input disabled [(ngModel)]="userData.email" [class.is-invalid] ="edit.get('email').touched && edit.get('email').invalid"  formControlName="email" type="email" id="Email" class="form-control" placeholder="E-mail">
+
             <div *ngIf="edit.get('email').touched && edit.get('email').invalid" class="text-danger">
                 <small *ngIf="edit.get('email').errors.required">
                     This field is required
@@ -52,7 +54,7 @@
                     This field is required
                 </small>
                 <small *ngIf="edit.get('phone').errors.minlength">
-                    shoud length at least {{edit.get('phone').errors.minlength.requiredLength}} characters
+                    should length at least {{edit.get('phone').errors.minlength.requiredLength}} characters
                 </small>
             </div>
 
@@ -67,8 +69,22 @@
                 This field is required
             </small> 
 
+            <textarea [(ngModel)]="userData.password" [class.is-invalid] ="edit.get('password').touched && edit.get('password').invalid" formControlName="password" class="form-control mt-4" id="exampleFormControlTextarea1" placeholder="password"rows="3"></textarea>
+            <small *ngIf="edit.get('password').touched && edit.get('password').invalid" class="text-danger">
+                This field is required
+            </small> 
             <hr>
 
+            <textarea [(ngModel)]="userData.password" [class.is-invalid] ="edit.get('password').touched && edit.get('password').invalid" formControlName="password" class="form-control mt-4" id="exampleFormControlTextarea1" placeholder="password"rows="3"></textarea>
+            <small *ngIf="edit.get('password').touched && edit.get('password').invalid" class="text-danger">
+                This field is required
+            </small> 
+            <hr>
+            <!-- <textarea [(ngModel)]="userData.confirmPassword" [class.is-invalid] ="edit.get('confirmPassword').touched && edit.get('confirmPassword').invalid" formControlName="confirmPassword" class="form-control mt-4" id="exampleFormControlTextarea1" placeholder="Confirm Password"rows="3"></textarea>
+            <small *ngIf="edit.get('password').touched && edit.get('password').invalid" class="text-danger">
+                This field is required
+            </small>  -->
+            <hr>
             <!-- Sign up button -->
             <button class="btn btn-success mt-2 mr-2" type="submit" [disabled]="!EditForm.valid">Edit</button>
             <a   routerLink="/profile" block="true" class="btn btn-danger mt-2"type="submit">Cancel</a>

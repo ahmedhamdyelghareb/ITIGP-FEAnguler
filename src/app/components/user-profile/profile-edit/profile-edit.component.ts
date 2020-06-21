@@ -19,7 +19,7 @@ export class ProfileEditComponent implements OnInit {
       fName:"",
       lName:"",
       email:"",
-      // password:"",
+      password:"",
       phone:"",
       address:"",
       image:""
@@ -49,17 +49,16 @@ export class ProfileEditComponent implements OnInit {
      form.value.fName,
      form.value.lName,
      form.value.email,
-    //  form.value.password,
+     form.value.password,
      form.value.phone,
      form.value.address
     ).subscribe(res => {
       console.log("done")
       console.log("added")
+      this.router.navigate(["/profile"])
   });
   console.log("yees")
-  form.resetForm();
-    
-  
+  form.resetForm();  
 }
 
 

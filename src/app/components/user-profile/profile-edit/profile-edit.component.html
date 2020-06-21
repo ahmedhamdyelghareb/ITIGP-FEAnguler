@@ -35,7 +35,9 @@
             </div>
 
             <!-- E-mail -->
-            <input [(ngModel)]="userData.email" [class.is-invalid] ="edit.get('email').touched && edit.get('email').invalid"  formControlName="email" type="email" id="Email" class="form-control" placeholder="E-mail" disabled>
+
+            <input disabled [(ngModel)]="userData.email" [class.is-invalid] ="edit.get('email').touched && edit.get('email').invalid"  formControlName="email" type="email" id="Email" class="form-control" placeholder="E-mail">
+
             <div *ngIf="edit.get('email').touched && edit.get('email').invalid" class="text-danger">
                 <small *ngIf="edit.get('email').errors.required">
                     This field is required

@@ -36,12 +36,14 @@ import { CheckOutComponent } from './components/check-out/check-out.component';
 import { OrderComponent } from './components/order/order.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 
-/////////////////////////user ptoducts
 import {ManComponent} from './components/userProducts/man/man.component'
 import {WomanComponent} from './components/userProducts/woman/woman.component'
 import { UserProductListComponent } from './components/userProducts/user-product-list/user-product-list.component'
 
 
+
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { TermsofserviceComponent } from './components/termsofservice/termsofservice.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,11 @@ import { UserProductListComponent } from './components/userProducts/user-product
     CheckOutComponent,
     OrderComponent,
     ShoppingCartSummaryComponent,
+
     UserProductListComponent,
+    NotfoundComponent,
+    TermsofserviceComponent,
+
 
 
   ],
@@ -105,8 +111,11 @@ import { UserProductListComponent } from './components/userProducts/user-product
       {path:'contactus',component :ContactUSComponent},
       {path:'shop/register',component:ShopLoginComponent},
       {path:'checkout',component:CheckOutComponent},
+
       {path:'allProducts',component: UserProductListComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full' },
+      {path:'termsofservice',component:TermsofserviceComponent},
+      {path:'**',component:NotfoundComponent}
     ])
   ],
   providers: [

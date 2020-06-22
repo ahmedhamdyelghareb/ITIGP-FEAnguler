@@ -8,8 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { WomanComponent } from './components/woman/woman.component';
-import { ManComponent } from './components/man/man.component';
+
 import { SliderComponent } from './components/slider/slider.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductService } from './Services/product.service';
@@ -36,8 +35,16 @@ import { ProfileEditComponent } from './components/user-profile/profile-edit/pro
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { OrderComponent } from './components/order/order.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
+
+import {ManComponent} from './components/userProducts/man/man.component'
+import {WomanComponent} from './components/userProducts/woman/woman.component'
+import { UserProductListComponent } from './components/userProducts/user-product-list/user-product-list.component'
+
+
+
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { TermsofserviceComponent } from './components/termsofservice/termsofservice.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,8 +76,11 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
     CheckOutComponent,
     OrderComponent,
     ShoppingCartSummaryComponent,
+
+    UserProductListComponent,
     NotfoundComponent,
     TermsofserviceComponent,
+
 
 
   ],
@@ -86,7 +96,7 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
     HttpClientModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path:'',component :HomeComponent},
+      {path:'home',component :HomeComponent},
       {path:'woman',component :WomanComponent},
       {path:'man',component :ManComponent},
       {path:'login',component :LoginComponent},
@@ -101,6 +111,9 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
       {path:'contactus',component :ContactUSComponent},
       {path:'shop/register',component:ShopLoginComponent},
       {path:'checkout',component:CheckOutComponent},
+
+      {path:'allProducts',component: UserProductListComponent},
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
       {path:'termsofservice',component:TermsofserviceComponent},
       {path:'**',component:NotfoundComponent}
     ])

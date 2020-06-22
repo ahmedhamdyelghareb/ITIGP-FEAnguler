@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             status:res.status
           })
         );
-        this.router.navigate(["/"]).then(() => {
+        this.router.navigate(["/allProducts"]).then(() => {
           window.location.reload();
         });
       

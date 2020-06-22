@@ -124,7 +124,7 @@ addToCart(product: any) {
 }
 
 getQuantity(product: any) {
-  console.log(product.id)
+  // console.log(product.id)
   if (exists(product.id)) {
     this.shoppingCart = get(product.id).quantity
     return this.shoppingCart

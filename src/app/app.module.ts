@@ -8,8 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { WomanComponent } from './components/woman/woman.component';
-import { ManComponent } from './components/man/man.component';
+
 import { SliderComponent } from './components/slider/slider.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductService } from './Services/product.service';
@@ -36,6 +35,14 @@ import { ProfileEditComponent } from './components/user-profile/profile-edit/pro
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { OrderComponent } from './components/order/order.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
+
+/////////////////////////user ptoducts
+import {ManComponent} from './components/userProducts/man/man.component'
+import {WomanComponent} from './components/userProducts/woman/woman.component'
+import { UserProductListComponent } from './components/userProducts/user-product-list/user-product-list.component'
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +74,7 @@ import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary
     CheckOutComponent,
     OrderComponent,
     ShoppingCartSummaryComponent,
+    UserProductListComponent,
 
 
   ],
@@ -82,7 +90,7 @@ import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary
     HttpClientModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path:'',component :HomeComponent},
+      {path:'home',component :HomeComponent},
       {path:'woman',component :WomanComponent},
       {path:'man',component :ManComponent},
       {path:'login',component :LoginComponent},
@@ -96,7 +104,9 @@ import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary
       {path:'about',component :AboutComponent},
       {path:'contactus',component :ContactUSComponent},
       {path:'shop/register',component:ShopLoginComponent},
-      {path:'checkout',component:CheckOutComponent}
+      {path:'checkout',component:CheckOutComponent},
+      {path:'allProducts',component: UserProductListComponent},
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
     ])
   ],
   providers: [

@@ -67,7 +67,9 @@ export class CartComponent implements OnInit {
     }
   }
   ClearShoppingCart(){
+    if (!confirm('are you sure you want to your cart !!')) return;   
    this.cart = destroy()
+   this.router.navigate(["/allProducts"])
   }
   ordersList(){
     if(list().length === 0){

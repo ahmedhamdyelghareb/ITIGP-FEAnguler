@@ -38,6 +38,7 @@ export class ProfileEditComponent implements OnInit {
     lName:new FormControl('',[Validators.required]),
     email:new FormControl('',[Validators.required,Validators.email]),
     phone:new FormControl('',[Validators.required,Validators.minLength(11)]),
+    password:new FormControl('',[Validators.required,Validators.minLength(6)]),
     // shopname:new FormControl('',[Validators.required]),
     address:new FormControl('',[Validators.required]),
   })

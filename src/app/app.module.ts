@@ -38,7 +38,9 @@ import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary
 
 import {ManComponent} from './components/userProducts/man/man.component'
 import {WomanComponent} from './components/userProducts/woman/woman.component'
-import { UserProductListComponent } from './components/userProducts/user-product-list/user-product-list.component'
+import { UserProductListComponent } from './components/userProducts/user-product-list/user-product-list.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component'
 
 
 
@@ -78,6 +80,10 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
     ShoppingCartSummaryComponent,
 
     UserProductListComponent,
+
+    OrderSuccessComponent,
+    MyOrdersComponent,
+
     NotfoundComponent,
     TermsofserviceComponent,
 
@@ -113,6 +119,8 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
       {path:'checkout',component:CheckOutComponent},
 
       {path:'allProducts',component: UserProductListComponent},
+      {path:"order_success",component:OrderSuccessComponent},
+      {path:"my_order",component:MyOrdersComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       {path:'termsofservice',component:TermsofserviceComponent},
       {path:'**',component:NotfoundComponent}

@@ -1,3 +1,4 @@
+<div class="container">
 <section class="ftco-section bg-light row">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
@@ -18,7 +19,6 @@
                     <div class="text py-3 pb-4 px-3">
                         <div class="d-flex">
                             <div class="cat">
-
                                 <span><a routerLink="/store/profile/{{p.user?.id}}">{{p.user?.shopName}}</a></span>
                             </div>
                             <div class="rating">
@@ -39,7 +39,7 @@
                             <p class="price"><span>{{p.price  | currency:"EGP " }} </span></p>
                         </div>
                         
-                        <button class="btn btn-secondary" style="width: 100%; "  *ngIf="getQuantity(p)===0;else updateQuantity"
+                        <button class="btn btn-secondary" style="width: 100%;"  *ngIf="getQuantity(p)===0;else updateQuantity"
                         (click)="addToCart(p)"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
                          <ng-template #updateQuantity>
                             <div class="row no-gutters">
@@ -64,4 +64,5 @@
         </div>
     </div>
 </section>
+</div>
 

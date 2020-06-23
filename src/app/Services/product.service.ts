@@ -18,8 +18,8 @@ export class ProductService {
   private productObj = new BehaviorSubject(null);
   productObj$ = this.productObj.asObservable();
   private url = "http://localhost:5000/api/home";
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  token = this.currentUser.token;
+  // currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  // token = this.currentUser.token;
 
   constructor(private http: HttpClient,private authService:AuthService) {}
 
@@ -31,37 +31,14 @@ export class ProductService {
     return this.http.get(`http://localhost:5000/api/home/category/${category}`);
   }
 
-  // addProduct(
-  //   title: string,
-  //   price: number,
-  //   imageUrl: string,
-  //   description: string,
-  //   amount: number
-  // )
-  // {
 
-  //   const product = {
-  //     id:this.id,
-  //     title: title,
-  //     price: price,
-  //     imageUrl: imageUrl,
-  //     description: description,
-  //     amount: amount
-  //   };
-
-  //   console.log(product);
-
-  //   return this.http.post<{ message: string }>(
-  //   "http://localhost:5000/api/store/create",
-  //     product
-  //   );
-  // }
 
 
   addProduct(formData:FormData){
+    console.log(formData)
     // const formData = new FormData();
     return this.http.post("http://localhost:5000/api/store/create",formData
-    ,{headers : new HttpHeaders().set("authorization", this.token)}
+    // ,{headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')}
     )
   }
 
@@ -78,9 +55,12 @@ updateProduct(id,product:Product){
 
 getById(id){
   return this.http.get(`http://localhost:5000/api/store/getone/${id}`)
-
-
 }
+
+// getClickedProductToEdit(p:Product) {
+//   this.productDataSource.next(p);
+// }
+
   products: Product[];
   getProducts() {
     return this.http.get("http://localhost:5000/api/store/");

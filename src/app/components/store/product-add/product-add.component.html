@@ -17,25 +17,9 @@
         </button>
       </div>
       <div class="modal-body">
-
-        <form #productForm="ngForm"  (ngSubmit)="onAddNewProduct(productForm.value)">
+        <form #productForm="ngForm"  (ngSubmit)="onAddNewProduct(productForm.value)" >
           <div class="form-group">
             <label for="title">Title</label>
-
-        <form #productForm="ngForm"  >
-          <div class="form-group"><label for="title">Title</label>
-            <input #title="ngModel" [(ngModel)]="Product.title"  name="title" id="title" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-            Title is required
-          </div>
-          </div>
-
-          <div class="form-group">
-            <label for="price">Price</label>
-
-
-            <input #price="ngModel" [(ngModel)]="Product.price"  name="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required [min]="0">
-
 
             <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
             <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
@@ -58,13 +42,23 @@
         </div>
         <div class="form-group">
             <label for="description">Product Description</label>
-            <textarea class="form-control" rows="3" #description="ngModel" ngModel name="description" required [maxlength]=160></textarea>
-            <small>Max 160 Characters</small>
-            <small class="float-right">{{description.value?.length || 0}}/160</small>
+            <input #description="ngModel" ngModel name="description" id="description" type="text" class="form-control" required>
             <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
                 <div *ngIf="description.errors.required">Product Description is required</div>
             </div>
         </div>
+
+        <div class="form-group">
+          <label for="amount">amount</label>
+
+          <input #amount="ngModel" ngModel name="amount" id="amount" type="text" class="form-control" required>
+          <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
+              Title is required
+          </div>
+      </div>
+
+
+
         <div class="form-group">
             <div>
                 <button class="pickImg btn btn-secondary" type="button" (click)="filePicker.click()">Upload Image</button>
@@ -74,93 +68,18 @@
             </div>
         </div>
 
+        <div class="modal-footer">
         <button type="submit" class="btn btn-primary float-right"
         [disabled]="productForm.invalid" ngbTooltip="Fill all Fields first"
         >Save</button>
 
 
-
-
-          <!-- <div class="form-group"><label for="imageUrl"> Image</label>
-            <input #imageUrl="ngModel" [(ngModel)]="Product.imageUrl"  name="imageUrl" id="image" type="file" (change)="onFileSelected($event)" class="form-control" required >
-
-            <button type="button" (click)="onUpload()">upload</button>
-
-          </div> -->
+      </div>
 
 
 
-           <!-- <div class="form-group">
-
-            <input type="file"  name="imageUrl" ngModel  (change)="onFileSelected($event)" />
-        </div>
-
-        <div *ngIf="fileUploadProgress">
-
-          <h3>Choose File</h3>
-          <div class="form-group">
-            <input type="file" name="image" (change)="fileProgress($event)" />
-        </div>
-        <!-- <div *ngIf="fileUploadProgress">
-
-            Upload progress: {{ fileUploadProgress }}
-        </div>
-        <div class="image-preview mb-3" *ngIf="previewUrl">
-            <img [src]="previewUrl" height="300" />
-
-        </div>
-
-        <div class="mb-3" *ngIf="uploadedFilePath">
-            {{uploadedFilePath}}
-        </div>
-
-          <div class="form-group"><label >Decription</label>
-            <input   formControlName="description"  id="description" type="text" class="form-control" required>
-            <!-- <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-              Description is required
-            </div> -->
-          <!-- </div>
-          <div class="form-group"><label for="amount">Amount</label>
-            <input     formControlName="amount" id="amount" type="text" class="form-control" required>
-            <!-- <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
-              Amount is required
-            </div>-->
-          <!-- </div>
-          <div>
-
-            <button class="btn-primary" type="submit" >Save</button>
-          </div> -->
         </form>
-            <div class="modal-footer">
 
-        </div> -->
-
-        <!-- <div class="mb-3" *ngIf="uploadedFilePath">
-            {{uploadedFilePath}}
-        </div> -->
-
-          <div class="form-group"><label for="description">Decription</label>
-            <input #description="ngModel"   name="description"[(ngModel)]="Product.description"  id="description" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-              Description is required
-            </div>
-          </div>
-          <div class="form-group"><label for="amount">Amount</label>
-            <input #amount="ngModel" [(ngModel)]="Product.amount"  name="amount" id="amount" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
-              Amount is required
-            </div>
-          </div>
-          <div>
-
-            <button class="btn-primary" type="submit" (click)="onAddNewProduct(productForm)">Save</button>
-          </div>
-        </form>
-            <div class="modal-footer">
-              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-
-
-            </div>
       </div>
     </div>
   </div>

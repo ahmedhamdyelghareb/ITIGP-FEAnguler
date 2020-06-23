@@ -49,11 +49,19 @@ export class ProductsComponent implements OnInit {
      )
    }
    selectedFile:File=null;
+
    filter(query:string){
     this.fetechedProducts = (query) ?
     this.products.filter(p=>p.title.toLowerCase().includes(query.toLowerCase())) :
     this.products
    }
+
+  filter(query:string){
+    this.fetechedProducts = (query) ?
+    this.products.filter(p=>p.title.toLowerCase().includes(query.toLowerCase())) : 
+    this.products
+  }
+
   onFileSelected(event){
     this.selectedFile=<File>event.target.files[0];
   }
@@ -93,6 +101,7 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
 
 
   onDeleteProduct(id) {
+    if (!confirm('are you sure you want to delete this product')) return;   
     this.productService.deleteProduct(id).subscribe(data => {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/store/products']);
@@ -100,7 +109,7 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
     })
 
 
-    }
+  }
     // getProductById(product:Product){
     //   this.selectedProduct.id=product.id;
     //   this.selectedProduct.title=product.title;
@@ -141,6 +150,48 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
     //     })
 
     // }
+
+    getProductById(product:Product){
+      this.selectedProduct.id=product.id;
+      this.selectedProduct.title=product.title;
+      this.selectedProduct.price=product.price;
+      this.selectedProduct.imageUrl=product.imageUrl;
+      this.selectedProduct.description=product.description;
+      this.selectedProduct.amount=product.amount;
+      console.log(this.selectedProduct)
+      this.editForm.form.patchValue({
+        id : this.selectedProduct.id,
+        title : this.selectedProduct.title,
+        price : this.selectedProduct.price,
+        imageUrl : this.selectedProduct.imageUrl,
+        description : this.selectedProduct.description,
+      })
+    }
+
+    onSubmitEdit(){
+      this.selectedProduct.id = this.editForm.value.id;
+      this.selectedProduct.title = this.editForm.value.title;
+      this.selectedProduct.price = this.editForm.value.price;
+      this.selectedProduct.imageUrl = this.editForm.value.imageUrl;
+      this.selectedProduct.description = this.editForm.value.description;
+      this.selectedProduct.amount = this.editForm.value.amount;
+
+
+      console.log(this.selectedProduct);
+
+      // this.productService.updateProduct(
+      //   this.selectedProduct.id,
+      //   this.selectedProduct
+      // )
+      //   .subscribe(()=> {
+      //     this.getAllProducts();
+      //     console.log("Product Editted")
+      //   }, (err)=>{
+      //     console.log(err)
+      //   })
+
+    }
+
 
 
   }

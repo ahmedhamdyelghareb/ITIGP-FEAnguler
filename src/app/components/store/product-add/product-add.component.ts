@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Input} from '@angular/core';
 import{ ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Models/product.model';
@@ -18,6 +17,7 @@ export class ProductAddComponent implements OnInit {
   previewUrl:any = null;
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
+
   productForm:NgForm;
     constructor(private http:HttpClient,public productService:ProductService ,private router: Router) {
 
@@ -156,10 +156,83 @@ onImagePicked(val){
 
 
 
+    constructor(private http:HttpClient,public productService:ProductService ,private router: Router) {
+
+     }
 
 
 
+     ngOnInit() {
+
+     }
 
 
+
+fileProgress(fileInput: any) {
+      this.fileData = <File>fileInput.target.files[0];
+      this.preview();
+}
+
+preview() {
+    // Show preview
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
     }
 
+
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData);
+    reader.onload = (_event) => {
+      this.previewUrl = reader.result;
+    }
+
+}
+
+  //    selectedFile:File=null;
+
+  //   onFileSelected(event){
+  //     this.selectedFile=<File>event.target.files[0];
+  //   }
+  //   onUpload(){
+  // const fd=new FormData();
+  // fd.append('image',this.selectedFile,this.selectedFile.name);
+  // this.http.post('http://localhost:5000/api/store/create',fd,{
+  //   reportProgress:true,
+  //   observe:'events'
+  // }).subscribe(event=>{
+  //   if(event.type === HttpEventType.UploadProgress){
+  //     console.log('uploadProgress' + Math.round(event.loaded/event.total *100) +'%');
+  //   }else if(event.type === HttpEventType.Response){
+  //   console.log(event);
+  //   }
+  // });
+  //   }
+    id
+    Product: Product = {
+      title: "",
+      price: 0,
+      imageUrl:"",
+      id: 0,
+      description:"",
+      amount:0
+    }
+    product: Product[] = [];
+
+    onAddNewProduct(form: NgForm){
+      // const formData = new FormData();
+      // formData.append('files', this.fileData);
+      this.productService.addProduct(
+        form.value.title,
+        form.value.price,
+        form.value.imageUrl,
+        form.value.description,
+        form.value.amount,
+        ).subscribe(res => {
+          console.log("done")
+          console.log("added")
+      });
+      console.log("yees")
+      form.resetForm();
+        }
+      }

@@ -1,1 +1,50 @@
-<p>cart works!</p>
+<div class="container">
+    <br/>
+<h1>SHOPPING CART</h1>
+<div class="row col-10">
+    <!-- <p>
+        you have {{cartQuantity}} items in your shopping cart.
+    </p> -->
+    <table class='table'>
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 200px;">Product</th>
+                <th class="text-center" style="width: 200px;">Quantity</th>
+                <th class='text-center' style="width: 200px;">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of cart">
+                <td>{{p.name}}</td>
+                <td class='text-right'>
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-2">
+                            <button (click)="removeFromCart(p)" class="btn btn-secondary btn-block">-</button>
+                        </div>
+                        <div class="col text-center">
+                            {{getQuantity(p)}}
+                        </div>
+                        <div class="col-2">
+                            <button (click)="addToCart(p)" class="btn btn-secondary btn-block">+</button>
+                        </div>
+                    </div>
+                </td>
+                <td class='text-right'>{{getQuantity(p) * p.price | currency:"EGP"}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th class='text-right'>{{getTotalPrice() |currency:"EGP"}}</th>
+
+
+            </tr>
+        </tfoot>
+    </table>
+    <a class='btn btn-primary ml-5' 
+     routerLink = "/checkout"  >Check Out </a>    <!--(click)="ordersList()"-->
+    <button (click) = "ClearShoppingCart()"
+    class='btn  btn-outline-danger btn-sm ml-auto'>Clear Shopping Cart</button>
+</div>
+</div>

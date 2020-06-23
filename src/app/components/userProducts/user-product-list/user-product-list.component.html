@@ -1,39 +1,3 @@
-
-
-
-<!-- <div class="row">
-    <div class="col-sm-6 col-md-4 mb-2" *ngFor="let p of products">
-        <div class="card " style="width: 18rem;">
-            <img [src]="p.imageUrl"
-             class="card-img-top" alt="..." (click)="p.isCollapsed =!p.isCollapsed"
-            [attr.aria-expanded]="!p.isCollapsed" aria-controls="collapseExample">
-
-
-
-<div class="row">
-<div class="row">
-    <div class="pb-4 views-row views-row-2 views-row-even col-lg-3 col-md-3 col-sm-6 col-xs-6 product-grid-row" *ngFor="let p of products">
-        <div class="card" id="pro">
-            <img [src]="p.imageUrl" class="card-img-top" (click)="p.isCollapsed =!p.isCollapsed"
-                [attr.aria-expanded]="!p.isCollapsed" aria-controls="collapseExample">
-
-
-            <div id="collapseExample" [ngbCollapse]="p.isCollapsed">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="grid-title">{{ p.title }}</h5>
-                        <p class="card-text">{{p.description}}</p>
-                        <h5 class="text-info field-content ">Price: {{p.price}} EGP</h5>
-                        <h5>By :<a href="#">{{p.shop}}</a></h5>
-                        <a href="#" class="btn btn-outline-success">Add to card</a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <section class="ftco-section bg-light row">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
@@ -48,7 +12,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3 " *ngFor="let p of products" >
                 <div class="product d-flex flex-column">
-                    <a class="img-prod"><img class="img-fluid" [src]="p.imageUrl" alt="DUKAN">
+                    <a class="img-prod"><img class="img-fluid" style="width: 100%; height: 300px;" [src]="p.imageUrl" alt="DUKAN">
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3">
@@ -74,14 +38,10 @@
                         <div class="pricing">
                             <p class="price"><span>{{p.price  | currency:"EGP " }} </span></p>
                         </div>
-                        <!-- <p class="bottom-area d-flex px-3">
-                             (click)="openLogin(content)"
-                            <a class="add-to-cart text-center py-2 mr-1" *ngIf="getQuantity(p)===0;else updateQuantity"
-                             (click)="addToCart(p)"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                        </p> -->
-                        <button class="btn btn-secondary" style="width: 100%;" 
-                        (click)="openLogin(content)"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
-                        <!-- <ng-template #updateQuantity>
+                        
+                        <button class="btn btn-secondary" style="width: 100%; "  *ngIf="getQuantity(p)===0;else updateQuantity"
+                        (click)="addToCart(p)"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
+                         <ng-template #updateQuantity>
                             <div class="row no-gutters">
                                 <div class="col-2">
                                     <button
@@ -97,21 +57,11 @@
                                      class="btn btn-secondary btn-block">+</button>
                                 </div>
                           </div>
-                        </ng-template> -->
+                        </ng-template>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<ng-template #content  let-modal >
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <app-login></app-login>
-    </div>
-  </ng-template>
+

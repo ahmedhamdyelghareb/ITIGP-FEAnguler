@@ -1,55 +1,114 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../auth/auth.service';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UsersService {
+  constructor(private myHttp: HttpClient, private authService: AuthService) {}
 
-  constructor(private myHttp : HttpClient , private authService:AuthService) {
-
+  baseUrl: string = "http://localhost:5000/api/user/register";
+  users() {
+    return this.myHttp.get(`http://localhost:5000/api/user`);
+  }
+  userByID(id) {
+    return this.myHttp.get(
+      `http://localhost:5000/api/user/profile/update/${id}`,
+      {
+        // headers :new HttpHeaders().set("authorization", this.token)
+      }
+    );
+  }
+  addUser(
+    fName: string,
+    lName: string,
+    email: string,
+    phone: string,
+    password: string,
+    DOB: string
+  ) {
+    console.log("uuuuuuuuuuuuuu");
+    const user = {
+      fName: fName,
+      lName: lName,
+      email: email,
+      phone: phone,
+      password: password,
+      DOB: DOB
+    };
+    console.log(user);
+    return this.myHttp.post<{ message: string }>(this.baseUrl, user);
   }
 
-  baseUrl:string = "http://localhost:5000/api/user/register";
-  users(){
-    return this.myHttp.get(`http://localhost:5000/api/user`)
-  }
-  userByID(id){
-   return this.myHttp.get(`http://localhost:5000/api/user/profile/update/${id}`,{
-     // headers :new HttpHeaders().set("authorization", this.token)
-    });
-  }
-  addUser(fName:string,lName:string , email:string ,  phone:string , password:string ,DOB:string  ){
-    console.log("uuuuuuuuuuuuuu")
-   const user = { fName: fName,lName:lName, email: email ,phone:phone , password:password , DOB:DOB};
-   console.log(user)
-   return this.myHttp.post<{message: string }>(this.baseUrl, user)
+  addShop(
+    fName: string,
+    lName: string,
+    email: string,
+    phone: string,
+    password: string,
+    Type: string,
+    shopName: string
+  ) {
+    const user = {
+      fName: fName,
+      lName: lName,
+      email: email,
+      phone: phone,
+      password: password,
+      Type: Type,
+      shopName: shopName
+    };
+    console.log(user);
+    return this.myHttp.post<{ message: string }>(this.baseUrl, user);
   }
 
-  addShop(fName:string,lName:string , email:string ,  phone:string , password:string ,Type:string,shopName:string  ){
-   const user = { fName: fName,lName:lName, email: email ,phone:phone , password:password ,Type:Type,shopName:shopName};
-   console.log(user)
-   return this.myHttp.post<{message: string }>(this.baseUrl, user)
+  getshopname(id) {
+    return this.myHttp.get(`http://localhost:5000/api/home/productowner/${id}`);
   }
 
-  getshopname(id){
-    return this.myHttp.get(`http://localhost:5000/api/home/productowner/${id}`)
-  }
-  
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  currentUser = JSON.parse(localStorage.getItem("currentUser"));
   // token = this.currentUser.token;
 
-  updateUserStatus(id:string , status:string){
-    const updatedSatus = { status:status};
-   return this.myHttp.patch<{ message: string }>(` http://localhost:5000/api/user/status/update/${id}`,updatedSatus,{
-      headers :new HttpHeaders().set("authorization",this.currentUser.token )
-     })  
+  updateUserStatus(id: number, status: string) {
+    const updatedSatus = { status: status };
+    return this.myHttp.patch<{ message: string }>(
+      ` http://localhost:5000/api/user/status/update/${id}`,
+      updatedSatus,
+      {
+        headers: new HttpHeaders().set("authorization", this.currentUser.token)
+      }
+    );
   }
 
+  getshopownerdata(id) {
+    return this.myHttp.get(`http://localhost:5000/api/home/owner/${id}`);
+  }
 
-  getshopownerdata(id){
-    return this.myHttp.get(`http://localhost:5000/api/home/owner/${id}`)
-
+  updateUserData(
+    id: number,
+    fName: string,
+    lName: string,
+    email: string,
+    password: string,
+    phone: string,
+    address:string,
+    
+  ) {
+    const updates = {
+      fName: fName,
+      lName: lName,
+      email: email,
+      password: password,
+      phone: phone,
+      address:address
+    };
+    return this.myHttp.patch<{ message: string }>(
+      ` http://localhost:5000/api/user/profile/update/${id}`,
+      updates,
+      {
+        headers: new HttpHeaders().set("authorization", this.currentUser.token)
+      }
+    );
   }
 }

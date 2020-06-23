@@ -6,15 +6,14 @@
 
 					<div class="col-sm-12 col-md-12 col-lg-4 d-flex" *ngFor="let product of products">
 						<div class="product d-flex flex-column">
-							<a href="#" class="img-prod"><img class="img-fluid" [src]="product.imageUrl"
-									alt="Colorlib Template">
+							<a href="#" class="img-prod"><img class="img-fluid" [src]="product.imageUrl" alt="DUKAN">
 								<!-- <span class="status">20% Off</span> -->
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3">
 								<div class="d-flex">
 									<div class="cat">
-										<span>{{product.user.shopName}}</span>
+										<span><a routerLink="/store/profile/{{product.user?.id}}">{{product.user?.shopName}}</a></span>
 									</div>
 									<div class="rating">
 										<p class="text-right mb-0">

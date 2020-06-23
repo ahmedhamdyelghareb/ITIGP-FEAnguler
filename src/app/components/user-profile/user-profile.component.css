@@ -1,0 +1,15 @@
+#profileimage{
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+}
+
+.no-gutters > .col, .no-gutters > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: 3rem;
+}
+
+#test{
+    border-bottom: 1px solid grey;
+}

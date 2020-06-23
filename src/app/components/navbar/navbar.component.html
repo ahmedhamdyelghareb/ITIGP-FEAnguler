@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-light bg-secondary fixed-top mb-5 pb-1">
   <div class="container">
 
-    <a class="navbar-brand text-white" routerLink="/">
+    <a class="navbar-brand text-white" *ngIf="getToken()!=='hhh'&& getType()==='user'"  routerLink="/allProducts">
       <!--<img src="../../../assets/nav.jpg" style="width: 50px; height: 50px;">--> DUKAN</a>
+      <a class="navbar-brand text-white" *ngIf="getToken()==='hhh'"  routerLink="/home">
+        <!--<img src="../../../assets/nav.jpg" style="width: 50px; height: 50px;">--> DUKAN</a>
 
     <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" data-toggle="collapse"
       data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -14,7 +16,7 @@
       <ul class="navbar-nav mr-auto">
 
         <li class="nav-item active">
-          <a class="nav-link btn-secondary btn text-white" routerLink="/">HOME <span class="sr-only">(current)</span></a>
+          <a class="nav-link btn-secondary btn text-white" *ngIf="getToken()==='hhh'" routerLink="/home">HOME <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link btn-secondary btn text-white" *ngIf="getToken()==='hhh'" [routerLinkActiveOptions]={exact:true} routerLinkActive='active' routerLink="/about">ABOUT
@@ -24,6 +26,10 @@
           <!-- <button class="nav-link btn-secondary btn" (click)="openContact(contentContact)">CONTACT US </button> -->
           <a  routerLink="/contactus" *ngIf="getToken()==='hhh'" class="nav-link btn-secondary btn text-white" >CONTACT US</a>
 
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white btn-secondary btn" routerLink="/allProducts" *ngIf="getToken()!=='hhh'&& getType()==='user'">GENERAL</a>
         </li>
 
         <li class="nav-item">
@@ -50,7 +56,7 @@
             routerLinkActive='active' id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">{{fName}}</a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-            <a ngbDropdownItem class="dropdown-item" routerLink="/shop/Profile">Profile</a>
+            <a ngbDropdownItem class="dropdown-item" routerLink='shop/profile'>Profile</a>
             <!-- <a ngbDropdownItem class="dropdown-item" routerLink="/profile">Profile</a> -->
             <a ngbDropdownItem class="dropdown-item" routerLink="#">Requests</a>
             <!-- <a ngbDropdownItem class="dropdown-item" >Logout</a> -->

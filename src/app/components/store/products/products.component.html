@@ -1,5 +1,6 @@
 
-
+<div class="container mt-3">
+  <br/>
 
 <p class="mt-4">
   <input
@@ -25,7 +26,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <form #editProductForm="ngForm" (ngSubmit)="onSubmitEdit()">
+        <form #editProductForm="ngForm"
+        >
+        <!-- (ngSubmit)="onSubmitEdit()" -->
           <div class="form-group">
             <input type="hidden" class="form-control" id="id" name="id" ngModel >
 
@@ -68,7 +71,7 @@
           </div> -->
 
           <div class="form-group"><label for="imageUrl"> Image</label>
-            <input #imageUrl="ngModel" ngModel  name="imageUrl" id="image" type="file" (change)="onFileSelected($event)" class="form-control" required >
+            <input  ngModel  name="imageUrl" id="image" type="file" (change)="onFileSelected($event)" class="form-control" required >
 
             <button type="button" (click)="onUpload()">upload</button>
 
@@ -114,8 +117,12 @@
      <td><img [src]="product.imageUrl" width="50px" height="50px" ></td>
      <td>{{product.title}}</td>
      <td>{{product.price}}</td>
-     <td><a class="btn btn-primary" style="display: inline-block;" (click)="getProductById(product)" data-toggle="modal" data-target="#exampleModal"> Edit </a>
-      <button class="btn btn-outline-danger ml-5" style="display: inline-block;" (click)='onDeleteProduct(product.id)'>delete</button>
+     <td><a class="btn btn-primary" style="display: inline-block;"
+      data-toggle="modal" data-target="#exampleModal"> Edit </a>
+      <!-- (click)="getProductById(product)" -->
+      <button class="btn btn-outline-danger ml-5" style="display: inline-block;"
+      >delete</button>
+      <!-- (click)='onDeleteProduct(product.id)' -->
     </td>
      <!-- <td> <button class="btn btn-danger" (click)='onDeleteProduct(product.id)'>delete</button></td> -->
    </tr>
@@ -123,3 +130,4 @@
   </tbody>
 </table>
 <!-- <p class="empty" *ngIf="fetechedProducts.length <= 0">No Products added Yet!</p> -->
+</div>

@@ -18,14 +18,14 @@ export class ProductsComponent implements OnInit {
   @ViewChild('editProductForm',{static: false}) editForm: NgForm;
 
 
- selectedProduct:Product={
-   id:0,
-   title:"",
-   price:0,
-   imageUrl:"",
-   description:"",
-   amount:0
- };
+//  selectedProduct:Product={
+//   //  id:0,
+//    title:"",
+//    price:0,
+//   //  imageUrl:"",
+//    description:"",
+//    amount:0
+//  };
   constructor(private http:HttpClient,public productService:ProductService ,private router: Router) {
 
    }
@@ -49,9 +49,11 @@ export class ProductsComponent implements OnInit {
      )
    }
    selectedFile:File=null;
-  filter(query:string){
-    console.log(query);
-  }
+   filter(query:string){
+    this.fetechedProducts = (query) ?
+    this.products.filter(p=>p.title.toLowerCase().includes(query.toLowerCase())) :
+    this.products
+   }
   onFileSelected(event){
     this.selectedFile=<File>event.target.files[0];
   }
@@ -99,46 +101,46 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
 
 
     }
-    getProductById(product:Product){
-      this.selectedProduct.id=product.id;
-      this.selectedProduct.title=product.title;
-      this.selectedProduct.price=product.price;
-      this.selectedProduct.imageUrl=product.imageUrl;
-      this.selectedProduct.description=product.description;
-      this.selectedProduct.amount=product.amount;
-      console.log(this.selectedProduct)
-      this.editForm.form.patchValue({
-        id : this.selectedProduct.id,
-        title : this.selectedProduct.title,
-        price : this.selectedProduct.price,
-        imageUrl : this.selectedProduct.imageUrl,
-        description : this.selectedProduct.description,
-      })
-    }
+    // getProductById(product:Product){
+    //   this.selectedProduct.id=product.id;
+    //   this.selectedProduct.title=product.title;
+    //   this.selectedProduct.price=product.price;
+    //   this.selectedProduct.imageUrl=product.imageUrl;
+    //   this.selectedProduct.description=product.description;
+    //   this.selectedProduct.amount=product.amount;
+    //   console.log(this.selectedProduct)
+    //   this.editForm.form.patchValue({
+    //     // id : this.selectedProduct.id,
+    //     title : this.selectedProduct.title,
+    //     price : this.selectedProduct.price,
+    //     imageUrl : this.selectedProduct.imageUrl,
+    //     description : this.selectedProduct.description,
+    //   })
+    // }
 
-    onSubmitEdit(){
-      this.selectedProduct.id = this.editForm.value.id;
-      this.selectedProduct.title = this.editForm.value.title;
-      this.selectedProduct.price = this.editForm.value.price;
-      this.selectedProduct.imageUrl = this.editForm.value.imageUrl;
-      this.selectedProduct.description = this.editForm.value.description;
-      this.selectedProduct.amount = this.editForm.value.amount;
+    // onSubmitEdit(){
+    //   // this.selectedProduct.id = this.editForm.value.id;
+    //   this.selectedProduct.title = this.editForm.value.title;
+    //   this.selectedProduct.price = this.editForm.value.price;
+    //   this.selectedProduct.imageUrl = this.editForm.value.imageUrl;
+    //   this.selectedProduct.description = this.editForm.value.description;
+    //   this.selectedProduct.amount = this.editForm.value.amount;
 
 
-      console.log(this.selectedProduct);
+    //   console.log(this.selectedProduct);
 
-      this.productService.updateProduct(
-        this.selectedProduct.id,
-        this.selectedProduct
-      )
-        .subscribe(()=> {
-          this.getAllProducts();
-          console.log("Product Editted")
-        }, (err)=>{
-          console.log(err)
-        })
+    //   this.productService.updateProduct(
+    //     this.selectedProduct.id,
+    //     this.selectedProduct
+    //   )
+    //     .subscribe(()=> {
+    //       this.getAllProducts();
+    //       console.log("Product Editted")
+    //     }, (err)=>{
+    //       console.log(err)
+    //     })
 
-    }
+    // }
 
 
   }

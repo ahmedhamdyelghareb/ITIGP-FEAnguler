@@ -75,11 +75,12 @@ updateProduct(id,product:Product){
   return this.http.patch<Product>(`http://localhost:5000/api/store/Edit/${id}`,product)
 }
 
+ getOwnerById(id){
+  return this.http.get<{prod}>(`http://localhost:5000/api/store/getUserId/${id}`)
+}
 
 getById(id){
   return this.http.get(`http://localhost:5000/api/store/getone/${id}`)
-
-
 }
   products: Product[];
   getProducts() {

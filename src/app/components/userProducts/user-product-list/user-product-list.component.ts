@@ -88,11 +88,16 @@ export class UserProductListComponent implements OnInit {
 
 carts
 addToCart(product: any) {
-
-    add({ id: product.id, name: product.title, price: product.price })
-    this.carts = list().length
-    console.log(this.carts)
-    this.getQuantity(product)
+ const {status} = JSON.parse(localStorage.getItem("currentUser"));
+ if(status !== "inactive"){
+  add({ id: product.id, name: product.title, price: product.price })
+  this.carts = list().length
+  console.log(this.carts)
+  this.getQuantity(product)
+ }else{
+   alert('something wrong....')
+ }
+   
  
 }
 

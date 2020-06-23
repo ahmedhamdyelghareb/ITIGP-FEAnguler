@@ -28,6 +28,8 @@ export class ShoppingCartService {
     this.productListIDs = productsID
   }
   returnProductList(){
+    // console.log(this.getTotalPrice())
+    // console.log(this.productListIDs)
     return this.productListIDs
   }
 }

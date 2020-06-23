@@ -39,7 +39,7 @@
                             <p class="price"><span>{{p.price  | currency:"EGP " }} </span></p>
                         </div>
                         
-                        <button class="btn btn-secondary" style="width: 100%; "  *ngIf="getQuantity(p)===0;else updateQuantity"
+                        <button class="btn btn-secondary" style="width: 100%;"  *ngIf="getQuantity(p)===0;else updateQuantity"
                         (click)="addToCart(p)"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></button>
                          <ng-template #updateQuantity>
                             <div class="row no-gutters">

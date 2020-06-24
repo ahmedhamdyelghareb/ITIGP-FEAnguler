@@ -29,6 +29,7 @@ export class ProfileEditComponent implements OnInit {
       console.log(id)
       this.user.getshopownerdata(id).subscribe(res=>{
         this.userData=res[0]
+        this.userData.password = ""
         console.log(res)
       })
     }

@@ -47,6 +47,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component'
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { TermsofserviceComponent } from './components/termsofservice/termsofservice.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,9 +87,6 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
 
     NotfoundComponent,
     TermsofserviceComponent,
-
-
-
   ],
   entryComponents: [
     NgbdModalContent,

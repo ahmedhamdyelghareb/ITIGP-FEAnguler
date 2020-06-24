@@ -44,6 +44,7 @@ export class ProductService {
 
 
   deleteProduct(id: number): Observable<any> {
+    console.log("For deleteeeee",id)
     return this.http.delete(`http://localhost:5000/api/store/Delete/${id}`);
   }
 
@@ -59,14 +60,7 @@ updateProduct(id,product:Product){
 getById(id){
   return this.http.get(`http://localhost:5000/api/store/getone/${id}`)
 }
-// <<<<<<< HEAD
 
-// // getClickedProductToEdit(p:Product) {
-// //   this.productDataSource.next(p);
-// // }
-
-// =======
-// >>>>>>> e740bac7d81240813089aff2b5cd5894d079618e
   products: Product[];
   getProducts() {
     return this.http.get("http://localhost:5000/api/store/");

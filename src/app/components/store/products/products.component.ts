@@ -18,14 +18,14 @@ export class ProductsComponent implements OnInit {
   @ViewChild('editProductForm',{static: false}) editForm: NgForm;
 
 
-//  selectedProduct:Product={
-//   //  id:0,
-//    title:"",
-//    price:0,
-//   //  imageUrl:"",
-//    description:"",
-//    amount:0
-//  };
+ selectedProduct:Product={
+   id:0,
+   title:"",
+   price:0,
+   imageUrl:new FormData(),
+   description:"",
+   amount:0
+ };
   constructor(private http:HttpClient,public productService:ProductService ,private router: Router) {
 
    }
@@ -56,52 +56,42 @@ export class ProductsComponent implements OnInit {
     this.products
    }
 
-  filter(query:string){
-    this.fetechedProducts = (query) ?
-    this.products.filter(p=>p.title.toLowerCase().includes(query.toLowerCase())) : 
-    this.products
+
+
+//   onFileSelected(event){
+//     this.selectedFile=<File>event.target.files[0];
+//   }
+//   onUpload(){
+// const fd=new FormData();
+// fd.append('image',this.selectedFile,this.selectedFile.name);
+// this.http.post('http://localhost:5000/api/store/create',fd,{
+//   reportProgress:true,
+//   observe:'events'
+// }).subscribe(event=>{
+//   if(event.type === HttpEventType.UploadProgress){
+//     console.log('uploadProgress' + Math.round(event.loaded/event.total *100) +'%');
+//   }else if(event.type === HttpEventType.Response){
+//   console.log(event);
+//   }
+// });
+//   }
+img;
+  imagePreview ;
+  onImagePicked(val){
+    this.img = val.target.files[0]
+
+    const file = (val.target as HTMLInputElement).files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
+
   }
-
-  onFileSelected(event){
-    this.selectedFile=<File>event.target.files[0];
-  }
-  onUpload(){
-const fd=new FormData();
-fd.append('image',this.selectedFile,this.selectedFile.name);
-this.http.post('http://localhost:5000/api/store/create',fd,{
-  reportProgress:true,
-  observe:'events'
-}).subscribe(event=>{
-  if(event.type === HttpEventType.UploadProgress){
-    console.log('uploadProgress' + Math.round(event.loaded/event.total *100) +'%');
-  }else if(event.type === HttpEventType.Response){
-  console.log(event);
-  }
-});
-  }
-
-
-  // onAddNewProduct(form:NgForm){
-
-  //   this.productService.addProduct(
-  //     form.value.title,
-  //     form.value.price,
-  //     form.value.imageUrl,
-  //     form.value.description,
-  //     form.value.amount,
-  //     ).subscribe(res => {
-  //       console.log("done")
-  //       console.log("added")
-  //   });
-  //   form.resetForm();
-  //     }
-
-
-
 
 
   onDeleteProduct(id) {
-    if (!confirm('are you sure you want to delete this product')) return;   
+    if (!confirm('are you sure you want to delete this product')) return;
     this.productService.deleteProduct(id).subscribe(data => {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/store/products']);
@@ -179,16 +169,16 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
 
       console.log(this.selectedProduct);
 
-      // this.productService.updateProduct(
-      //   this.selectedProduct.id,
-      //   this.selectedProduct
-      // )
-      //   .subscribe(()=> {
-      //     this.getAllProducts();
-      //     console.log("Product Editted")
-      //   }, (err)=>{
-      //     console.log(err)
-      //   })
+      this.productService.updateProduct(
+        this.selectedProduct.id,
+        this.selectedProduct
+      )
+        .subscribe(()=> {
+          this.getAllProducts();
+          console.log("Product Editted")
+        }, (err)=>{
+          console.log(err)
+        })
 
     }
 

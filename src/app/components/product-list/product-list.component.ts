@@ -6,7 +6,7 @@ import { AuthService } from "../../auth/auth.service";
 import { Subscription } from 'rxjs';
 import { Product } from '../../Models/product.model';
 import { ShoppingCartService } from '../../Services/shopping-cart.service';
-import { add, total, list, get, exists ,quantity } from 'cart-localstorage'
+import { add, total, list, get, exists, quantity } from 'cart-localstorage'
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 @Component({
   selector: 'app-product-list',
@@ -20,9 +20,9 @@ export class ProductListComponent implements OnInit {
   type: string = "";
   token: string = "hhh";
   id: string = "";
-  fName:string=""
+  fName: string = ""
 
- 
+
   constructor(private productService: ProductService,
     private modalService: NgbModal,
     public route: ActivatedRoute,
@@ -42,7 +42,7 @@ export class ProductListComponent implements OnInit {
       // console.log(this.products)
     }
     )
-   
+
   }
   getToken() {
     if (typeof this.token !== "undefined" && this.token !== null)
@@ -60,7 +60,7 @@ export class ProductListComponent implements OnInit {
     token: string;
     id: string;
     Type: string;
-    fName:string
+    fName: string
   };
 
   authToken() {
@@ -106,12 +106,21 @@ export class ProductListComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-/////////////////////////
-@Input('shopping-cart') shoppingCart
+  /////////////////////////
+  @Input('shopping-cart') shoppingCart
 
 
 
-
+  getQuantity(product: any) {
+    // console.log(product.id)
+    if (exists(product.id)) {
+      this.shoppingCart = get(product.id).quantity
+      return this.shoppingCart
+    } else {
+      this.shoppingCart = 0
+      return this.shoppingCart
+    }
+  }
 
 
 }

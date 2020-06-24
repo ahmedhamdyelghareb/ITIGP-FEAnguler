@@ -18,8 +18,8 @@ export class ProductService {
   private productObj = new BehaviorSubject(null);
   productObj$ = this.productObj.asObservable();
   private url = "http://localhost:5000/api/home";
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  token = this.currentUser.token;
+  // currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  // token = this.currentUser.token;
 
   constructor(private http: HttpClient,private authService:AuthService) {}
 
@@ -44,6 +44,7 @@ export class ProductService {
 
 
   deleteProduct(id: number): Observable<any> {
+    console.log("For deleteeeee",id)
     return this.http.delete(`http://localhost:5000/api/store/Delete/${id}`);
   }
 
@@ -52,14 +53,14 @@ updateProduct(id,product:Product){
   return this.http.patch<Product>(`http://localhost:5000/api/store/Edit/${id}`,product)
 }
 
+ getOwnerById(id){
+  return this.http.get<{prod}>(`http://localhost:5000/api/store/getUserId/${id}`)
+}
 
 getById(id){
   return this.http.get(`http://localhost:5000/api/store/getone/${id}`)
 }
 
-// getClickedProductToEdit(p:Product) {
-//   this.productDataSource.next(p);
-// }
 
   products: Product[];
   getProducts() {

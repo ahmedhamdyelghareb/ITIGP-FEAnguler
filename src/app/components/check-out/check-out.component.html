@@ -6,9 +6,9 @@
 <div class="row">
   <div class='col-6'>
     <form #F="ngForm" [formGroup]="newProductForm">
-      <div class="form-group">
-        <!-- <label for="">From</label> -->
-        <input  formControlName="sourceAddress"  #sourceAddress [(ngModel)]="shipping.sourceAddress" type="text" class="form-control" placeholder="Source Adress" required>
+      <!-- <div class="form-group">
+        <label for="">From</label>
+        <input  formControlName="sourceAddress"  #sourceAddress [(ngModel)]="shipping.sourceAddress" type="text" class="form-control" placeholder="Source Address" required>
         <div *ngIf="sourceAddressStatus; else falseBlock" style="color:red">
             *source required
            </div>
@@ -17,8 +17,8 @@
                true
              </div>
          </ng-template>
-      </div>
-      <div class="form-group">
+      </div> -->
+      <div class="form-group " style="margin-top: 5%;">
 
         <input formControlName="destinationAddress" #destinationAddress  [(ngModel)]="shipping.destinationAddress" type="text" placeholder="Destination Address" class="form-control"  required>
         <div *ngIf="destinationAddressStatus; else falseBlock" style="color:red">
@@ -33,20 +33,13 @@
       <div class="form-group">
         
         <input formControlName="totalPrice"  #totalPrice  [(ngModel)]="TotalPrice" type="number" placeholder="Total Price" class="form-control"  required min="0" disabled>
-        <!-- <div *ngIf="totalPriceStatus; else falseBlock" style="color:red">
-            *phone_number required
-           </div>
-           <ng-template #falseBlock>
-             <div class="alert alert-success">
-               true
-             </div>
-         </ng-template> -->
+   
       </div>
      
       <!--  (click)="placeOrder(F)" -->
       <button 
        
-        class="btn btn-primary">Place Order</button>
+        class="btn btn-primary" (click)="placeOrder(F)">Place Order</button>
     </form>
   </div>
   <div class='col-6'>  

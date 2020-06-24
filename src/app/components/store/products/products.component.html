@@ -129,7 +129,11 @@
      <td><a class="btn btn-primary" style="display: inline-block;"
       data-toggle="modal" data-target="#exampleModal" (click)="getProductById(product)"> Edit </a>
       <!-- (click)="getProductById(product)" -->
+
       <button class="btn btn-outline-danger ml-5" style="display: inline-block;" (click)='onDeleteProduct(product.id)'
+
+      <button (click)="onDeleteProduct(product.id)" class="btn btn-outline-danger ml-5" style="display: inline-block;"
+
       >delete</button>
       <!-- (click)='onDeleteProduct(product.id)' -->
     </td>

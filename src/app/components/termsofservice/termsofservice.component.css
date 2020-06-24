@@ -1,0 +1,14 @@
+.tos-template {
+    background: #fff;
+    margin-top: -240px;
+    padding: 60px 80px;
+    font-size: 16px;
+    line-height: 1.6em;
+    font-weight: normal;
+    font-style: normal;
+    font-family: "Lato", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: rgba(0,0,0,0.87);
+    box-sizing: border-box;
+
+}

@@ -1,0 +1,31 @@
+#notfound {
+    position: relative;
+    height: 100vh;
+  }
+  
+  #notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  .notfound {
+    max-width: 560px;
+    width: 100%;
+    padding-left: 160px;
+    line-height: 1.1;
+  }
+  
+  .notfound .notfound-404 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    background-image: url('../../../assets/emoji.png');
+    background-size: cover;
+  }

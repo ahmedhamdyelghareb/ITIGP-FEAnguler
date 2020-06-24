@@ -24,7 +24,8 @@ export class ProductsComponent implements OnInit {
    price:0,
    imageUrl:new FormData(),
    description:"",
-   amount:0
+   amount:0,
+   category:""
  };
   constructor(private http:HttpClient,public productService:ProductService ,private router: Router) {
 

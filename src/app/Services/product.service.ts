@@ -18,8 +18,12 @@ export class ProductService {
   private productObj = new BehaviorSubject(null);
   productObj$ = this.productObj.asObservable();
   private url = "http://localhost:5000/api/home";
-  // currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  // token = this.currentUser.token;
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  token;
+  if(currentUser){
+
+    this.token = this.currentUser.token;
+  }
 
   constructor(private http: HttpClient,private authService:AuthService) {}
 
@@ -38,7 +42,7 @@ export class ProductService {
     console.log(formData)
     // const formData = new FormData();
     return this.http.post("http://localhost:5000/api/store/create",formData
-    // ,{headers : new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')}
+    ,{headers : new HttpHeaders().set('Authorization',this.token)}
     )
   }
 

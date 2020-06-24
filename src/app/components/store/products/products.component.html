@@ -1,146 +1,141 @@
-
-
 <div class="container mt-3">
-  <br/>
+  <br />
 
-<div class="container mt-3">
-  <br/>
-<app-product-add class="m-auto"></app-product-add>
-
-
-<p class="mt-4">
-  <input
-  #query
-  (keyup)="filter(query.value)"
-  type="text" class="form-control" placeholder="Search...">
-</p>
-
-<br/>
-<div class="row">
-  <div class="col-md-6">
-
-    <!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #editProductForm="ngForm"
-         (ngSubmit)="onSubmitEdit()"
-        >
-          <div class="form-group">
-            <input type="hidden" class="form-control" id="id" name="id" ngModel >
-
-          </div>
-
-          <div class="form-group"><label for="title">Title</label>
-            <input #title="ngModel" ngModel  name="title" id="title" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-            Title is required
-          </div>
-          </div>
-
-          <div class="form-group">
-            <label for="price">Price</label>
+  <div class="container mt-3">
+    <br />
+    <app-product-add class="m-auto"></app-product-add>
 
 
-            <input #price="ngModel" ngModel  name="price" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required [min]="0">
+    <p class="mt-4">
+      <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+    </p>
 
-            <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-             <div *ngIf="price.errors.required">
-               price is required
-             </div>
-             <div *ngIf="price.errors.min">
-              price should be higher
-            </div>
-            </div>
-            </div>
+    <br />
+    <div class="row">
+      <div class="col-md-6">
 
+        <!-- Button trigger modal -->
 
-            <div class="form-group">
-              <label for="description">Product Description</label>
-              <input #description="ngModel" ngModel name="description" id="description" type="text" class="form-control" required>
-              <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                  <div *ngIf="description.errors.required">Product Description is required</div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-          </div>
+              <div class="modal-body">
+                <form #editProductForm="ngForm" (ngSubmit)="onSubmitEdit()">
+                  <div class="form-group">
+                    <input type="hidden" class="form-control" id="id" name="id" ngModel>
 
-          <div class="form-group">
-            <label for="amount">amount</label>
+                  </div>
 
-            <input #amount="ngModel" ngModel name="amount" id="amount" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
-                amount is required
+                  <div class="form-group"><label for="title">Title</label>
+                    <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
+                    <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+                      Title is required
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="price">Price</label>
+
+
+                    <input #price="ngModel" ngModel name="price" type="text" class="form-control"
+                      aria-label="Amount (to the nearest dollar)" required [min]="0">
+
+                    <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+                      <div *ngIf="price.errors.required">
+                        price is required
+                      </div>
+                      <div *ngIf="price.errors.min">
+                        price should be higher
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="description">Product Description</label>
+                    <input #description="ngModel" ngModel name="description" id="description" type="text"
+                      class="form-control" required>
+                    <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                      <div *ngIf="description.errors.required">Product Description is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="amount">amount</label>
+
+                    <input #amount="ngModel" ngModel name="amount" id="amount" type="text" class="form-control"
+                      required>
+                    <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
+                      amount is required
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <div>
+                      <button class="pickImg btn btn-secondary" type="button" (click)="filePicker.click()">Upload
+                        Image</button>
+                      <input type="file" #filePicker (change)="onImagePicked($event)" accept="image/png, image/jpeg"
+                        required ngModel name="fileImage">
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <button type="submit" class="btn btn-info" onclick="$('.modal').modal('hide')">Save</button>
+                  </div>
+
+
+
+                </form>
+
+
+              </div>
+
             </div>
+          </div>
         </div>
 
-
-
-          <div class="form-group">
-              <div>
-                  <button class="pickImg btn btn-secondary" type="button" (click)="filePicker.click()">Upload Image</button>
-                  <input type="file" #filePicker (change)="onImagePicked($event)"
-                  accept="image/png, image/jpeg"
-                  required ngModel name="fileImage">
-              </div>
-          </div>
-
-          <div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<button type="submit" class="btn btn-info" onclick="$('.modal').modal('hide')">Save</button>
-					</div>
-
-
-
-          </form>
-
-
       </div>
-
     </div>
+
+    <table class="table col-11  mt-2" style="margin-left: 5%;">
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>title</th>
+          <th>price</th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of fetechedProducts">
+          <td><img [src]="product.imageUrl" width="50px" height="50px"></td>
+          <td>{{product.title}}</td>
+          <td>{{product.price}}</td>
+          <td><a class="btn btn-primary" style="display: inline-block;" data-toggle="modal" data-target="#exampleModal"
+              (click)="getProductById(product)"> Edit </a>
+            <!-- (click)="getProductById(product)" -->
+
+            <button class="btn btn-outline-danger ml-5" style="display: inline-block;"
+              (click)='onDeleteProduct(product.id)'(click)="onDeleteProduct(product.id)"
+              class="btn btn-outline-danger ml-5" style="display: inline-block;">delete</button>
+            <!-- (click)='onDeleteProduct(product.id)' -->
+          </td>
+          <!-- <td> <button class="btn btn-danger" (click)='onDeleteProduct(product.id)'>delete</button></td> -->
+        </tr>
+
+      </tbody>
+    </table>
+    <!-- <p class="empty" *ngIf="fetechedProducts.length <= 0">No Products added Yet!</p> -->
   </div>
-</div>
-
-  </div>
-</div>
-
-<table class="table col-11  mt-2" style="margin-left: 5%;">
-  <thead>
-<tr>
-  <th>image</th>
-  <th>title</th>
-  <th>price</th>
-  <th></th>
-
-</tr>
-  </thead>
-  <tbody >
-   <tr *ngFor="let product of fetechedProducts">
-     <td><img [src]="product.imageUrl" width="50px" height="50px" ></td>
-     <td>{{product.title}}</td>
-     <td>{{product.price}}</td>
-     <td><a class="btn btn-primary" style="display: inline-block;"
-      data-toggle="modal" data-target="#exampleModal" (click)="getProductById(product)"> Edit </a>
-      <!-- (click)="getProductById(product)" -->
-
-      <button class="btn btn-outline-danger ml-5" style="display: inline-block;" (click)='onDeleteProduct(product.id)'
-
-      <button (click)="onDeleteProduct(product.id)" class="btn btn-outline-danger ml-5" style="display: inline-block;"
-
-      >delete</button>
-      <!-- (click)='onDeleteProduct(product.id)' -->
-    </td>
-     <!-- <td> <button class="btn btn-danger" (click)='onDeleteProduct(product.id)'>delete</button></td> -->
-   </tr>
-
-  </tbody>
-</table>
-<!-- <p class="empty" *ngIf="fetechedProducts.length <= 0">No Products added Yet!</p> -->
-</div>

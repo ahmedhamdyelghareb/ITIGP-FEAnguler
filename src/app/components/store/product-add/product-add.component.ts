@@ -38,9 +38,6 @@ onAddNewProduct(product){
   formData.append('price',product.price);
   formData.append('amount',product.amount);
 
-formData.append('category',product.category);
-formData.append('userId',id);
-
   formData.append('category',product.category);
   formData.append('userId',id)
 

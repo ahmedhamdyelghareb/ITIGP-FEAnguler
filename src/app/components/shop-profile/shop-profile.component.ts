@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UsersService } from 'src/app/Services/users.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { add, total, list, get, exists ,quantity } from 'cart-localstorage'
 
 
 @Component({
@@ -96,5 +97,44 @@ export class ShopProfileComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+
+  /////////////////////////
+@Input('shopping-cart') shoppingCart
+// ngOnInit() {
+//   this.getProduct()
+// }
+
+
+carts
+addToCart(product: any) {
+  add({ id: product.id, name: product.title, price: product.price })
+  this.carts = list().length
+  console.log(this.carts)
+  // this.shoppingCart = get(product._id).quantity
+  // console.log(this.shoppingCart)
+  this.getQuantity(product)
+}
+
+getQuantity(product: any) {
+  console.log(product.id)
+  if (exists(product.id)) {
+    this.shoppingCart = get(product.id).quantity
+    return this.shoppingCart
+  }else{
+    this.shoppingCart = 0
+    return this.shoppingCart
+  }
+
+}
+removeFromCart(product: any){
+  if (exists(product.id)) {
+    this.shoppingCart = quantity(product.id,-1)
+    return this.shoppingCart
+  }else{
+    this.shoppingCart = 0
+    return this.shoppingCart
+  }
+}
 
 }

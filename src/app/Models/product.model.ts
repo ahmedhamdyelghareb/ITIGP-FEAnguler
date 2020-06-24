@@ -4,6 +4,6 @@ export class Product {
   imageUrl: FormData;
     description:string;
     amount: number;
-_id:string;
+// _id:string;
 
   }

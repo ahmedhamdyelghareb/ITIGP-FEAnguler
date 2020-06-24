@@ -61,6 +61,7 @@ getById(id){
   return this.http.get(`http://localhost:5000/api/store/getone/${id}`)
 }
 
+
   products: Product[];
   getProducts() {
     return this.http.get("http://localhost:5000/api/store/");

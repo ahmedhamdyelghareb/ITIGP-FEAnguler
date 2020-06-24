@@ -33,8 +33,8 @@
       </div>
       <div class="modal-body">
         <form #editProductForm="ngForm"
+         (ngSubmit)="onSubmitEdit()"
         >
-        <!-- (ngSubmit)="onSubmitEdit()" -->
           <div class="form-group">
             <input type="hidden" class="form-control" id="id" name="id" ngModel >
 
@@ -64,41 +64,44 @@
             </div>
 
 
-          <!-- <div class="form-group"><label for="imageUrl">Image Url</label>
-            <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
-            <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-              <div *ngIf="imageUrl.errors.required">
-                Image Url is required
+            <div class="form-group">
+              <label for="description">Product Description</label>
+              <input #description="ngModel" ngModel name="description" id="description" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                  <div *ngIf="description.errors.required">Product Description is required</div>
               </div>
-              <div *ngIf="imageUrl.errors.url">
-               Please Enter a valid Url
-             </div>
-            </div>
-          </div> -->
-
-          <div class="form-group"><label for="imageUrl"> Image</label>
-            <input  ngModel  name="imageUrl" id="image" type="file" (change)="onFileSelected($event)" class="form-control" required >
-
-            <button type="button" (click)="onUpload()">upload</button>
-
-          <div class="form-group"><label for="description">Decription</label>
-            <input #description="ngModel"   name="description" ngModel  id="description" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-              Description is required
-            </div>
           </div>
-          </div>
-          <div class="form-group"><label for="amount">Amount</label>
-            <input #amount="ngModel" ngModel  name="amount" id="amount" type="text" class="form-control" required>
+
+          <div class="form-group">
+            <label for="amount">amount</label>
+
+            <input #amount="ngModel" ngModel name="amount" id="amount" type="text" class="form-control" required>
             <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
-              Amount is required
+                amount is required
             </div>
+        </div>
+
+
+
+          <div class="form-group">
+              <div>
+                  <button class="pickImg btn btn-secondary" type="button" (click)="filePicker.click()">Upload Image</button>
+                  <input type="file" #filePicker (change)="onImagePicked($event)"
+                  accept="image/png, image/jpeg"
+                  required ngModel name="fileImage">
+              </div>
           </div>
+
           <div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 						<button type="submit" class="btn btn-info" onclick="$('.modal').modal('hide')">Save</button>
 					</div>
-        </form>
+
+
+
+          </form>
+
+
       </div>
 
     </div>
@@ -124,9 +127,13 @@
      <td>{{product.title}}</td>
      <td>{{product.price}}</td>
      <td><a class="btn btn-primary" style="display: inline-block;"
-      data-toggle="modal" data-target="#exampleModal"> Edit </a>
+      data-toggle="modal" data-target="#exampleModal" (click)="getProductById(product)"> Edit </a>
       <!-- (click)="getProductById(product)" -->
+
+      <button class="btn btn-outline-danger ml-5" style="display: inline-block;" (click)='onDeleteProduct(product.id)'
+
       <button (click)="onDeleteProduct(product.id)" class="btn btn-outline-danger ml-5" style="display: inline-block;"
+
       >delete</button>
       <!-- (click)='onDeleteProduct(product.id)' -->
     </td>

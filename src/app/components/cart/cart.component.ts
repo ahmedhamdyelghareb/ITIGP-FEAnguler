@@ -74,7 +74,9 @@ export class CartComponent implements OnInit {
   ordersList(){
     if(list().length === 0){
       alert("your cart is empty !!!")
-      this.router.navigate(['/product'])
+      this.router.navigate(['/allProducts'])
+    }else{
+      this.router.navigate(['/checkout'])
     }
       this.shoppinCartSer.getProductsList(this.productsID)
     

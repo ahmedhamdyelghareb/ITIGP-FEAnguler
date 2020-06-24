@@ -39,7 +39,9 @@ import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary
 /////////////////////////user ptoducts
 import {ManComponent} from './components/userProducts/man/man.component'
 import {WomanComponent} from './components/userProducts/woman/woman.component'
-import { UserProductListComponent } from './components/userProducts/user-product-list/user-product-list.component'
+import { UserProductListComponent } from './components/userProducts/user-product-list/user-product-list.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component'
 
 
 
@@ -75,6 +77,8 @@ import { UserProductListComponent } from './components/userProducts/user-product
     OrderComponent,
     ShoppingCartSummaryComponent,
     UserProductListComponent,
+    OrderSuccessComponent,
+    MyOrdersComponent,
 
 
   ],
@@ -106,6 +110,8 @@ import { UserProductListComponent } from './components/userProducts/user-product
       {path:'shop/register',component:ShopLoginComponent},
       {path:'checkout',component:CheckOutComponent},
       {path:'allProducts',component: UserProductListComponent},
+      {path:"order_success",component:OrderSuccessComponent},
+      {path:"my_order",component:MyOrdersComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full' },
     ])
   ],

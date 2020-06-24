@@ -2,7 +2,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import{ ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Models/product.model';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { FormGroup,NgForm,Validators,FormControl} from '@angular/forms';
@@ -28,8 +28,8 @@ ngOnInit() {
 }
 prp;
 img;
-
 onAddNewProduct(product){
+  const {id}=JSON.parse(localStorage.getItem('currentUser'))
   const formData = new FormData();
   console.log(formData)
   formData.append('imageUrl',this.img);
@@ -38,7 +38,7 @@ onAddNewProduct(product){
   formData.append('price',product.price);
   formData.append('amount',product.amount);
   formData.append('category',product.category);
-
+  formData.append('userId',id)
   this.productService.addProduct(formData).subscribe(data => {
     this.prp = data;
   })

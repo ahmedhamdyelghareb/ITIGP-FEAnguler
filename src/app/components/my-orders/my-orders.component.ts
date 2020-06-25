@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { OrderService } from '../../Services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import{Order} from 'src/app/Models/Order.model';
+import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 @Component({
   selector: 'app-my-orders',
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.css']
 })
+
 export class MyOrdersComponent implements OnInit {
-
+  @ViewChild('orderStatus',{static: false})
+  orderStatus: NgForm;
   constructor(private orderService: OrderService, public route: ActivatedRoute, private router: Router) { }
-
+  private ordersSub: Subscription;
   ngOnInit() {
-    this.getOrdersByUserID()
+    this.getOrdersByownerID()
   }
+
+
+
   Orders: any[] =[]
-  id 
+  id
   currentUser: {
   id
   }
@@ -27,19 +36,18 @@ export class MyOrdersComponent implements OnInit {
       return this.id
     }
   }
-  getOrdersByUserID() {
+  getOrdersByownerID() {
     if (this.getId())
     console.log(this.getId())
-      this.orderService.orderByID(this.getId())    ////////////////////user
+      this.orderService.getOrderByOwnerID(this.getId())    ////////////////////user
         .subscribe((o: any) => this.Orders = o)
   }
-  onDelete(orderID) {
-    if (!confirm('are you sure you want to delete this order')) return;
-    this.orderService.deleteOrder(orderID)
-    alert('the order is deleted !')
-    // console.log(orderID)
-   // this.router.navigate(['/product'])
-    // this.router.navigate(['/admin/products'])
-  }
+acceptOrders(orderId){
+
+  this.orderService.getOrderByID(orderId).subscribe((order: any) => this.Orders = order)
+}
+
+
+
 
 }

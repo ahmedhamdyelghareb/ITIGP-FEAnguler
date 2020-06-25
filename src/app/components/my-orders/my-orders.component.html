@@ -8,17 +8,59 @@
             <th>Total Price</th>
             <th>Status</th>
             <th></th>
+
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let order of Orders">
             <td>{{order.arrivalTime|date}}</td>
-            <td>{{order.totalPrice|currency}}</td>
+            <td>{{order.totalPrice|currency:"EGP"}}</td>
             <!-- <td>{{product.details}}</td> -->
             <td>{{order.status}}</td>
-            <button  class='btn btn-outline-danger mt-2' (click)="onDelete(order.id)">delete</button>
+            <td><button  class='btn btn-secondary mt-2' (click)="open(contentLogin)" (click)="onGetOrderDetailes(order.id)">Detailes</button></td>
+            <td><button  class='btn btn-outline-danger mt-2' (click)="onDelete(order.id)">Delete</button></td>
         </tr>
     </tbody>
 </table>
+<ng-template #contentLogin  let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Order Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" >
+        <div class="table-responsive">
+            <table  class="table" >
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                      
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of produtcs " >
+                       
+                        <td>{{product.prod.title}}</td>
+                        <td>{{product.prod.price}}</td>
+    
+                        <td >{{amount[i]}}</td>
+                        <!-- <td>{{order.totalPrice|currency:"EGP"}}</td> -->
+                        <!-- <td>{{product.details}}</td> -->
+                        <!-- <td>{{order.status}}</td> -->
+                     
+                    </tr>
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </ng-template>
 </div>
 

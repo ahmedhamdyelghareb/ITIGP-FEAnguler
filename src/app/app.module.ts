@@ -46,6 +46,8 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component'
 
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { TermsofserviceComponent } from './components/termsofservice/termsofservice.component';
+import { ShopOrderListComponent } from './shop-order-list/shop-order-list.component';
+
 
 
 @NgModule({
@@ -87,6 +89,14 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
 
     NotfoundComponent,
     TermsofserviceComponent,
+<<<<<<< HEAD
+    ShopOrderListComponent,
+
+
+
+
+=======
+>>>>>>> 21455b879ea9113cfc14c6a628585596666caf8f
   ],
   entryComponents: [
     NgbdModalContent,
@@ -108,6 +118,7 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
       {path:'store/profile/:id',component :ShopProfileComponent},
       {path:'profile',component :UserProfileComponent},
       {path:'shop/profile',component :UserProfileComponent},
+      {path:'shop/requests',component :ShopOrderListComponent},
       {path:'profile/edit',component :ProfileEditComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'cart',component :CartComponent},

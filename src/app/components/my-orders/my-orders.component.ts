@@ -1,14 +1,20 @@
+
 import { Component, OnInit } from "@angular/core";
 import { OrderService } from "../../Services/order.service";
 import {ProductService} from '../../Services/product.service'
 import { UsersService} from '../../Services/users.service'
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+
 @Component({
   selector: "app-my-orders",
   templateUrl: "./my-orders.component.html",
   styleUrls: ["./my-orders.component.css"]
 })
+
+
+
+
 export class MyOrdersComponent implements OnInit {
   today: number = Date.now();
   i:number = 0
@@ -56,11 +62,11 @@ export class MyOrdersComponent implements OnInit {
       address:"",
       gender:"",
       phone:0,
-      DOB:"", 
+      DOB:"",
     }
   };
 
-  
+
 
 
   constructor(
@@ -78,6 +84,7 @@ export class MyOrdersComponent implements OnInit {
   }
   Orders: any[] = [];
   id;
+
   currentUser: {
     id;
   };
@@ -96,6 +103,10 @@ export class MyOrdersComponent implements OnInit {
       return this.id;
     }
   }
+
+
+
+
   getOrdersByUserID() {
     if (this.getId()) console.log(this.getId());
     this.orderService
@@ -173,6 +184,7 @@ export class MyOrdersComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
 
 }
 

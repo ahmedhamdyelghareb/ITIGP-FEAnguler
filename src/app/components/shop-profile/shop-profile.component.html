@@ -70,7 +70,7 @@
                                     {{getQuantity(p)}} in cart
                                 </div>
                                 <div class="col-2">
-                                    <button 
+                                    <button
                                     (click) = "addToCart(p)"
                                      class="btn btn-secondary btn-block">+</button>
                                 </div>
@@ -83,6 +83,7 @@
     </div>
 </section>
 
+<app-shop-order-list></app-shop-order-list>
 <ng-template #content  let-modal >
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">LOG IN</h4>

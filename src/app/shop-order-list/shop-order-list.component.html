@@ -1,0 +1,30 @@
+
+<div class="container">
+
+
+
+
+
+    <table class='table'>
+      <thead>
+          <tr>
+              <th>Order Date</th>
+              <th>Total Price</th>
+              <th>Status</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let order of Orders">
+              <td>{{order.arrivalTime|date}}</td>
+              <td>{{order.totalPrice|currency}}</td>
+    
+              <td>{{order.status}}</td>
+             <td> <button  class='btn btn-outline-danger mt-2' (click)="onRejectOrder(order.id)">reject</button> </td>
+             <td> <button  class='btn btn-outline-success mt-2'   (click)="onAccept(selectedStatus)">accept</button> </td>
+          </tr>
+      </tbody>
+    </table>
+    </div>
+    
+    

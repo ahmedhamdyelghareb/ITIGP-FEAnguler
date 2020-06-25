@@ -49,6 +49,7 @@ import { TermsofserviceComponent } from './components/termsofservice/termsofserv
 import { ShopOrderListComponent } from './shop-order-list/shop-order-list.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,11 +89,14 @@ import { ShopOrderListComponent } from './shop-order-list/shop-order-list.compon
 
     NotfoundComponent,
     TermsofserviceComponent,
+<<<<<<< HEAD
     ShopOrderListComponent,
 
 
 
 
+=======
+>>>>>>> 21455b879ea9113cfc14c6a628585596666caf8f
   ],
   entryComponents: [
     NgbdModalContent,

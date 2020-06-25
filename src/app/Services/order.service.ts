@@ -58,7 +58,7 @@ export class OrderService {
     });
   }
   getOrderByID(id) {
-    return this.myHttp.get(`${this.baseUrl}/${id}`, {
+    return this.myHttp.get(`${this.baseUrl}/order/${id}`, {
       headers: new HttpHeaders().set("authorization", this.token)
     });
   }

@@ -58,11 +58,6 @@ export class ProductsComponent implements OnInit {
    }
 
 
-  // filter(query:string){
-  //   this.fetechedProducts = (query) ?
-  //   this.products.filter(p=>p.title.toLowerCase().includes(query.toLowerCase())) :
-  //   this.products
-  // }
 
   onFileSelected(event){
     this.selectedFile=<File>event.target.files[0];
@@ -83,40 +78,7 @@ this.http.post('http://localhost:5000/api/store/create',fd,{
   }
 
 
-  // onAddNewProduct(form:NgForm){
-
-  //   this.productService.addProduct(
-  //     form.value.title,
-  //     form.value.price,
-  //     form.value.imageUrl,
-  //     form.value.description,
-  //     form.value.amount,
-  //     ).subscribe(res => {
-  //       console.log("done")
-  //       console.log("added")
-  //   });
-  //   form.resetForm();
-  //     }
-
-
-
-//   onFileSelected(event){
-//     this.selectedFile=<File>event.target.files[0];
-//   }
-//   onUpload(){
-// const fd=new FormData();
-// fd.append('image',this.selectedFile,this.selectedFile.name);
-// this.http.post('http://localhost:5000/api/store/create',fd,{
-//   reportProgress:true,
-//   observe:'events'
-// }).subscribe(event=>{
-//   if(event.type === HttpEventType.UploadProgress){
-//     console.log('uploadProgress' + Math.round(event.loaded/event.total *100) +'%');
-//   }else if(event.type === HttpEventType.Response){
-//   console.log(event);
-//   }
-// });
-//   }
+ 
 img;
   imagePreview ;
   onImagePicked(val){
@@ -142,47 +104,7 @@ img;
 
 
   }
-    // getProductById(product:Product){
-    //   this.selectedProduct.id=product.id;
-    //   this.selectedProduct.title=product.title;
-    //   this.selectedProduct.price=product.price;
-    //   this.selectedProduct.imageUrl=product.imageUrl;
-    //   this.selectedProduct.description=product.description;
-    //   this.selectedProduct.amount=product.amount;
-    //   console.log(this.selectedProduct)
-    //   this.editForm.form.patchValue({
-    //     // id : this.selectedProduct.id,
-    //     title : this.selectedProduct.title,
-    //     price : this.selectedProduct.price,
-    //     imageUrl : this.selectedProduct.imageUrl,
-    //     description : this.selectedProduct.description,
-    //   })
-    // }
-
-    // onSubmitEdit(){
-    //   // this.selectedProduct.id = this.editForm.value.id;
-    //   this.selectedProduct.title = this.editForm.value.title;
-    //   this.selectedProduct.price = this.editForm.value.price;
-    //   this.selectedProduct.imageUrl = this.editForm.value.imageUrl;
-    //   this.selectedProduct.description = this.editForm.value.description;
-    //   this.selectedProduct.amount = this.editForm.value.amount;
-
-
-    //   console.log(this.selectedProduct);
-
-    //   this.productService.updateProduct(
-    //     this.selectedProduct.id,
-    //     this.selectedProduct
-    //   )
-    //     .subscribe(()=> {
-    //       this.getAllProducts();
-    //       console.log("Product Editted")
-    //     }, (err)=>{
-    //       console.log(err)
-    //     })
-
-    // }
-
+    
     getProductById(product:Product){
       this.selectedProduct.id=product.id;
       this.selectedProduct.title=product.title;

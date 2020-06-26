@@ -84,12 +84,17 @@ export class OrderService {
       });
   }
 
-updateStatus(id:number,status:string){
- return this.myHttp.patch(`${this.baseUrl}/EditStatus/${id}`,{
-    headers: new HttpHeaders().set("authorization", this.token)
-  })
-}
+  //   getOrderByOwnerID(id) {
+  //   return this.myHttp.get(`${this.baseUrl}/owner/${id}`, {
+  //     headers: new HttpHeaders().set("authorization", this.token)
+  //   });
+  // }
 
-
+  updateStatus(id:number,status:string){
+    return this.myHttp.patch(`${this.baseUrl}/EditStatus/${id}`,{
+       headers: new HttpHeaders().set("authorization", this.token)
+     })
+   }
+   
 
 }

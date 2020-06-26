@@ -2,102 +2,87 @@
   <div class="col-md-6">
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
-  New Product
-</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+      New Product
+    </button>
 
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #productForm="ngForm"  (ngSubmit)="onAddNewProduct(productForm.value)" >
-          <div class="form-group">
-            <label for="title">Title</label>
-
-            <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-                Title is required
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="price">Price</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"></div>
-                </div>
-                <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required
-                    [min]="0" number>
-            </div>
-            <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-                <div *ngIf="price.errors.number">Price must be a NUMBER and be 0 or higher</div>
-                <div *ngIf="price.errors.required">Price is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="description">Product Description</label>
-            <input #description="ngModel" ngModel name="description" id="description" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                <div *ngIf="description.errors.required">Product Description is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-          <label for="amount">amount</label>
-
-          <input #amount="ngModel" ngModel name="amount" id="amount" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
-              Title is required
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-      </div>
+          <div class="modal-body">
+            <form #productForm="ngForm" (ngSubmit)="onAddNewProduct(productForm.value)">
+              <div class="form-group">
+                <label for="title">Title</label>
 
+                <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+                  Title is required
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"></div>
+                  </div>
+                  <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required
+                    [min]="0" number>
 
+                </div>
+                <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+                  <div *ngIf="price.errors.number">Price must be a NUMBER and be 0 or higher</div>
+                  <div *ngIf="price.errors.required">Price is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description">Product Description</label>
+                <input #description="ngModel" ngModel name="description" id="description" type="text"
+                  class="form-control" required>
+                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                  <div *ngIf="description.errors.required">Product Description is required</div>
+                </div>
+              </div>
 
-        <div class="form-group">
-            <div>
-                <button class="pickImg btn btn-secondary" type="button" (click)="filePicker.click()">Upload Image</button>
-                <input type="file" #filePicker (change)="onImagePicked($event)"
-                accept="image/png, image/jpeg"
-                required ngModel name="fileImage">
-            </div>
-        </div>
+              <div class="form-group">
+                <label for="amount">amount</label>
 
-
-  <div class="form-group">
+                <input #amount="ngModel" ngModel name="amount" id="amount" type="text" class="form-control" required>
+                <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
+                  Title is required
+                </div>
+              </div>
+              <div class="form-group">
+                <div>
+                  <button class="pickImg btn btn-secondary" type="button" (click)="filePicker.click()">Upload
+                    Image</button>
+                  <input type="file" #filePicker (change)="onImagePicked($event)" accept="image/png, image/jpeg"
+                    required ngModel name="fileImage">
+                </div>
+              </div>
+              <div class="form-group">
                 <label for="category">category</label>
-
                 <select #category="ngModel" ngModel name="category" id="category" type="text" class="form-control"
                   required>
                   <option value="men">MEN</option>
                   <option value="women">WOMEN</option>
                 </select>
-
               </div>
-
-
-
-        <div class="modal-footer">
-        <button type="submit" class="btn btn-primary float-right"
-        [disabled]="productForm.invalid" ngbTooltip="Fill all Fields first"
-        >Save</button>
-
-
-      </div>
-
-
-
-        </form>
-
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary float-right" [disabled]="productForm.invalid"
+                  ngbTooltip="Fill all Fields first">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
   </div>
 </div>

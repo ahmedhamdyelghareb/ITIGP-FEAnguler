@@ -19,7 +19,12 @@ export class ProductService {
   productObj$ = this.productObj.asObservable();
   private url = "http://localhost:5000/api/home";
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  token = this.currentUser.token;
+  token;
+  if(currentUser){
+
+    this.token = this.currentUser.token;
+  }
+
 
   constructor(private http: HttpClient,private authService:AuthService) {}
 
@@ -35,11 +40,11 @@ export class ProductService {
 
 
   addProduct(formData:FormData){
-    console.log(formData)
-    // const formData = new FormData();
-    return this.http.post("http://localhost:5000/api/store/create",formData
-    ,{headers : new HttpHeaders().set('Authorization',this.token)}
-    )
+    formData.forEach((dd)=>{
+      console.log(dd)
+    })
+
+    return this.http.post("http://localhost:5000/api/store/create",formData,{headers : new HttpHeaders().set('Authorization',this.token)})
   }
 
 
@@ -62,7 +67,7 @@ getById(id){
 }
 
 
-  products: Product[];
+  // products: Product[];
   getProducts() {
     return this.http.get("http://localhost:5000/api/store/");
   }

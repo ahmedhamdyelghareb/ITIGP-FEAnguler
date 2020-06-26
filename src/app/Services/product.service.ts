@@ -40,11 +40,11 @@ export class ProductService {
 
 
   addProduct(formData:FormData){
-    console.log(formData)
-    // const formData = new FormData();
-    return this.http.post("http://localhost:5000/api/store/create",formData
-    ,{headers : new HttpHeaders().set('Authorization',this.token)}
-    )
+    formData.forEach((dd)=>{
+      console.log(dd)
+    })
+
+    return this.http.post("http://localhost:5000/api/store/create",formData,{headers : new HttpHeaders().set('Authorization',this.token)})
   }
 
 
@@ -67,7 +67,7 @@ getById(id){
 }
 
 
-  products: Product[];
+  // products: Product[];
   getProducts() {
     return this.http.get("http://localhost:5000/api/store/");
   }

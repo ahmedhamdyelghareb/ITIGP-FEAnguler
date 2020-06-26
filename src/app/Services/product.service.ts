@@ -25,6 +25,7 @@ export class ProductService {
     this.token = this.currentUser.token;
   }
 
+
   constructor(private http: HttpClient,private authService:AuthService) {}
 
   getAllProducts() {

@@ -18,7 +18,6 @@
             </button>
           </div>
           <div class="modal-body">
-
             <form #productForm="ngForm" (ngSubmit)="onAddNewProduct(productForm.value)">
               <div class="form-group">
                 <label for="title">Title</label>
@@ -32,10 +31,11 @@
                 <label for="price">Price</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <div class="input-group-text">$</div>
+                    <div class="input-group-text"></div>
                   </div>
                   <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required
                     [min]="0" number>
+
                 </div>
                 <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
                   <div *ngIf="price.errors.number">Price must be a NUMBER and be 0 or higher</div>
@@ -59,18 +59,6 @@
                   Title is required
                 </div>
               </div>
-
-              <div class="form-group">
-                <label for="category">category</label>
-
-                <select #category="ngModel" ngModel name="category" id="category" type="text" class="form-control"
-                  required>
-                  <option value="men">MEN</option>
-                  <option value="women">WOMEN</option>
-                </select>
-                
-              </div>
-
               <div class="form-group">
                 <div>
                   <button class="pickImg btn btn-secondary" type="button" (click)="filePicker.click()">Upload
@@ -79,18 +67,19 @@
                     required ngModel name="fileImage">
                 </div>
               </div>
-
+              <div class="form-group">
+                <label for="category">category</label>
+                <select #category="ngModel" ngModel name="category" id="category" type="text" class="form-control"
+                  required>
+                  <option value="men">MEN</option>
+                  <option value="women">WOMEN</option>
+                </select>
+              </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary float-right" [disabled]="productForm.invalid"
                   ngbTooltip="Fill all Fields first">Save</button>
-
-
               </div>
-
-
-
             </form>
-
           </div>
         </div>
       </div>

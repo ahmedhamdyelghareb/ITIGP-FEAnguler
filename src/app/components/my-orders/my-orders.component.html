@@ -1,5 +1,5 @@
 <div class="container">
-  
+
     <!-- <h2>My Orders</h2> -->
 <table class='table'>
     <thead>
@@ -18,9 +18,13 @@
             <td>{{order.totalPrice|currency:"EGP"}}</td>
             <!-- <td>{{product.details}}</td> -->
             <td>{{order.status}}</td>
+<<<<<<< HEAD
+
+=======
             <td><button  class='btn btn-secondary mt-2' (click)="open(contentLogin)" (click)="onGetOrderDetailes(order.id)">Detailes</button></td>
             <td><button  class='btn btn-outline-danger mt-2' (click)="onDelete(order.id)">Delete</button></td>
         </tr>
+>>>>>>> 21455b879ea9113cfc14c6a628585596666caf8f
     </tbody>
 </table>
 

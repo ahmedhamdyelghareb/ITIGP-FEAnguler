@@ -2,6 +2,11 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { OrderService } from 'src/app/Services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import{Order} from 'src/app/Models/Order.model';
+import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 @Component({
   selector: 'app-shop-order-list',
   templateUrl: './shop-order-list.component.html',
@@ -14,19 +19,6 @@ export class ShopOrderListComponent implements OnInit {
   ngOnInit() {
     this.getOrdersByownerID()
   }
-
-
-
-// selectedOrder:Order={
-//   amount:0,
-//   destinationAddress:"",
-//   id:0,
-//   status:"",
-//   sourceAddress: "",
-
-//           arrivalTime:any,
-//           totalPrice: 0
-// };
 selectedStatus = "";
 
 Orders: any[] =[]
@@ -62,6 +54,8 @@ this.orderService.updateStatus(this.id,status).subscribe(()=>{
 this.getOrdersByownerID()
 
 })
+
+alert(' order status is Accepted !')
 }
 
 
@@ -73,9 +67,6 @@ onRejectOrder(orderID) {
   if (!confirm('are you sure you want to delete this order')) return;
   this.orderService.deleteOrder(orderID)
   alert('the order is deleted !')
-  // console.log(orderID)
- // this.router.navigate(['/product'])
-  // this.router.navigate(['/admin/products'])
-}
 
+}
 }

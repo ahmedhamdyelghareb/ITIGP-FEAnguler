@@ -40,6 +40,8 @@ onAddNewProduct(product){
 
   formData.append('category',product.category);
   formData.append('userId',id)
+formData.append('category',product.category);
+formData.append('userId',id);
 
   this.productService.addProduct(formData).subscribe(data => {
     this.prp = data;

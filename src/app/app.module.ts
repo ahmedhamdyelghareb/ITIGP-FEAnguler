@@ -91,6 +91,7 @@ import { RequestsComponent } from './components/requests/requests.component';
     TermsofserviceComponent,
     ShopOrderListComponent,
     RequestsComponent,
+
   ],
   entryComponents: [
     NgbdModalContent,
@@ -112,6 +113,7 @@ import { RequestsComponent } from './components/requests/requests.component';
       {path:'store/profile/:id',component :ShopProfileComponent},
       {path:'profile',component :UserProfileComponent},
       {path:'shop/profile',component :UserProfileComponent},
+      {path:'shop/requests',component :ShopOrderListComponent},
       {path:'profile/edit',component :ProfileEditComponent},
       {path:'store/products',component :ProductsComponent},
       {path:'cart',component :CartComponent},

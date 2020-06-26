@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { list, destroy } from "cart-localstorage";
 import { AuthService } from "../auth/auth.service";
 import { DatePipe } from '@angular/common';
-
+import {Order} from 'src/app/Models/Order.model';
 @Injectable({
   providedIn: "root"
 })
@@ -23,7 +23,7 @@ export class OrderService {
   currentUser = JSON.parse(localStorage.getItem("currentUser"));
   token = this.currentUser.token;
   baseUrl: string = "http://localhost:5000/api/order";
- 
+
   addOrder(sourceAddress: string, destinationAddress: string, amount: string,
     arrivalTime:Date,totalPrice:number,productOwnerID:string,userId:number,productId:string
     ) {
@@ -49,7 +49,7 @@ export class OrderService {
         this.cart = list();
         this.cart = destroy();
         this.router.navigate(["/order_success"]);
-        
+
       });
   }
   orderByID(id) {
@@ -62,6 +62,13 @@ export class OrderService {
       headers: new HttpHeaders().set("authorization", this.token)
     });
   }
+
+  getOrderByOwnerID(id) {
+    return this.myHttp.get(`${this.baseUrl}/owner/${id}`, {
+      headers: new HttpHeaders().set("authorization", this.token)
+    });
+  }
+
   Orders() {
     return this.myHttp.get(this.baseUrl, {
       headers: new HttpHeaders().set("authorization", this.token)
@@ -77,11 +84,11 @@ export class OrderService {
       });
   }
 
-  getOrderByOwnerID(id) {
-    return this.myHttp.get(`${this.baseUrl}/owner/${id}`, {
-      headers: new HttpHeaders().set("authorization", this.token)
-    });
-  }
+  //   getOrderByOwnerID(id) {
+  //   return this.myHttp.get(`${this.baseUrl}/owner/${id}`, {
+  //     headers: new HttpHeaders().set("authorization", this.token)
+  //   });
+  // }
 
   updateStatus(id:number,status:string){
     return this.myHttp.patch(`${this.baseUrl}/EditStatus/${id}`,{
@@ -89,4 +96,5 @@ export class OrderService {
      })
    }
    
+
 }
